@@ -1,0 +1,12 @@
+{
+    "nature":{
+        "name":"111",
+        "level":"111",
+        "engineerImpact":"111",
+        "isOccupy":"111",
+        "occupyArea":"111",
+        "constructionNature":"111",
+        "majorProtectedObj":"111"
+    }
+    
+}

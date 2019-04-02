@@ -1,0 +1,36 @@
+{
+    "data": [
+        {
+            "placeName": "所在地1",
+            "placeCode": "5101"
+        },
+        {
+            "placeName": "所在地2",
+            "placeCode": "5102"
+        },
+        {
+            "placeName": "所在地3",
+            "placeCode": "5101"
+        },
+        {
+            "placeName": "所在地4",
+            "placeCode": "5102"
+        },
+        {
+            "placeName": "所在地5",
+            "placeCode": "5101"
+        },
+        {
+            "placeName": "所在地6",
+            "placeCode": "5102"
+        },
+        {
+            "placeName": "所在地7",
+            "placeCode": "5101"
+        },
+        {
+            "placeName": "所在地8",
+            "placeCode": "5102"
+        }
+    ]
+}

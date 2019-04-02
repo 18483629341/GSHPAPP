@@ -1,0 +1,36 @@
+{
+    "data": [
+        {
+            "rangeName": "甲级环评报告书评价范围值1",
+            "rangeCode": "5101"
+        },
+        {
+            "rangeName": "甲级环评报告书评价范围值2",
+            "rangeCode": "5101"
+        },
+        {
+            "rangeName": "甲级环评报告书评价范围值3",
+            "rangeCode": "5101"
+        },
+        {
+            "rangeName": "甲级环评报告书评价范围值4",
+            "rangeCode": "5101"
+        },
+        {
+            "rangeName": "甲级环评报告书评价范围值5",
+            "rangeCode": "5101"
+        },
+        {
+            "rangeName": "甲级环评报告书评价范围值6",
+            "rangeCode": "5101"
+        },
+        {
+            "rangeName": "甲级环评报告书评价范围值1",
+            "rangeCode": "5101"
+        },
+        {
+            "rangeName": "甲级环评报告书评价范围值2",
+            "rangeCode": "5101"
+        }
+    ]
+}

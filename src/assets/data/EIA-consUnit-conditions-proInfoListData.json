@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "enterpriseName": "兰州祁连山水泥商砼有限公司",
+            "enterpriseId": "5102",
+            "socialCreditCode": "23456789012345678",
+            "isCollection": "0"
+        },
+        {
+            "enterpriseName": "兰州祁连山水泥商砼有限公司",
+            "enterpriseId": "5103",
+            "socialCreditCode": "23456789012345678",
+            "isCollection": "1"
+        },
+        {
+            "enterpriseName": "兰州祁连山水泥商砼有限公司",
+            "enterpriseId": "5102",
+            "socialCreditCode": "23456789012345678",
+            "isCollection": "0"
+        },
+        {
+            "enterpriseName": "兰州祁连山水泥商砼有限公司",
+            "enterpriseId": "5103",
+            "socialCreditCode": "23456789012345678",
+            "isCollection": "1"
+        },
+        {
+            "enterpriseName": "兰州祁连山水泥商砼有限公司",
+            "enterpriseId": "5102",
+            "socialCreditCode": "23456789012345678",
+            "isCollection": "0"
+        },
+        {
+            "enterpriseName": "兰州祁连山水泥商砼有限公司",
+            "enterpriseId": "5103",
+            "socialCreditCode": "23456789012345678",
+            "isCollection": "1"
+        }
+    ]
+}

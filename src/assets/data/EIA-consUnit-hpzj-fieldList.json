@@ -1,0 +1,36 @@
+{
+    "data": [
+        {
+            "fieldName": "领域名称1",
+            "fieldCode": "领域编码"
+        },
+        {
+            "fieldName": "领域名称2",
+            "fieldCode": "领域编码"
+        },
+        {
+            "fieldName": "领域名称3",
+            "fieldCode": "领域编码"
+        },
+        {
+            "fieldName": "领域名称4",
+            "fieldCode": "领域编码"
+        },
+        {
+            "fieldName": "领域名称5",
+            "fieldCode": "领域编码"
+        },
+        {
+            "fieldName": "领域名称6",
+            "fieldCode": "领域编码"
+        },
+        {
+            "fieldName": "领域名称1",
+            "fieldCode": "领域编码"
+        },
+        {
+            "fieldName": "领域名称2",
+            "fieldCode": "领域编码"
+        }
+    ]
+}

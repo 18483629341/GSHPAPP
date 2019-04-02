@@ -1,0 +1,241 @@
+@charset "UTF-8";
+ion-header ion-toolbar {
+  --background: #4162fb;
+  color: #fff;
+}
+
+ion-header .search-div span {
+  display: inline-block;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 8px 10px 8px 40px;
+  background: rgba(0, 0, 0, 0.08) url("../../assets/imgs/search.svg") no-repeat 10px center;
+}
+
+.option-div {
+  position: absolute;
+  width: 100%;
+}
+
+.option-div ion-row {
+  background: #fff;
+}
+
+.option-div ion-list {
+  margin-top: -3px;
+}
+
+.layer {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  z-index: 5;
+}
+
+.select_condition {
+  height: 3rem;
+  line-height: 3rem;
+}
+
+.select_condition ion-col {
+  height: 3rem;
+  line-height: 3rem;
+}
+
+.color-gray {
+  color: #ddd;
+}
+
+.icon-map {
+  background: url("../../assets/imgs/map.svg") no-repeat left center;
+  width: 22px;
+  height: 22px;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #ececec;
+  margin-bottom: 0.5px;
+}
+
+.area-new {
+  max-height: 298px;
+  overflow-y: auto;
+}
+
+.optionList-div ion-button {
+  height: 28px;
+}
+
+.optionList-div .reset-button {
+  background: #f2f2f2;
+  color: #2e2d2d;
+}
+
+.optionList-div .sure-button {
+  background: #5871de;
+  color: #fff;
+}
+
+ion-list {
+  border-top: 1px solid #ddd;
+  padding: 0px;
+}
+
+ion-list ion-item {
+  font-size: 14px;
+}
+
+/*tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用样式 start */
+ion-grid {
+  padding: 0px;
+}
+
+.header-md:after {
+  background-image: none;
+}
+
+.col-shadow {
+  text-align: center;
+  box-shadow: 0px 1px 6px 2px rgba(171, 171, 171, 0.25);
+}
+
+.text-ellipsis {
+  line-height: 28px;
+  font-size: 14px;
+  text-align: center;
+  display: inline-block;
+  color: #0c0c0c;
+  margin-right: 3px;
+}
+
+.domn-arr {
+  width: 20px;
+  display: inline-block;
+  font-size: 20px;
+  color: #a4a4a4;
+  position: relative;
+  top: 6px;
+}
+
+.color-blue {
+  color: #5871de;
+}
+
+/*tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用样式 end */
+ion-checkbox {
+  --border-color: #c8c7cc;
+  margin: 10px 8px 8px 8px;
+}
+
+.line-btn {
+  margin-bottom: 3px;
+  border-bottom: solid 1px #fafafa;
+  padding-bottom: 10px;
+}
+
+ion-button {
+  --color: #fff;
+}
+
+img {
+  width: 26px;
+  height: 26px;
+}
+
+ion-item {
+  height: 56px;
+  line-height: 56px;
+}
+
+ion-icon {
+  color: #fff;
+}
+
+ion-title {
+  padding-right: 0 !important;
+}
+
+.button-native {
+  padding-right: 0 !important;
+}
+
+ion-button {
+  padding: 0 !important;
+  --padding-end: 0;
+}
+
+ion-label {
+  height: 56px;
+  line-height: 56px;
+  margin-left: 6px;
+  border-bottom: 0.55px solid #f7f7f7;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+ion-label p:first-child {
+  margin-top: 12px;
+  height: 16px;
+  line-height: 16px;
+  color: #131313;
+  font-size: 13px;
+}
+
+ion-label p:last-child {
+  height: 16px;
+  line-height: 16px;
+  color: #767676;
+  font-size: 11px;
+}
+
+#search_condition_div {
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+}
+
+#search_condition {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  padding: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#search_condition li {
+  color: #181818;
+  font-size: 1.1rem;
+  width: 33%;
+  text-align: center;
+}
+
+.start {
+  color: #ffdc26;
+}
+
+.count {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  width: 235px;
+  z-index: 9999;
+  height: auto;
+  line-height: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0px 15px;
+  border-radius: 5px;
+  color: #181818;
+  box-shadow: 0px 0px 5px #ddd;
+}
+
+.count-title {
+  margin: 0;
+  padding: 15px 0 12px 0;
+}
+
+.count p span {
+  margin-top: 0px;
+}
