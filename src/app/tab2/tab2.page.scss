@@ -150,12 +150,15 @@ ion-grid{
   color: #5871de;
 }
 
-.short-col{
-    flex: 1;
+.long-text{
+    width:70%;
+    height:100%;
+    overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;	  
 }
-.long-col{
-    flex: 0;
-    width: 70%;
+.special-down{
+    top:-7px;
 }
 /*tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用样式 end */
 ion-label[_ngcontent-c2]{

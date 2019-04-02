@@ -1,0 +1,30 @@
+
+/*tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用样式 start */
+.header-md:after{
+    background-image: none;
+    
+  }
+  .text-center{ text-align: center}
+  .text-ellipsis{
+    width: 60%; 
+    line-height: 28px; 
+    float: left; 
+    display: block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis; 
+    text-align: right;
+    color: #181818;
+  }
+  .domn-arr{
+    // position: absolute;
+    left: 60%;
+    color: #a7a7a7;
+    font-size: 12px;
+    padding-top: 4px;
+    font-size: 20px;
+  }
+  .color-blue{
+    color: #5871de;
+  }
+  /*tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用样式 end */
