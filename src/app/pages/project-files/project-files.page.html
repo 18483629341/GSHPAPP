@@ -1,0 +1,49 @@
+<ion-header mode='ios'>
+    <ion-toolbar mode='ios'>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="ios-arrow-back" mode='ios'></ion-back-button>
+        </ion-buttons>
+        <ion-title>项目档案</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+    <div class="headerTitle">
+        <p class="first">项目名称：{{projectName}}</p>
+        <p>项目编号：{{projectNumber}}</p>
+        <p>建设性质：{{constructionNature}}</p>
+        <p>行业类别：{{industryType}}</p>
+        <p>审批机关：{{approvalOffice}}</p>
+        <p>技术负责：{{technology}}</p>
+    </div>
+    <p class="phoneBox">
+        <img src="../../../assets/imgs/01.png" alt="">
+        <span>{{phone}}</span>
+    </p>
+    <div class="space"></div>
+    <p class=" padding-lr-16 p-title">申报信息</p>
+    <div class="declareBox">
+        <div *ngFor="let i of declareInfo;let num=index" (click)="jumpPage(num)">
+            <img [src]='i.src' alt="">
+            <p>{{i.title}}</p>
+        </div>
+    </div>
+
+    <p class=" padding-lr-16 p-title">审批信息</p>
+    <div class="declareBox borderBox">
+        <div *ngFor="let i of examineInfo;let num=index" (click)="jumpPage2(num)">
+            <img [src]='i.src' alt="">
+            <p>{{i.title}}</p>
+        </div>
+    </div>
+
+    <p class=" padding-lr-16 p-title">监管信息</p>
+    <div class="declareBox">
+        <div *ngFor="let i of superviseInfo;let num=index" (click)="jumpPage3(num)">
+            <img [src]='i.src' alt="">
+            <p>{{i.title}}</p>
+        </div>
+    </div>
+</ion-content>

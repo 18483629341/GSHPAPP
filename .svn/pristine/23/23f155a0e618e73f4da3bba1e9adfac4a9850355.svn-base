@@ -1,0 +1,27 @@
+ion-content{
+    --padding-start: 10px;
+    --padding-end: 10px;
+}
+.titlebox{
+    p{
+        margin: 0;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        padding: 10px;
+    }
+    .title{
+        margin-top: 10px;
+        margin-left: 0px;
+        background-color: #f8f8f8;
+        position: relative;
+    }
+    span{
+        margin-left: 20px;
+    }
+    .icon{
+        position: absolute;
+        top: 10px;
+        right: 20px;
+    }
+  
+}

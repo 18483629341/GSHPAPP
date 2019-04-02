@@ -1,0 +1,86 @@
+@font-face { 
+  font-family: "thsoa"; 
+
+  src: 
+    url("../assets/fonts/iconfont.eot"),
+    url("../assets/fonts/iconfont.svg"), 
+    url("../assets/fonts/iconfont.ttf"), 
+    url("../assets/fonts/iconfont.woff"); 
+  font-weight: normal; 
+  font-style: normal; 
+}
+
+// [class^="icon-"], [class*=" icon-"] {
+//   /* use !important to prevent issues with browser extensions that change fonts */
+//   // font-family: 'thsoa' !important;
+//   speak: none;
+//   font-style: normal;
+//   font-weight: normal;
+//   font-variant: normal;
+//   text-transform: none;
+//   /*line-height: 1;*/
+
+//   /* Better Font Rendering =========== */
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
+
+
+
+// .iconfont {
+//   font-family:"iconfont" !important;
+//   font-size:16px;
+//   font-style:normal;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
+
+// .icon-msnui-position:before { content: "\e6c0" !important; }
+
+// .icon-xiaosanjiaodown:before { content: "\e60e" !important; }
+
+// .icon-caidan07:before { content: "\e606" !important; }
+
+// .icon-user:before { content: "\e89a" !important; }
+
+// .icon-liebiao:before { content: "\e64a" !important; }
+
+// .icon-eyeoclose:before { content: "\e678" !important; }
+
+// .icon-eye:before { content: "\e6f1" !important; }
+
+
+
+// @mixin makeIcon($arg, $val) {
+//   .icon-#{$arg}:before ,
+//   .ion-ios-icon-#{$arg}:before ,
+//   .ion-ios-icon-#{$arg}-outline:before ,
+//   .ion-md-icon-#{$arg}:before ,
+//   .ion-md-icon-#{$arg}-outline:before  {
+//     content: $val
+//   }
+// }
+
+// @include makeIcon(call, '\e619');
+// @include makeIcon(email, '\e602');
+// @include makeIcon(sms, '\e609');
+// @include makeIcon(eye, '\e661');
+// @include makeIcon(closeeye, '\e6b5');
+// @include makeIcon(contacts, '\e674');
+// @include makeIcon(message1, '\e652');
+// @include makeIcon(message, '\e62d');
+// @include makeIcon(share, '\e630');
+// @include makeIcon(line, "\e637");
+// @include makeIcon(down, "\e6ef");
+// @include makeIcon(back, "\e609");
+// @include makeIcon(go, "\e613");
+// @include makeIcon(location, "\e62e");
+// @include makeIcon(add, "\e60a");
+// @include makeIcon(save, "\e60c");
+// @include makeIcon(change, "\e669");
+
+// .picker-ios .picker-button{color: #4162fb;}
+// .ios .picker-toolbar-multi-picker-cancel{ text-align: start !important}
+// .ios ion-multi-picker {
+//   padding: 0px !important;
+// }

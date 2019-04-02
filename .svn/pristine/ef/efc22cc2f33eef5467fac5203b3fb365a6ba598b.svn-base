@@ -1,0 +1,137 @@
+<ion-header>
+  <!-- <div class="navBox">
+    <div [ngClass]="{'active': item==0?true:false}" (click)='OnitemClick(0)'>建设单位</div>
+    <div class="borderBox" [ngClass]="{'active': item==1?true:false}" (click)='OnitemClick(1)'>环评机构</div>
+    <div [ngClass]="{'active': item==2?true:false}" (click)='OnitemClick(2)'>环评专家</div>
+  </div> -->
+
+  <div class="top_head">
+    <ion-segment id="top_tab">
+      <ion-segment-button checked=true class="top_tab_item" [ngClass]="{'active': item==0?true:false}"
+        (click)='OnitemClick(0)'>
+        建设单位
+      </ion-segment-button>
+      <ion-segment-button class="top_tab_item" [ngClass]="{'active': item==1?true:false}" (click)='OnitemClick(1)'>
+        编制单位
+      </ion-segment-button>
+      <ion-segment-button class="top_tab_item" [ngClass]="{'active': item==2?true:false}" (click)='OnitemClick(2)'>
+        环评专家
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div class="fixedBox">
+    <div class="searchBox">
+      <input type="text" class="search" placeholder="请输入关键字">
+    </div>
+    <div class="selectBox" [style.display]="item==0?'flex':'none'">
+      <div (click)="showOption(1)">区域<ion-icon name="arrow-dropdown" mode='md'
+          [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}"></ion-icon>
+      </div>
+      <div (click)="showOption(2)">行业<ion-icon name="arrow-dropdown" mode='md'
+          [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}"></ion-icon>
+      </div>
+    </div>
+    <div class="selectBox" [style.display]="item==1?'flex':'none'">
+      <div (click)="showOption(1)">所在地<ion-icon name="arrow-dropdown" mode='md'
+          [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}"></ion-icon>
+      </div>
+      <div (click)="showOption(2)">甲级环评报告书评价范围<ion-icon name="arrow-dropdown" mode='md'
+          [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}"></ion-icon>
+      </div>
+    </div>
+    <div class="selectBox" [style.display]="item==2?'flex':'none'">
+      <div (click)="showOption(1)">领域<ion-icon name="arrow-dropdown" mode='md'
+          [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}"></ion-icon>
+      </div>
+      <div (click)="showOption(2)">学历<ion-icon name="arrow-dropdown" mode='md'
+          [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}"></ion-icon>
+      </div>
+    </div>
+  </div>
+  <div class="option-div">
+    <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 1">
+      <ion-list class="area-new four-div" lines="full">
+        <ion-item *ngFor="let item of mapOptionAreaList" (click)="selectOption(item)">{{item.name}}
+        </ion-item>
+      </ion-list>
+    </div>
+    <!-- <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 2">
+      <ion-list class="area-new four-div" lines="none">
+          <ion-item *ngFor="let item of mapOptionIndustryList">
+              <ion-checkbox></ion-checkbox>
+              <ion-label>{{item.name}}</ion-label>
+          </ion-item>
+      </ion-list>
+      <ion-grid> 
+          <ion-row class="btn">
+              <ion-col col-6 [class]="resetBasinBtnFlag? 'reset-btn':'sure-btn'">
+                  <ion-button expand="block" fill="clear" class="reset-button">重置</ion-button>
+              </ion-col>
+              <ion-col col-6 class="sure-btn">
+                  <ion-button expand="block" fill="clear" class="sure-button">确定</ion-button>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+  </div> -->
+    <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 2">
+      <ion-list class="area-new four-div" lines="full">
+        <ion-item *ngFor="let item of mapOptionYearList" (click)="selectOption($event);">{{item.year}}
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <!-- 遮罩层 -->
+  <div class="layer" (click)="closePotionSelectWindow();" *ngIf="isShowOptions"></div>
+  <div [style.display]="item==0?'block':'none'">
+    <ion-item lines='none'>
+      <img src="assets/imgs/all.png">
+      <ion-label>
+        <p>张一泽(污水处理)</p>
+        <p>3242343423213123</p>
+      </ion-label>
+      <i (click)='isCollection()' [class]="isXingXing?'icon-xingxing icon iconfont start font-size-18':'icon-xingxu icon iconfont  font-size-18'"></i>
+    </ion-item>
+    <ion-item lines='none'>
+      <img src="assets/imgs/all.png">
+      <ion-label (click)="goProInfo()">
+        <p>张一泽(污水处理)</p>
+        <p>3242343423213123</p>
+      </ion-label>
+      <i class=" icon iconfont icon-xingxu font-size-18" [class]></i>
+    </ion-item>
+    <ion-item lines='none'>
+      <img src="assets/imgs/all.png">
+      <ion-label (click)="goSave()">
+        <p>张一泽(污水处理)</p>
+        <p>3242343423213123</p>
+      </ion-label>
+      <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+    </ion-item>
+  </div>
+  <div [style.display]="item==1?'block':'none'">
+    <ion-item lines='none'>
+      <img src="assets/imgs/all.png">
+      <ion-label (click)=goEstbUintInfo()>
+        <p>鼎盛环境评价有限公司</p>
+        <p>3242343423213123</p>
+      </ion-label>
+      <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+    </ion-item>
+    <p (click)=jumpEnvironmentList()>跳转</p>
+  </div>
+  <div [style.display]="item==2?'block':'none'">
+    <ion-item lines='none'>
+      <img src="assets/imgs/all.png">
+      <ion-label (click)=goHPZJInfo()>
+        <p>鼎盛环境评价有限公司</p>
+        <p>3242343423213123</p>
+      </ion-label>
+      <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+    </ion-item>
+  </div>
+
+</ion-content>

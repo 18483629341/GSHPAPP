@@ -1,0 +1,9 @@
+/* tab切换 */
+.tab-line .active{  color: #4162fb;border-bottom: solid 2px #4162fb;}
+
+/* 标题 */
+.p-title{font-size: 1.5rem; position: relative; text-indent: 24px;padding-left: 0 !important;}
+.p-title::before{position: absolute;top: 3px; left: 15px; width: 3px; height: 16px; background: #4162fb; border-radius: 15px;content: ''}
+
+
+

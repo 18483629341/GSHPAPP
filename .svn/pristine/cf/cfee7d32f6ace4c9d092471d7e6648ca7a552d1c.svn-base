@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-title>建设项目基本情况</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contentBox">
+    <div [ngClass]="{'color': i%2==0?true:false}" *ngFor="let item of listArray ; let i=index" >
+      <span>{{item.title}}</span>：<span>{{item.main}}</span>
+    </div>
+  </div>
+</ion-content>

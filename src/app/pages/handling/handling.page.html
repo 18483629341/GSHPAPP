@@ -1,0 +1,67 @@
+<ion-header mode='ios'>
+    <ion-toolbar mode='ios'>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="ios-arrow-back" mode='ios'></ion-back-button>
+        </ion-buttons>
+        <ion-title>办理过程</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="tableBox">
+    <table>
+        <tr>
+          <th>审核流程</th>
+          <th>办理人</th>
+          <th>办理时间</th>
+          <th>办结时间</th>
+          <th>意见</th>
+        </tr>
+        <tr *ngFor="let item of listAarry;let i = index">
+          <td>{{item.x1}}</td>
+          <td>{{item.x2}}</td>
+          <td>{{item.x3}}</td>
+          <td>{{item.x4}}</td>
+          <td>{{item.x5}}</td>
+        </tr>
+      </table>
+</div>
+<p class="p-title">延时记录1</p>
+  <div>
+    <ion-grid class="padding info-color">
+      <ion-row>
+        <ion-col size="12">
+          <span>延时原因：</span>123
+        </ion-col>
+        <ion-col size="12">
+          <span>延时类型：</span>定期延时
+        </ion-col>
+        <ion-col size="12">
+          <span>开始时间：</span>2018-12-20
+        </ion-col>
+        <ion-col size="12">
+          <span>结束时间：</span>2018-12-25
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <p class="p-title">延时记录2</p>
+  <div>
+    <ion-grid class="padding info-color">
+      <ion-row>
+        <ion-col size="12">
+          <span>延时原因：</span>听证
+        </ion-col>
+        <ion-col size="12">
+          <span>延时类型：</span>不定期延时
+        </ion-col>
+        <ion-col size="12">
+          <span>开始时间：</span>2018-12-29
+        </ion-col>
+        <ion-col size="12">
+          <span>结束时间：</span>2019-01-12
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

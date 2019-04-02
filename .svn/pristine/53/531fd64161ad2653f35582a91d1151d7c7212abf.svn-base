@@ -1,0 +1,15 @@
+.headerBox{
+    text-align: center
+}
+.contentBox{
+    div{
+        width: 100%;
+        height: 3rem;
+        text-align: center;
+        line-height: 3rem;
+        font-size: 0.8rem
+    }
+}
+.color{
+    background-color: #F2F2F2;
+}

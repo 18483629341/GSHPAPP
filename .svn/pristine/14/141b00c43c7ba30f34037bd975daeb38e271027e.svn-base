@@ -1,0 +1,291 @@
+import { Component, OnInit } from '@angular/core';
+import { MapHttpService } from 'src/app/service/map-http.service'; // 引入接口方法
+import { Router } from '@angular/router';
+import { MapService } from 'src/components/ths-map/map.service';
+import { loadModules } from 'esri-loader';
+@Component({
+  selector: 'app-tab1',
+  templateUrl: 'tab1.page.html',
+  styleUrls: ['tab1.page.scss']
+})
+export class Tab1Page implements OnInit {
+  public isShowOptions: boolean; // 筛选div是否显示
+  public mapOptionAreaList: any = []; // 地图的tab筛选条件的区域列表
+  public mapOptionIndustryList: any = []; // 地图的tab筛选条件的行业列表
+  public mapOptionYearList: any = []; // 地图的tab筛选条件的年份列表
+  public currentOptionTabIndex; // 当前点击的tab的index的值
+  public map: any; // 地图
+  public isMapShow: boolean; // 是否显示地图
+  public mapPoint: any = []; // 地图点位数据
+  public povincPointLayer: any; // 省份大点图层
+  public cityPointLayer: any; // 项目大点图层
+  public mapListPoint: any;
+  constructor(public mapHttpService: MapHttpService, public router: Router, public mapService: MapService) {
+    this.isShowOptions = false; // 默认不显示筛选列表数据
+    this.isMapShow = true; // 默认显示地图
+  }
+  ngOnInit(): void {
+  }
+  /**
+   * 地图加载完成
+   */
+  loadMap(map) {
+    console.log('地图加载完成');
+    this.map = map;
+    loadModules(['esri/geometry/Point', 'esri/layers/GraphicsLayer', 'esri/symbols/PictureMarkerSymbol',
+    'esri/graphic', 'esri/InfoTemplate']).then(([Point, GraphicsLayer, PictureMarkerSymbol, Graphic, InfoTemplate]) => {
+
+      this.povincPointLayer = new GraphicsLayer({ id: 'povincPoint' }); // 省级图层（大点）
+      this.cityPointLayer = new GraphicsLayer({ id: 'cityPoint' }); // 项目图层（小点）
+      this.map.addLayers([this.povincPointLayer, this.cityPointLayer]); // 地图添加图层
+
+      this.initData(); // 加载数据
+
+      // 地图的点击事件
+      this.map.on('click', (e) => {
+        console.log(e);
+        if (e.graphic) { // 判断点击的是不是点
+          if (e.graphic.attributes && e.graphic.attributes.type === 'province') { // 是省级
+            this.map.setZoom(6);
+          }
+        }
+      });
+
+    });
+    this.zoom(map);
+  }
+
+  // 地图缩放
+  zoom(map) {
+    map.on('zoom-end', (evt) => {
+      console.log('home当前地图缩放级为' + evt.level);
+      if (evt.level > 5) {
+        // 小点
+        map.getLayer('povincPoint').hide();
+        map.getLayer('cityPoint').show();
+      } else {
+        // 大点
+        map.getLayer('povincPoint').show();
+        map.getLayer('cityPoint').hide();
+      }
+    });
+
+  }
+
+  /**
+   * 一进地图就加载数据
+   */
+  initData() {
+    this.getMapAreaData();
+    this.getOptionIndustryListData();
+    this.getOptionYearListData();
+    this.getMapPointData();
+    this.getMapListData();
+  }
+
+  /**
+   * 获取地图的区域筛选条件列表
+   */
+  getMapAreaData() {
+    this.mapHttpService.getMapAreaData({}, true, res => {
+      console.log(res);
+      if (res !== 'error') {
+        this.mapOptionAreaList = res.data || [];
+      }
+    });
+  }
+
+  /**
+   * 获取地图的年份筛选条件列表
+   */
+  getOptionYearListData() {
+    this.mapHttpService.getMapYearData({}, true, res => {
+      console.log(res);
+      if (res !== 'error') {
+        this.mapOptionYearList = res.data || [];
+      }
+    });
+  }
+
+  /**
+   * 获取地图的环评文件筛选条件列表
+   */
+  getOptionIndustryListData() {
+    this.mapHttpService.getMapIndustryData({}, true, res => {
+      if (res !== 'error') {
+        this.mapOptionIndustryList = res.data || [];
+      }
+    });
+  }
+  /**
+   * 获取地图的点位数据
+   */
+  getMapPointData() {
+    this.mapHttpService.getMapPointData({}, true, res => {
+      console.log(res);
+      if (res !== 'error') {
+        this.mapPoint = res || [];
+        this.addProvincePoint(this.mapPoint, this.povincPointLayer); // 执行大点方法
+      }
+    });
+  }
+
+  /**
+   * 获取地图列表数据
+   */
+  getMapListData() {
+    this.mapHttpService.getMapListData({}, true, res => {
+      console.log(res);
+      if (res !== 'error') {
+        this.mapListPoint = res || [];
+      }
+    });
+  }
+  /**
+   * 点击是否显示tab筛选条例列表数据
+   */
+  showOption(tabIndex) {
+    if (!this.isShowOptions) { // 关闭状态下
+      this.isShowOptions = !this.isShowOptions;
+    } else { // 打开状态下 判断是否以然点击在tab上
+      if (this.currentOptionTabIndex === tabIndex) { // 点击的同一个tab
+        this.isShowOptions = !this.isShowOptions;
+      }
+    }
+    this.currentOptionTabIndex = tabIndex;
+  }
+  /**
+   * 关闭筛选条例列表数据window的点击事件
+   */
+  closePotionSelectWindow() {
+    this.isShowOptions = !this.isShowOptions;
+  }
+  /**
+   * 选择筛选选项(单选)
+   */
+  selectOption(item) {
+    this.isShowOptions = !this.isShowOptions;
+  }
+  /**
+   * 点击切换地图和图表的显示方式
+   */
+  change() {
+    this.isMapShow = !this.isMapShow;
+  }
+
+  goProInfo() {
+    this.router.navigate(['/test-info']);
+  }
+  goPersonal() {
+    this.router.navigate(['personal-center']);
+  }
+
+  isCollection(item, index) {
+    console.log(item);
+    if (item.isCollection === '0') { // 没有收藏
+      item.isCollection = '1';
+    } else {
+      item.isCollection = '0';
+    }
+  }
+
+
+  /**
+  * 地图打点(省级，大点)
+  * @param data 点位数据
+  * @param graphicsLayer 待添加的点所在的图层
+  * @param polluCode 污染物编码
+  */
+  addProvincePoint(data, graphicsLayer) {
+    loadModules(['esri/geometry/Point', 'esri/layers/GraphicsLayer', 'esri/symbols/PictureMarkerSymbol',
+    'esri/graphic', 'esri/InfoTemplate', 'esri/symbols/TextSymbol'])
+    .then(([Point, GraphicsLayer, PictureMarkerSymbol, Graphic, InfoTemplate, TextSymbol]) => {
+      data.forEach((item, index) => {
+        console.log(item);
+        // 以下是打点操作
+        const img = 'assets/imgs/provice.png';
+        const width = 70;
+        const height = 70;
+        const pictureMarkerSymbol = new PictureMarkerSymbol(img, width, height);
+        const point = new Point(item.regionLon, item.regionLat);
+        // const point = new Point(114.08594, 22.547);
+        const attrTemplate = {
+          'type': 'province',
+          'regionName': item.regionName,
+          'regionCode': item.regionCode,
+          'length': item.length
+        };
+        // 创建Graphic
+        const graphicPic = new Graphic(point, pictureMarkerSymbol, attrTemplate);
+
+        // 图层增加图片点
+        graphicsLayer.add(graphicPic);
+
+        let nameTextSymbol;
+        nameTextSymbol = new TextSymbol(item.regionName || '--', 'white');
+        const nameGraphicText = new Graphic(point, nameTextSymbol);
+
+        let numberTextSymbol;
+        numberTextSymbol = new TextSymbol(item.length || '--', 'white');
+        const numberGraphicText = new Graphic(point, numberTextSymbol);
+        numberTextSymbol.setOffset(0, -15);
+        // 增加文字描述点
+        graphicsLayer.add(nameGraphicText);
+        graphicsLayer.add(numberGraphicText);
+
+      });
+
+    });
+
+  }
+
+  /**
+  * 地图打点（市级，小点）
+  * @param data 点位数据
+  * @param graphicsLayer 待添加的点所在的图层
+  * @param polluCode 污染物编码
+  */
+ addProjectPoint(data, graphicsLayer) {
+    loadModules(['esri/geometry/Point', 'esri/layers/GraphicsLayer', 'esri/symbols/PictureMarkerSymbol',
+    'esri/graphic', 'esri/InfoTemplate', 'esri/symbols/TextSymbol'])
+    .then(([Point, GraphicsLayer, PictureMarkerSymbol, Graphic, InfoTemplate, TextSymbol]) => {
+      data.forEach((item, index) => {
+        console.log(item);
+        // 以下是打点操作
+        const img = 'assets/imgs/provice.png';
+        const width = 20;
+        const height = 20;
+        const pictureMarkerSymbol = new PictureMarkerSymbol(img, width, height);
+        const point = new Point(item.regionLon, item.regionLat);
+        // const point = new Point(114.08594, 22.547);
+        const attrTemplate = {
+          'type': 'province',
+          'regionName': item.regionName,
+          'regionCode': item.regionCode,
+          'length': item.length
+        };
+        // 创建Graphic
+        const graphicPic = new Graphic(point, pictureMarkerSymbol, attrTemplate);
+
+        // 图层增加图片点
+        graphicsLayer.add(graphicPic);
+
+        let nameTextSymbol;
+        nameTextSymbol = new TextSymbol(item.regionName || '--', 'white');
+        const nameGraphicText = new Graphic(point, nameTextSymbol);
+
+        let numberTextSymbol;
+        numberTextSymbol = new TextSymbol(item.length || '--', 'white');
+        const numberGraphicText = new Graphic(point, numberTextSymbol);
+        numberTextSymbol.setOffset(0, -15);
+        // 增加文字描述点
+        graphicsLayer.add(nameGraphicText);
+        graphicsLayer.add(numberGraphicText);
+
+      });
+
+    });
+
+  }
+
+}

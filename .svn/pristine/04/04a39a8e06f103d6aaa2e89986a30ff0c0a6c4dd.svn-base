@@ -1,0 +1,30 @@
+.titleBox{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-weight: bold;
+}
+table{
+    width: 100%;
+    td{
+        border:  1px solid #ccc
+    }
+}
+ion-content{
+    --padding-start: 10px;
+    --padding-end: 10px;
+}
+.btnBox{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 10px;
+}
+.btn{
+    width: 30%;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #4162fb;
+    color: #fff;
+    outline: none;
+
+}

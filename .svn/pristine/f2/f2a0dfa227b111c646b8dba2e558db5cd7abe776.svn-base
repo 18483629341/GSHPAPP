@@ -1,0 +1,25 @@
+<ion-header mode='ios'>
+  <ion-toolbar mode='ios'>
+      <ion-buttons slot="start">
+          <ion-back-button text="" icon="ios-arrow-back" mode='ios'></ion-back-button>
+      </ion-buttons>
+      <ion-title>批复文件</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <div class="titlebox">
+        <p class="title" (click)="showFile(1)">批复文件
+          <span *ngIf="!isshow" class="icon">
+            <ion-icon name="arrow-down" mode='ios'></ion-icon>
+          </span>
+          <span *ngIf="isshow" class="icon">
+            <ion-icon name="arrow-up" mode='ios'></ion-icon>
+          </span>
+        </p>
+        <div class="fileBox" [ngStyle]="{'display': isshow?'block':'none'}">
+          <p>兰州市水泥商砼有限公司扩建项目环评报告书的批复.pdf</p>
+        </div>
+      </div>
+</ion-content>

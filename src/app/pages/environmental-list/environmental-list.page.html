@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar color='primary'>
+      <div class="headerBox">{{title}}</div>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+    <div class="contentBox">
+      <div [ngClass]="{'color': i%2==0?true:false}" *ngFor="let item of listArray ; let i=index" >
+        <span>{{item.title}}</span>：<span>{{item.main}}</span>
+      </div>
+    </div>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="正在努力加载中...">
+      
+          
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+  </ion-content>

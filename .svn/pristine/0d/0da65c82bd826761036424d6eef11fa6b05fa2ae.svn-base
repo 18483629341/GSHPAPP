@@ -1,0 +1,42 @@
+[
+    {
+        "regionName":"兰州市",
+        "regionCode":"5102",
+        "regionLon":"103.4",
+        "regionLat":"36",
+        "length":"2",
+        "pointList":[
+            {
+                "lon":"103.6",
+                "lat":"36.4",
+                "projectName":"兰州祁连山水泥商砼有限公司厂区扩建项",
+                "projectCode":"kkk",
+                "isCollection":"1"
+            },
+            {
+                "lon":"104.5",
+                "lat":"38",
+                "projectName":"兰州祁连山水泥商砼有限公司厂区扩建项2",
+                "projectCode":"kkk",
+                "isCollection":"0"
+            }
+        ]
+    },
+    {
+        "regionName":"白银市",
+        "regionCode":"5102",
+        "regionLon":"105.00",
+        "regionLat":"37.00",
+        "length":"1",
+        "pointList":[
+            {
+                "lon":"104.90",
+                "lat":"37.01",
+                "projectName":"兰州祁连山水泥商砼有限公司厂区扩建项3",
+                "projectCode":"kkk",
+                "isCollection":"1"
+            }
+        ]
+    } 
+]
+    

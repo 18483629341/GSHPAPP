@@ -1,0 +1,16 @@
+/* 表格样式 */
+.table{border-spacing: 0; border-collapse: collapse; box-sizing: border-box;table-layout: fixed; width: 100%;}
+.table td,.table th{ border: solid 1px #dfe6ec; padding:7px 5px}
+.table th{border: solid 1px #4162fb;}
+
+/* .table td:first-child,.table th:first-child{ width: 25%; text-align: center;border-left: 0} */
+ .table td:first-child{ background: #f8f8f8;color:#4162fb;border-left: 0}
+.table td{ color:#515151;}
+.table th{color: #353535}
+ .table th:first-child{ background: #4162fb;color: #fff}
+.date-style{ font-size: 1.6rem;}
+.date-style ion-icon{color:#515151;font-size: 1.4rem}
+.table td:last-child,.table th:last-child{border-right: 0}
+.padding-top-12{ padding-top: 9px }
+.padding-top-12 .icon{ margin-left: 5px}
+.table td.no-data{ width: 100%;color: #515151}

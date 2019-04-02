@@ -1,0 +1,44 @@
+{
+  "map": {
+    "wrapAround180": false,
+    "sliderposition": "top-right",
+    "sliderorientation": "vertical",
+    "initialExtent": {
+      "xmin": 106.16777777777778,
+      "ymin": 40.0444444444444,
+      "xmax": 109.24777777777779,
+      "ymax": 41.30888888888889
+    },
+    "baseMaps": [
+      {
+        "label": "普通",
+        "type": "tiled",
+        "visible": true,
+        "url":"http://106.74.0.138:8066/OneMapServer/rest/services/vec_c_20120801/MapServer",
+        "groupId": [1]
+      },
+      {
+        "label": "影像",
+        "type": "tiled",
+        "visible": false,
+        "url":"http://106.74.0.138:8066/OneMapServer/rest/services/img_c_99999999/MapServer",
+        "groupId": [0]
+      },
+      {
+        "label": "普通标注",
+        "type": "tiled",
+        "visible": true,
+        "url":"http://106.74.0.138:8066/OneMapServer/rest/services/cva_c_20120801/MapServer",
+        "groupId": [1]
+      },
+      {
+        "label": "影像标注",
+        "type": "tiled",
+        "visible": false,
+        "url":"http://106.74.0.138:8066/OneMapServer/rest/services/cia_c_20120801/MapServer",
+        "groupId": [0]
+      }
+    ]
+  },
+  "geometryService": "http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
+}

@@ -1,0 +1,213 @@
+import { Component, OnInit } from '@angular/core';
+import * as echarts from 'echarts';
+import { stringify } from '@angular/core/src/render3/util';
+import { MapHttpService } from 'src/app/service/map-http.service'; // 引入接口方法
+
+// import { Router } from '@angular/router';
+@Component({
+  selector: 'app-tab3',
+  templateUrl: 'tab3.page.html',
+  styleUrls: ['tab3.page.scss']
+})
+export class Tab3Page implements OnInit {
+  constructor(public mapHttpService: MapHttpService) {
+    this.getProStatisticsData();
+    this.isShowOptions = false; // 默认不显示筛选列表数据
+    this.getMapAreaData();
+    this.getOptionIndustryListData();
+    this.getOptionYearListData();
+  }
+
+  public isShowOptions: boolean; // 筛选div是否显示
+  public mapOptionAreaList: any = []; // 地图的tab筛选条件的区域列表
+  public mapOptionYearList: any = []; // 地图的tab筛选条件的年份列表
+  public mapOptionIndustryList: any = []; // 地图的tab筛选条件的行业列表
+  public currentOptionTabIndex; // 当前点击的tab的index的值
+  public screenWidth: number; // 获取屏幕宽度
+  public title_text: String; // echarts图标标题
+  public echartsAreaList: any = []; // 项目统计分析列表
+  public echartsAreaNameList: any = []; // 图表和列表行政区列表
+  public echartsAreaDataList: any = []; // 图表和列表数据列表
+  public i: number; // 遍历统计分析列表条件
+  str: any = '1';
+  ngOnInit(): void {
+  }
+  /**
+   * 获取项目统计分析列表，并分别提取行政区列表和数据列表
+   */
+  getProStatisticsData() {
+    this.mapHttpService.getProStatisticsData({}, true, res => {
+      console.log(res);
+      if (res !== 'error') {
+        this.echartsAreaList = res.data || [];
+        for (let i = 0; i < this.echartsAreaList.length; i++) {
+          this.echartsAreaNameList[i] = this.echartsAreaList[i].name;
+          this.echartsAreaDataList[i] = this.echartsAreaList[i].data;
+        }
+        this.getEcharts('chart1');
+        this.screenWidth = window.innerWidth;
+      }
+    });
+  }
+  /**
+   * 渲染echarts图表
+   * @param charts 【需要渲染的echarts的id】
+   */
+  getEcharts(charts: string) {
+    const ec = echarts as any;
+    const container = document.getElementById(charts);
+    const chart = ec.init(container);
+
+    chart.setOption({
+      tooltip: {
+        show: true,
+        trigger: 'axis',
+        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+          type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        },
+        formatter: (params) => {
+          return params[0].axisValue + '：' + params[0].value;
+        },
+      },
+      dataZoom: [{
+        type: 'slider',
+        show: true,
+        realtime : true, // 拖动时，是否实时更新系列的视图
+        height: 16,
+        bottom: '10',
+        left: '20%',
+        right: '20%',
+        start: 0,
+        end: 100,
+        textStyle: { color: '#181818' }
+      },
+      {
+        type: 'inside',
+      }
+      ],
+      grid: {
+        left: '5%',
+        right: '5%',
+        bottom: '14%',
+        top: '14%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        data: this.echartsAreaNameList,
+        axisLabel: {
+          interval: 0,
+          rotate: 35
+        },
+        axisTick: {
+          lineStyle: {
+            color: '#fff'
+          },
+          show: false
+        },
+        axisLine: {
+          lineStyle: {
+            color: '#181818'
+          }
+        }
+      },
+      yAxis: {
+        show: true,
+        min: 0,
+        splitLine: {
+          show: false
+        },
+        axisLine: {
+          lineStyle: {
+            color: '#181818'
+          }
+        }
+      },
+      series: [
+        {
+          name: '数量',
+          type: 'bar',
+          barWidth: '10',
+          data: this.echartsAreaDataList,
+          itemStyle: {
+            normal: {
+              color: '#4162fb',
+              barBorderRadius: [30, 30, 0, 0]
+            }
+          }
+        }
+      ]
+    });
+  }
+  /**
+   * 头部按钮点击切换页面时间
+   * @param num 【页面按钮传过来的标志条件】
+   */
+  OnitemClick(num) {
+    this.str = num;
+    this.getEcharts('chart' + num);
+    this.isShowOptions = false;
+  }
+
+  /**
+   * 获取地图的区域筛选条件列表
+   */
+  getMapAreaData() {
+    this.mapHttpService.getMapAreaData({}, true, res => {
+      console.log(res);
+      if (res !== 'error') {
+        this.mapOptionAreaList = res.data || [];
+      }
+    });
+  }
+
+  /**
+   * 获取地图的年份筛选条件列表
+   */
+  getOptionYearListData() {
+    this.mapHttpService.getMapYearData({}, true, res => {
+      console.log(res);
+      if (res !== 'error') {
+        this.mapOptionYearList = res.data || [];
+      }
+    });
+  }
+
+  /**
+   * 获取地图的环评文件筛选条件列表
+   */
+  getOptionIndustryListData() {
+    this.mapHttpService.getMapIndustryData({}, true, res => {
+      if (res !== 'error') {
+        this.mapOptionIndustryList = res.data || [];
+      }
+    });
+  }
+  /**
+   * 点击是否显示tab筛选条例列表数据
+   */
+  showOption(tabIndex) {
+    if (!this.isShowOptions) { // 关闭状态下
+      this.isShowOptions = !this.isShowOptions;
+    } else { // 打开状态下 判断是否以然点击在tab上
+      if (this.currentOptionTabIndex === tabIndex) { // 点击的同一个tab
+        this.isShowOptions = !this.isShowOptions;
+      }
+    }
+    this.currentOptionTabIndex = tabIndex;
+  }
+  /**
+   * 关闭筛选条例列表数据window的点击事件
+   */
+  closePotionSelectWindow() {
+    this.isShowOptions = !this.isShowOptions;
+  }
+  /**
+   * 选择筛选选项(单选)
+   */
+  selectOption(item) {
+
+  }
+}
+
+

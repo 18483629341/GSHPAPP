@@ -1,0 +1,42 @@
+.p-title {
+ 
+    position: relative;
+    text-indent: 24px;
+    padding-left: 0 !important;
+}
+.p-title::before {
+    position: absolute;
+    top: 3px;
+    left: 15px;
+    width: 3px;
+    height: 16px;
+    background: #4162fb;
+    border-radius: 15px;
+    content: '';
+}
+.tableBox{
+    overflow-x:scroll;  
+    width: 100%;
+    margin-bottom: 20px;
+
+    table{
+        width: 1000px;
+    }
+    table tr td{
+       width: 14%;
+       height: 60px;
+       text-align: center;
+       border:  1px solid #ccc;
+      
+    }
+    table tr th{
+        border:  1px solid #ccc;
+        width: 14%;
+        height: 60px;
+        background-color: #F2F2F2
+    }
+}
+ion-content{
+    --padding-start: 10px;
+    --padding-end: 10px;
+}

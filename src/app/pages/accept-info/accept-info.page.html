@@ -1,0 +1,177 @@
+<!-- <ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="" icon="arrow-back"></ion-back-button>
+      </ion-buttons> -->
+    <!-- <div class="headerBox">项目验收信息</div> -->
+    <!-- <ion-title>项目验收信息</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-header mode='ios'>
+    <ion-toolbar mode='ios'>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="ios-arrow-back" mode='ios'></ion-back-button>
+        </ion-buttons>
+        <ion-title>项目验收信息</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+      <p class="title" (click)="show(1)">
+        企业信息
+        <span *ngIf="!isshow" class="icon">
+          <ion-icon name="arrow-down" mode='ios'></ion-icon>
+        </span>
+        <span *ngIf="isshow" class="icon">
+          <ion-icon name="arrow-up" mode='ios'></ion-icon>
+        </span>
+      </p>
+      <div class="infoBox" [ngStyle]="{'display': isshow?'block':'none'}">
+        <ion-grid class="padding info-color">
+          <ion-row>
+            <ion-col size="12">
+              <span>企业名称：</span>编制报告书
+            </ion-col>
+            <ion-col size="12">
+              <span>统一社会信用代码（组织机构代码）:</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>法定代表人身份证号：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>联系人：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>联系电话：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>手机号码：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>电子邮箱：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>通讯地址：</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <p class="title" (click)="show(2)">
+        建设项目基本信息
+        <span *ngIf="!isshow2" class="icon">
+          <ion-icon name="arrow-down" mode='ios'></ion-icon>
+        </span>
+        <span *ngIf="isshow2" class="icon">
+          <ion-icon name="arrow-up" mode='ios'></ion-icon>
+        </span>
+      </p>
+      <div class="infoBox" [ngStyle]="{'display': isshow2?'block':'none'}">
+        <ion-grid class="padding info-color">
+          <ion-row>
+            <ion-col size="12">
+              <span>企业名称：</span>编制报告书
+            </ion-col>
+            <ion-col size="12">
+              <span>统一社会信用代码（组织机构代码）:</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>法定代表人身份证号：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>联系人：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>联系电话：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>手机号码：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>电子邮箱：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>通讯地址：</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <p class="title" (click)="show(3)">
+        工程变动情况
+        <span *ngIf="!isshow3" class="icon">
+          <ion-icon name="arrow-down" mode='ios'></ion-icon>
+        </span>
+        <span *ngIf="isshow3" class="icon">
+          <ion-icon name="arrow-up" mode='ios'></ion-icon>
+        </span>
+      </p>
+      <div class="infoBox" [ngStyle]="{'display': isshow3?'block':'none'}">
+        <ion-grid class="padding info-color">
+          <ion-row>
+            <ion-col size="12">
+              <span>企业名称：</span>编制报告书
+            </ion-col>
+            <ion-col size="12">
+              <span>统一社会信用代码（组织机构代码）:</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>法定代表人身份证号：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>联系人：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>联系电话：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>手机号码：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>电子邮箱：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>通讯地址：</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <p class="title" (click)="show(4)">
+        污染物排放量
+        <span *ngIf="!isshow4" class="icon">
+          <ion-icon name="arrow-down" mode='ios'></ion-icon>
+        </span>
+        <span *ngIf="isshow4" class="icon">
+          <ion-icon name="arrow-up" mode='ios'></ion-icon>
+        </span>
+      </p>
+      <div class="infoBox" [ngStyle]="{'display': isshow4?'block':'none'}">
+        <ion-grid class="padding info-color">
+          <ion-row>
+            <ion-col size="12">
+              <span>企业名称：</span>编制报告书
+            </ion-col>
+            <ion-col size="12">
+              <span>统一社会信用代码（组织机构代码）:</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>法定代表人身份证号：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>联系人：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>联系电话：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>手机号码：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>电子邮箱：</span>
+            </ion-col>
+            <ion-col size="12">
+              <span>通讯地址：</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+</ion-content>

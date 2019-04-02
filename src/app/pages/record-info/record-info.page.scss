@@ -1,0 +1,21 @@
+.p-title {
+    margin: 0;
+    position: relative;
+    text-indent: 24px;
+    padding-left: 0 !important;
+}
+.p-title::before {
+    position: absolute;
+    top: 3px;
+    left: 15px;
+    width: 3px;
+    height: 16px;
+    background: #4162fb;
+    border-radius: 15px;
+    content: '';
+}
+.padding{ padding-left: 16px; padding-right: 16px;padding-top: 10px;padding-bottom: 16px;}
+.info-color span{color: #777}
+a{
+    text-decoration: none;
+}

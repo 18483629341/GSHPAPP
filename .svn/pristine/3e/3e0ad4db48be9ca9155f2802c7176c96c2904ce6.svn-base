@@ -1,0 +1,114 @@
+
+<ion-header mode='ios'>
+    <ion-toolbar mode='ios'>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="ios-arrow-back" mode='ios'></ion-back-button>
+        </ion-buttons>
+        <ion-title>建设项目环境保护申请登记表</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid class="padding info-color">
+    <ion-row>
+      <ion-col size="12">
+        <span>项目名称：</span>{{projectName}}
+      </ion-col>
+      <ion-col size="12">
+        <span>建设单位:</span>{{constructionUnit}}
+      </ion-col>
+      <ion-col size="12">
+        <span>负责人：</span>{{chargePeople}}
+      </ion-col>
+      <ion-col size="12">
+        <span>建设地点：</span>{{constructionSite}}
+      </ion-col>
+      <ion-col size="12">
+        <span>电话：</span>{{phone}}
+      </ion-col>
+      <ion-col size="12">
+        <span>所属市州：</span>{{cityName}}
+      </ion-col>
+      <ion-col size="12">
+        <span>所属区县:</span>{{countyName}}
+      </ion-col>
+      <ion-col size="12">
+        <span>项目性质：</span>{{projectNature}}
+      </ion-col>
+      <ion-col size="12">
+        <span>主管部门：</span>{{competentDepartment}}
+      </ion-col>
+      <ion-col size="12">
+        <span>总投资(万元)：</span>{{totalInvest}}
+      </ion-col>
+      <ion-col size="12">
+        <span>环保投资：</span>{{enviInvest}}
+      </ion-col>
+      <ion-col size="12">
+        <span>通讯地址：</span>{{address}}
+      </ion-col>
+      <ion-col size="12">
+        <span>邮政编码：</span>{{postalCode}}
+      </ion-col>
+      <ion-col size="12">
+        <span>预计投产使用时间：</span>{{estimatedTime}}
+      </ion-col>
+      <ion-col size="12">
+        <span>申请登记人：</span>{{applyPeople}}
+      </ion-col>
+      <ion-col size="12">
+        <span>联系人电话:</span>{{phone1}}
+      </ion-col>
+      <ion-col size="12">
+        <span>占地面积(平方米):</span>{{area}}
+      </ion-col>
+      <ion-col size="12">
+        <span>年增耗水量(吨)：</span>{{yearWater}}
+      </ion-col>
+      <ion-col size="12">
+        <span>年增耗煤量(吨)：</span>{{yearCoal}}
+      </ion-col>
+      <ion-col size="12">
+        <span>排水去向：</span>{{drainageDirection}}
+      </ion-col>
+      <ion-col size="12">
+        <span>申请日期：</span>{{applicationTime}}
+      </ion-col>
+      <ion-col size="12">
+        <span>是否在水源保护区：</span>{{isReserve}}
+      </ion-col>
+      <ion-col size="12">
+        <span>是否在无煤区：</span>{{isCoal}}
+      </ion-col>
+      <ion-col size="12">
+        <span>涂料使用总量(吨/年)：</span>{{coating}}
+      </ion-col>
+      <ion-col size="12">
+        <span>其中低挥发性涂料使用量(吨/年)：</span>{{lowCoating}}
+      </ion-col>
+      <ion-col size="12">
+        <span>建设地址经度：</span>{{constructionSiteLon}}
+      </ion-col>
+      <ion-col size="12">
+        <span>建设地址纬度：</span>{{constructionSiteLat}}
+      </ion-col>
+      <ion-col size="12">
+        <span>主要产品名称：</span>{{mainProducts}}
+      </ion-col>
+      <ion-col size="12">
+        <span>主要产品年产量：</span>{{mainProductsNumber}}
+      </ion-col>
+      <ion-col size="12">
+        <span>主要原材料名称：</span>{{rawMaterial}}
+      </ion-col>
+      <ion-col size="12">
+        <span>主要原材料年产量：</span>{{rawMaterialNumber}}
+      </ion-col>
+      <ion-col size="12">
+        <span>周围环境概况：</span>{{surroundEnvironment}}
+      </ion-col>
+      <ion-col size="12">
+        <span>备注：</span>{{mark}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

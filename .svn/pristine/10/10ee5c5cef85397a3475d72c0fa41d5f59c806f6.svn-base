@@ -1,0 +1,417 @@
+<ion-header>
+    <ion-toolbar mode="md">
+        <ion-title name="menu">
+            <div class="search-div">
+                <span *ngIf="!searchShowFlag" class="color-gray">请输入关键字</span>
+            </div>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button icon-only (click)="change()" mode="md">
+                <ion-icon name="menu" *ngIf="isMapShow"></ion-icon>
+                <i class="icon-map" *ngIf="!isMapShow"></i>
+            </ion-button>
+            <ion-button icon-only (click)="goPersonal()" mode="md">
+                <ion-icon name="settings"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-grid>
+        <ion-row class="text-center">
+            <ion-col (click)="showOption(1)">
+                <span class="text-ellipsis">区域</span>
+                <ion-icon  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+            </ion-col>
+            <ion-col (click)="showOption(2)">
+                <span class="text-ellipsis">行业</span>
+                <ion-icon  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+            </ion-col>
+            <ion-col (click)="showOption(2)">
+                <span class="text-ellipsis">年份</span>
+                <ion-icon  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+            </ion-col>
+            <ion-col (click)="showOption(3)">
+                <span class="text-ellipsis">环评文件</span>
+                <ion-icon  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+            </ion-col>
+        </ion-row>
+        <!-- <ion-row class="text-center select_condition">
+            <ion-col (click)="showOption(1)">
+                <span>区域</span>
+                <ion-icon  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" name="arrow-dropdown" mode='md'></ion-icon>
+            </ion-col>
+            <ion-col (click)="showOption(1)">
+                <span>行业</span>
+                <ion-icon  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" name="arrow-dropdown" mode='md'></ion-icon>
+            </ion-col>
+            <ion-col (click)="showOption(2)">
+                <span>年份</span>
+                <ion-icon  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" name="arrow-dropdown" mode='md'></ion-icon>
+            </ion-col>
+            <ion-col (click)="showOption(3)">
+                <span>环评文件</span>
+                <ion-icon  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}" name="arrow-dropdown" mode='md'></ion-icon>
+            </ion-col>
+        </ion-row> -->
+        <!-- <div id="search_condition_div">
+            <ul id="search_condition">
+                <li (click)="showOption(1)">区域<ion-icon [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}"
+                        name="arrow-dropdown" mode='md'></ion-icon>
+                </li>
+                <li (click)="showOption(2)">2018<ion-icon [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}"
+                        name="arrow-dropdown" mode='md'></ion-icon>
+                </li>
+                <li (click)="showOption(3)">报告书<ion-icon [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}"
+                        name="arrow-dropdown" mode='md'></ion-icon>
+                </li>
+            </ul>
+        </div> -->
+        <div class="option-div">
+            <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 1">
+                <ion-list class="area-new four-div" lines="full">
+                    <ion-item *ngFor="let item of mapOptionAreaList" (click)="selectOption(item)">{{item.name}}
+                    </ion-item>
+                </ion-list>
+            </div>
+            <!-- <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 2">
+            <ion-list class="area-new four-div" lines="none">
+                <ion-item *ngFor="let item of mapOptionIndustryList">
+                    <ion-checkbox></ion-checkbox>
+                    <ion-label>{{item.name}}</ion-label>
+                </ion-item>
+            </ion-list>
+            <ion-grid> 
+                <ion-row class="btn">
+                    <ion-col col-6 [class]="resetBasinBtnFlag? 'reset-btn':'sure-btn'">
+                        <ion-button expand="block" fill="clear" class="reset-button">重置</ion-button>
+                    </ion-col>
+                    <ion-col col-6 class="sure-btn">
+                        <ion-button expand="block" fill="clear" class="sure-button">确定</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div> -->
+            <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 2">
+                <ion-list class="area-new four-div" lines="full">
+                    <ion-item *ngFor="let item of mapOptionYearList" (click)="selectOption($event);">{{item.year}}
+                    </ion-item>
+                </ion-list>
+            </div>
+            <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 3">
+                <ion-list class="area-new four-div" lines="full">
+                    <ion-item *ngFor="let item of mapOptionYearList" (click)="selectOption($event);">{{item.year}}
+                    </ion-item>
+                </ion-list>
+            </div>
+        </div>
+    </ion-grid>
+</ion-header>
+<ion-content>
+    <!-- 遮罩层 -->
+    <div class="layer" (click)="closePotionSelectWindow();" *ngIf="isShowOptions"></div>
+    <!-- 地图 -->
+    <ths-map *ngIf="isMapShow" (onMapLoaded)="loadMap($event)" (favoriteChange)="favoriteChange($event)" (requestLoc)="requestLoc()"
+        id="map"></ths-map>
+    <!-- 地图中的筛选批复数量 -->
+    <!-- <div class="count" *ngIf="!mapFlag">
+        <p class="count-title">
+            <span class="fr margin-top-2" (click)="showHiden()">
+             <ion-icon [name]="showHidenFlag?'arrow-up':'arrow-down'" class="margin-left-10"></ion-icon>
+            </span>
+            <span (click)="legendCount()">筛选企业总数：{{type.count}}家</span>
+        </p>
+        <div [class]="showHidenFlag?'count-con-an count-con':'count-con-an  height-0'">
+            <p (tap)="typeMap('fq')" [class]="legend=='fq' ? 'selected' :'' ">
+                <span class="fr">{{type.fq}}家</span>
+                <img src="assets/imgs/fq.png">仅排废气企业</p>
+            <p (tap)="typeMap('fs')" [class]="legend=='fs' ? 'selected' :'' ">
+                <span class="fr">{{type.fs}}家</span>
+                <img src="assets/imgs/fs.png">仅排废水企业</p>
+            <p (tap)="typeMap('all')" [class]="legend=='all' ? 'selected' :'' ">
+                <span class="fr">{{type.all}}家</span>
+                <img src="assets/imgs/all.png">废气+废水排放企业</p>
+            <p (tap)="typeMap('allnot')" [class]="legend=='allnot' ? 'selected' :'' ">
+                <span class="fr">{{type.allnot}}家</span>
+                <img src="assets/imgs/allnot.png">不外排企业</p>
+        </div>
+
+    </div> -->
+    <!-- 列表数据 -->
+    <div *ngIf="!isMapShow">
+        <ion-item lines='none' *ngFor="let item of mapListPoint,let i of index">
+            <img src="assets/imgs/all.png">
+            <ion-label (click)="goProInfo()">
+                <p>张一泽(污水处理)</p>
+                <p>3242343423213123</p>
+            </ion-label>
+            <!-- <i class=" icon iconfont  icon-xingxu font-size-18" (click)="isXing()"></i> -->
+            <!-- <i (click)='isCollection(item, i)' [class]="item.isCollection == 1?'icon-xingxing icon iconfont start font-size-18':'icon-xingxu icon iconfont  font-size-18'"></i> -->
+            <i (click)='isCollection(item, i)' class="icon iconfont font-size-18" [ngClass]="{'icon-xingxing':item.isCollection == '1','start':item.isCollection == '1','icon-xingxu':item.isCollection == '0'}"></i>
+        </ion-item>
+        <!-- <ion-item lines='none'>
+            <img src="assets/imgs/all.png">
+            <ion-label (click)="goSave()">
+                <p>张一泽(污水处理)</p>
+                <p>3242343423213123</p>
+            </ion-label>
+            <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+        </ion-item>
+        <ion-item lines='none'>
+            <img src="assets/imgs/all.png">
+            <ion-label>
+                <p>张一泽(污水处理)</p>
+                <p>3242343423213123</p>
+            </ion-label>
+            <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+        </ion-item>
+        <ion-item lines='none'>
+            <img src="assets/imgs/all.png">
+            <ion-label (click)="goProInfo()">
+                <p>张一泽(污水处理)</p>
+                <p>3242343423213123</p>
+            </ion-label>
+            <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+        </ion-item>
+        <ion-item lines='none'>
+            <img src="assets/imgs/all.png">
+            <ion-label (click)="goSave()">
+                <p>张一泽(污水处理)</p>
+                <p>3242343423213123</p>
+            </ion-label>
+            <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+        </ion-item>
+        <ion-item lines='none'>
+            <img src="assets/imgs/all.png">
+            <ion-label>
+                <p>张一泽(污水处理)</p>
+                <p>3242343423213123</p>
+            </ion-label>
+            <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+        </ion-item>
+        <ion-item lines='none'>
+            <img src="assets/imgs/all.png">
+            <ion-label (click)="goProInfo()">
+                <p>张一泽(污水处理)</p>
+                <p>3242343423213123</p>
+            </ion-label>
+            <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+        </ion-item>
+        <ion-item lines='none'>
+            <img src="assets/imgs/all.png">
+            <ion-label (click)="goSave()">
+                <p>张一泽(污水处理)</p>
+                <p>3242343423213123</p>
+            </ion-label>
+            <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+        </ion-item>
+        <ion-item lines='none'>
+            <img src="assets/imgs/all.png">
+            <ion-label>
+                <p>张一泽(污水处理)</p>
+                <p>3242343423213123</p>
+            </ion-label>
+            <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+        </ion-item> -->
+    </div>
+    <!-- <div style="background:red; position:absolute;top:0; width:100%;height:400px;">
+
+    </div> -->
+</ion-content>
+
+<!-- <ion-header #header>
+  <ion-toolbar>
+      <ion-title name="menu">
+          <p class="search" (click)="focusEventHandler()">
+              <span *ngIf="searchShowFlag">{{searchText}}</span>
+              <span *ngIf="!searchShowFlag" class="color-gray">请输入关键字</span>
+          </p>
+      </ion-title>
+      <ion-buttons end>
+          <barcode class="map-barcode"></barcode>
+
+          <button ion-button icon-only (click)="mapListChange()" class="tap-btn">
+          <i [class]="mapFlag?'icon iconfont icon-map  icon-color margin-lr-6 ':'icon iconfont icon-liebiao icon-color font-size-23 margin-lr-6'"></i>
+        </button>
+      </ion-buttons>
+  </ion-toolbar>
+
+
+
+      <ion-row class="text-center line-height border-bottom">
+          <ion-col col-3 (click)="list('area')">
+              <span class="text-ellipsis">{{qyName}}</span>
+              <i [ngClass]="{'color-green': currentSel==1,'icon iconfont icon-xiaosanjiaodown':colorFlag}"></i>
+          </ion-col>
+          <ion-col col-3 (click)="list('industry')">
+              <span class="text-ellipsis">{{hyName}}</span>
+              <i [ngClass]="{'color-green': currentSel==2,'icon iconfont icon-xiaosanjiaodown':colorFlag}"></i>
+          </ion-col>
+          <ion-col col-3 (click)="list('basin')">
+              <span class="text-ellipsis">{{lyName}}</span>
+              <i [ngClass]="{'color-green': currentSel==3,'icon iconfont icon-xiaosanjiaodown':colorFlag}"></i>
+          </ion-col>
+          <ion-col col-3 (click)="list('listMore')">
+              <span class="text-ellipsis">更多</span>
+              <i [ngClass]="{'color-green': currentSel==4,'icon iconfont icon-xiaosanjiaodown':colorFlag}"></i>
+          </ion-col>
+      </ion-row>
+      <ion-row class="list-width area-height dddd" *ngIf="fourFlag">
+          <ion-list *ngIf="listFourFlag.areaFlag" class="area-new four-div">
+              <ion-item *ngFor="let item of listCon.area; index as i" (click)="listSelect(i,item)" [ngClass]="{'color-green':i == activeFlag }">{{item.RegionName}} </ion-item>
+          </ion-list>
+          <div *ngIf="listFourFlag.industryFlag" class="four-div">
+              <ion-list class="line-btn">
+                  <ion-item *ngFor="let item of listCon.industry">
+                      <ion-checkbox checked={{item.isChecked}} [(ngModel)]="item.isChecked" (click)="indusReset(item)"></ion-checkbox>
+                      <ion-label>{{item.TRADENAME}}</ion-label>
+                  </ion-item>
+              </ion-list>
+              <ion-grid>
+                  <ion-row class="btn">
+                      <ion-col col-6 [class]="resetIndusBtnFlag? 'reset-btn':'sure-btn'">
+                          <button ion-button full (click)="industryReset()">重置</button>
+                      </ion-col>
+                      <ion-col col-6 class="sure-btn">
+                          <button ion-button full (click)="industrySure()">确定</button>
+                      </ion-col>
+                  </ion-row>
+              </ion-grid>
+          </div>
+
+          <div *ngIf="listFourFlag.basinFlag" class="four-div">
+              <ion-list class="line-btn">
+                  <ion-item *ngFor="let item of listCon.basin">
+                      <ion-checkbox checked={{item.isChecked}} [(ngModel)]="item.isChecked" (click)="basReset(item)"></ion-checkbox>
+                      <ion-label>{{item.WSystemName}}</ion-label>
+                  </ion-item>
+              </ion-list>
+              <ion-grid>
+                  <ion-row class="btn">
+                      <ion-col col-6 [class]="resetBasinBtnFlag? 'reset-btn':'sure-btn'">
+                          <button ion-button full (click)="basinReset()">重置</button>
+                      </ion-col>
+                      <ion-col col-6 class="sure-btn">
+                          <button ion-button full (click)="basinSure()">确定</button>
+                      </ion-col>
+                  </ion-row>
+              </ion-grid>
+          </div>
+          <div *ngIf="listFourFlag.listMoreFlag" style="margin-top: -0.5px" class="four-div">
+              <div class="more-div">
+                  <p>许可证管理类别</p>
+                  <ion-grid>
+                      <ion-row class="width-6">
+                          <ion-col col-6 *ngFor="let item of moreCon.type; index as i" class="text-center ">
+                              <label [ngClass]="{'active':i == typeFlag }" (click)="moreType(i,item)">{{item.name}}</label>
+                          </ion-col>
+                      </ion-row>
+                  </ion-grid>
+
+              </div>
+              <div class="more-div padding-bottom-0">
+                  <p>查看范围</p>
+                  <ion-grid>
+                      <ion-row class="width-6 width-3">
+                          <ion-col col-4 class="text-center" *ngFor="let item of moreCon.range; index as i">
+                              <label [ngClass]="{'active':item.rangeCode == rangeFlag }" (click)="moreRange(item.rangeCode,item)">{{item.name}}</label>
+                          </ion-col>
+                      </ion-row>
+                  </ion-grid>
+              </div>
+              <ion-grid>
+                  <ion-row class="btn">
+                      <ion-col col-6 class="sure-btn">
+                          <button ion-button full (click)="moreReset()">重置</button>
+                      </ion-col>
+                      <ion-col col-6 class="sure-btn">
+                          <button ion-button full (click)="moreSure()">确定</button>
+                      </ion-col>
+                  </ion-row>
+              </ion-grid>
+          </div>
+
+      </ion-row>
+  </ion-grid>
+</ion-header>
+
+<ion-content no-padding [class]="fourFlag?' content content-ios has-refresher no-scroll':' content content-ios has-refresher'">
+  <ion-refresher (ionRefresh)="doRefresh($event)" [enabled]="mapFlag">
+      <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ths-map (onMapLoaded)="loadMap($event)" (favoriteChange)="favoriteChange($event)" (requestLoc)="requestLoc()" id="map" [ngClass]="{'dis-none':mapFlag}"></ths-map>
+  <div class="count" *ngIf="!mapFlag">
+      <p class="count-title">
+          <span class="fr margin-top-2" (click)="showHiden()">
+      <ion-icon [name]="showHidenFlag?'arrow-up':'arrow-down'" class="margin-left-10"></ion-icon>
+    </span>
+          <span (click)="legendCount()">筛选企业总数：{{type.count}}家</span>
+      </p>
+      <div [class]="showHidenFlag?'count-con-an count-con':'count-con-an  height-0'">
+          <p (tap)="typeMap('fq')" [class]="legend=='fq' ? 'selected' :'' ">
+              <span class="fr">{{type.fq}}家</span>
+              <img src="assets/imgs/fq.png">仅排废气企业</p>
+          <p (tap)="typeMap('fs')" [class]="legend=='fs' ? 'selected' :'' ">
+              <span class="fr">{{type.fs}}家</span>
+              <img src="assets/imgs/fs.png">仅排废水企业</p>
+          <p (tap)="typeMap('all')" [class]="legend=='all' ? 'selected' :'' ">
+              <span class="fr">{{type.all}}家</span>
+              <img src="assets/imgs/all.png">废气+废水排放企业</p>
+          <p (tap)="typeMap('allnot')" [class]="legend=='allnot' ? 'selected' :'' ">
+              <span class="fr">{{type.allnot}}家</span>
+              <img src="assets/imgs/allnot.png">不外排企业</p>
+      </div>
+
+  </div>
+  <div class="info" id="info">
+      <p class="info-title">
+          <span class="fr" (click)="collection(infoAllData?.all)">
+      <i [class]="infoAllData?.status?' icon iconfont  icon-xingxu font-size-18':'icon iconfont  icon-xingxing start font-size-18'"></i>
+    </span>
+          <img src="assets/imgs/{{infoAllData?.imgUrl}}.png" (click)="infoPage(infoAllData?.id)">
+          <span (click)="infoPage(infoAllData?.id)">{{infoAllData?.name}}</span>
+      </p>
+      <p class="font-size-12 gray" (click)="infoPage(infoAllData?.id)">{{infoAllData?.num}}</p>
+      <p class="font-size-12 qing" (click)="infoPage(infoAllData?.id)">{{infoAllData?.distance}}</p>
+  </div>
+  <div [ngClass]="{'dis-none':!mapFlag}">
+      <p class="no-data margin-top-100" *ngIf="!listFlag">暂无数据</p>
+      <ion-list *ngIf="listFlag" id="list-heigt" class="margin-top-100 list-div">
+          <ion-item class="item-a" *ngFor="let item of mapList;index as i">
+              <ion-avatar item-start>
+                  <img src="assets/imgs/{{item.fqwtype}}.png">
+              </ion-avatar>
+              <div (click)="mapInfo(item)">
+                  <h2>{{item.DEVCOMPANY}}</h2>
+                  <p>{{item.XKZNUM}}</p>
+              </div>
+              <label clear item-end>
+        <i [class]="item.status?' icon iconfont  icon-xingxu font-size-18':'icon iconfont  icon-xingxing start font-size-18'" (click)="collection(item)"></i>
+        <i [class]="item.downStatus?'icon iconfont icon-xiazaiwancheng':'icon iconfont icon-xiazai1'" (click)="downLoad(item,'down')"></i>
+      </label>
+          </ion-item>
+      </ion-list>
+
+  </div>
+
+
+</ion-content>
+<div [class]="fourFlag? 'layer':'layer dis-none'" id="layer" #layer></div>
+<div class="loading" *ngIf="loadingFlag">
+  <div class="loadEffect">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+  </div>
+</div> -->
+
+<!--(click)="closeFour($event,'layer')"-->
+
+<!--列表按钮  <div  class="map-list-btn"  (click)="mapListChange()">
+
+  <i [class]="mapFlag?'icon iconfont icon-map  icon-color margin-lr-6 ':'icon iconfont icon-liebiao icon-color font-size-23 margin-lr-6'"></i>
+
+</div> -->

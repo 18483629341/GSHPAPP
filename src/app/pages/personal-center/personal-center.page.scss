@@ -1,0 +1,16 @@
+.scroll-content{padding-top:0px !important;}
+.header-bg{ width: 100%; height: auto;display: flex; align-items: center;position: relative;}
+.user-name{display: flex; align-items: center}
+.header-con{ position: absolute;top: 0; bottom: 0; left: 0; right: 0;align-items: center;justify-content: center; display: flex;}
+.header-bg>img{ width: 100%; display: block}
+.quit-btn{  width: 60%; line-height: 40px; height: 40px; background: #4162fb; color: #fff;border-radius: 3px; text-align: center; margin: 0 auto; margin-top: 50%;}
+.icon{ color: #4162fb; margin-right: 15px;}
+.icon-version{ width: 16px; height: 16px; background: url("../../../assets/imgs/ver.png") no-repeat center center; background-size: 100% 100%; display: inline-block;}
+.label-ios{ font-size: 1.5rem}
+.user-name{ color: #fff}
+.list-ios .item-block .item-inner,.list-ios > .item-block:last-child{ border-bottom-color: #fafafa}
+.list-ios > .item-block:first-child { border-top: 0.55px solid transparent;}
+
+.margin-right-10{
+    margin-right: 10px;
+}

@@ -1,0 +1,85 @@
+/*地图弹框样式*/
+.esriPopupWrapper{
+    background: #fff !important;
+    box-shadow: 0 0 0.75em #dad9d9 !important;
+    -webkit-box-shadow: 0 0 0.75em #dad9d9 !important;
+}
+.esriPopup .sizer{
+    width: 180px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.esriPopup .actionsPane{
+    display: none;
+}
+.esriPopup .contentPane{
+    overflow: hidden;
+    background: #fff;
+    padding: 7px 12px;
+}
+.esriPopup .contentPane p{
+    margin: 0;
+    color: #666;
+    font-size: 1.4rem;
+    line-height: 26px;
+}
+.esriPopup .contentPane p span{
+    color: #333;
+}
+.esriPopup .contentPane button{
+    display: block;
+    width: 80%;
+    background: #fff;
+    border-radius: 5px;
+    border:1px solid #0d89e9;
+    color: #0e89e7;
+    text-align: center;
+    margin: 10px auto;
+    padding: 7px 0 9px;
+    font-size: 1.4rem;
+}
+.esriPopup .titlePane{
+    line-height: 38px;
+    background: #fff;
+    border-bottom: 1px solid #dfdfdf;
+    color: #333;
+    margin: 0 12px;
+    font-size: 1.4rem;
+    padding-left: 0;
+}
+.esriPopup .titleButton.maximize{
+    display: none;
+}
+.esriPopup .titleButton.close{
+    background: none;
+    width: 20px;
+    height: 30px;
+    text-align: center;
+    color: #c3c3c3;
+    line-height: 30px;
+    font-size: 16px;
+    top: 3px;
+}
+.esriPopup .titleButton.close:before {
+    content: "\00D7";
+}
+.esriPopup .pointer{
+    background: #fff !important;
+}
+path {
+    display: none !important;
+}
+.map{
+    height: calc(100% - 0px);
+}
+.esriMaplayerButton{
+    background: url("../../assets/imgs/map_layer_02.png") no-repeat;
+    background-size: 100% 100%;
+    width: 40px!important;
+    height: 40px!important;
+}
+.pos {
+    background: url("../../assets/imgs/pos.png") no-repeat;
+    background-size: 100% 100%;
+}

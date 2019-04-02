@@ -1,0 +1,14 @@
+
+.contentBox{
+    div{
+       
+        width: 100%;
+        height: 3rem;
+        text-align: center;
+        line-height: 3rem;
+    }
+   
+}
+.color{
+    background-color: #F2F2F2;
+}

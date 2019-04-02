@@ -1,0 +1,50 @@
+
+<ion-header mode='ios'>
+    <ion-toolbar mode='ios'>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="ios-arrow-back" mode='ios'></ion-back-button>
+        </ion-buttons>
+        <ion-title>建设项目环境保护申请登记表</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="titleBox">
+    <span>检查时间：2019-08-08</span>
+    <span>检查人：王五</span>
+  </div>
+  <table>
+    <tr>
+      <td style="height:120px;text-align: center;width: 20%;background-color: #F2F2F2">备注</td>
+      <td>
+        <p>1. 施工期环保措施未同步落实;</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="height:50px;text-align: center;background-color: #F2F2F2">附件</td>
+      <td>现场照片.png</td>
+    </tr>
+  </table>
+  <div class="btnBox">
+    <button class="btn" (click)='toDetail()'>查看详情</button>
+  </div>
+  <div class="titleBox">
+    <span>检查时间：2019-08-08</span>
+    <span>检查人：张三</span>
+  </div>
+  <table>
+    <tr>
+      <td style="height:120px;text-align: center;width: 20%;background-color: #F2F2F2">备注</td>
+      <td>
+        <p>检查正常</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="height:50px;text-align: center;background-color: #F2F2F2">附件</td>
+      <td>无</td>
+    </tr>
+  </table>
+  <div class="btnBox">
+    <button class="btn">查看详情</button>
+  </div>
+</ion-content>

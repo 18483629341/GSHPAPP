@@ -1,0 +1,233 @@
+.top_head{
+    background: #4162fb;
+    // padding-top: 10px;
+    // padding-bottom: 10px;
+    
+    // height: 30px;
+}
+
+.no-line{
+    margin-top: -1px;
+}
+.header-md {
+    position: static;
+}
+
+#top_tab{
+    // --background: #4162fb;
+    // --background-checked: white;
+    --color:white;
+    // --color-checked:#4162fb;
+    
+    --indicator-color:none;
+    --indicator-color-checked:none;
+    // --border-color: #fff;
+    margin: 0 auto;
+    width: 90%;
+    height: 50px;
+    line-height: 50px;
+}
+
+.top_tab_item{
+    min-height: 28px;
+}
+
+ion-segment-button{
+    border: 0.55px solid #fff;
+}
+
+ion-segment-button:first-child{
+    border-right: none;
+    border-top-left-radius:5px;
+    border-bottom-left-radius:5px;
+}
+
+ion-segment-button:last-child{
+    border-left: none;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+}
+.active{
+    background-color: #fff;
+    color: #4162fb;
+}
+#search_condition_div{
+    background-color: #fff;
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    margin-top: 0px;
+    border-bottom: #ccc solid 0.35px;
+}
+
+#search_condition{
+    display: flex;
+    list-style: none;
+    color: #181818;
+    width: 100%;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#search_condition li{
+    font-size: 14px;
+    width: 33%;
+    text-align: center
+}
+
+/*tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用样式 start */
+ion-grid{
+  padding: 0px;  }
+.header-md:after {
+  background-image: none;
+}
+.col-shadow{
+  text-align: center;
+  box-shadow: 0px 1px 6px 2px rgba(171, 171, 171, 0.25);
+}
+  
+  
+.text-ellipsis {
+    line-height: 28px;
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;
+    color: #0c0c0c;
+    margin-right: 3px;
+}
+  
+.domn-arr {
+    width: 20px;
+    display: inline-block;
+    font-size: 20px;
+    color: #a4a4a4;
+    position: relative;
+    top: 6px;
+}
+  
+.color-blue {
+  color: #5871de;
+}
+  
+  
+/*tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用样式 end */
+
+.echarts_div{
+    width: 100%; 
+    height: 320px; 
+    margin-top: 0px;
+    padding-top: 10px;
+}
+
+.echarts_texts{
+    width: 100%;
+    height: 40px;
+}
+
+.echarts_div span:first-child{
+    width: 98%;
+    color: #181818;
+    display: inline-block;
+    margin-left: 10px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+.echarts_div span:last-child{
+    color: #181818;
+    display: inline-block;
+    font-size: 0.7rem;
+    margin-left: 10px;
+}
+
+.charts {
+    margin-top: 0px;
+    width: 100%; 
+    height: 270px; 
+    margin-bottom: 10px
+}
+
+.top_tab_item{
+    width: 33.3%
+}
+
+#bottom_table{
+    width: 100%;
+    border: 1px;
+    margin-top: 1px;
+}
+
+.table_item_th_left{
+    border: #4162fb solid 0.5px;
+    background-color: #4162fb;
+    text-align: center;
+    color: #fff;
+    height: 40px;
+}
+
+.table_item_th_right{
+    border-top: #4162fb solid 0.5px;
+    border-bottom: #4162fb solid 0.5px;
+    background-color: #E8EFF8;
+    text-align: center;
+    color: #000;
+    height: 40px;
+}
+
+.table_item_text_left{
+    width: 50%;
+    text-align: left;
+    background-color: #F7F7F7;
+    color: #4162fb;
+    height: 40px;
+}
+
+.table_item_text_right{
+    width: 50%;
+    text-align: right;
+    height: 40px;
+}
+
+.table_item_text_left span{
+    margin-left: 10px;
+}
+
+.table_item_text_right span{
+    margin-right: 10px;
+}
+ion-list{
+    border-top: 1px solid #ddd;
+    padding: 0px;
+    ion-item{
+      font-size: 14px;
+    }
+  }
+
+.option-div{
+    position: absolute;
+    width: 100%;
+    ion-row{
+      background: #fff;
+    }
+    ion-list{
+      margin-top:-3px; 
+    }
+}
+
+.area-new{
+    max-height: 298px; 
+    overflow-y: auto;
+}
+.layer{
+    height: 100%; 
+    width: 100%; 
+    background: rgba(0, 0, 0, 0.3); 
+    position: absolute;
+    z-index: 5;
+}
+
+.color-black{
+    color: #000;
+}

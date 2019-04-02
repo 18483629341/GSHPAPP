@@ -1,0 +1,7 @@
+{
+  "name": "gansu",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

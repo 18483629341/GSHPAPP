@@ -1,0 +1,27 @@
+
+<ion-header mode='ios'>
+    <ion-toolbar mode='ios'>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="ios-arrow-back" mode='ios'></ion-back-button>
+        </ion-buttons>
+        <ion-title>三同时检查详情</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+  <table>
+    <tr>
+      <th   style="width:10%">序号</th>
+      <th  style="width:35%">检查项</th>
+      <th  style="width:25%">结果</th>
+      <th  style="width:30%">备注</th>
+    </tr>
+    <tr *ngFor="let item of listAarry" [ngStyle]="{'background': item.result!=='已检查确认'?'yellowgreen':''}">
+      <td align="center">{{item.num}}</td>
+      <td>{{item.check}}</td>
+      <td>{{item.result}}</td>
+      <td>{{item.info}}</td>
+    </tr>
+  </table>
+
+
+</ion-content>

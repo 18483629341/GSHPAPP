@@ -1,0 +1,46 @@
+ion-content{
+    font-size: 14px;
+}
+  ion-col{
+    span{
+        padding-left: 10px;
+    }
+  }
+  ion-checkbox{
+      --size:16px;
+  }
+  .title{
+      padding: 12px 0;
+  }
+  .checxdiv{
+     
+  }
+  .border{
+      border-bottom: 1px solid #e2e2e2
+  }
+  table{
+      width: 100%;
+      tr{
+          height: 80px;
+      }
+      td{
+          border: 1px solid #e2e2e2
+      }
+  }
+  .btnBox{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+.btn{
+    width: 30%;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #4162fb;
+    color: #fff;
+    outline: none;
+
+}
+.back{
+    background-color: red;
+}

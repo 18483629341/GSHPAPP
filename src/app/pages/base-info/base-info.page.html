@@ -1,0 +1,63 @@
+<ion-header mode='ios'>
+    <ion-toolbar mode='ios'>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="ios-arrow-back" mode='ios'></ion-back-button>
+        </ion-buttons>
+        <ion-title>建设项目基本情况</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="padding info-color">
+        <ion-row>
+          <ion-col size="12">
+            <span>环评文件：</span>{{enviAssessmentTypeName}}
+          </ion-col>
+          <ion-col size="12">
+            <span>申请人类别：</span>{{applicantPeopleType}}
+          </ion-col>
+          <ion-col size="12">
+            <span>许可类别：</span>{{permissionType}}
+          </ion-col>
+          <ion-col size="12">
+            <span>项目名称：</span>{{projectName}}
+          </ion-col>
+          <ion-col size="12">
+            <span>建设单位(投资人)：</span>{{constructionUnit}}
+          </ion-col>
+          <ion-col size="12">
+            <span>有无统一社会信用代码：</span>{{isCreditNumber}}
+          </ion-col>
+          <ion-col size="12">
+            <span>组织机构代码：</span>{{organCertificateNumber}}
+          </ion-col>
+          <ion-col size="12">
+            <span>建设地点：</span>{{constructionSite}}
+          </ion-col>
+          <ion-col size="12">
+            <span>立项部门：</span>{{establishmentDepartment}}
+          </ion-col>
+          <ion-col size="12">
+            <span> 行业类别：</span>{{industryType}}
+          </ion-col>
+          <ion-col size="12">
+            <span>环评单位：</span>{{enviAssessmentUnit}}
+          </ion-col>
+          <ion-col size="12">
+            <span> 环评类别：</span>{{enviAssessmentClass}}
+          </ion-col>
+          <ion-col size="12">
+            <span>环评工程师：</span>{{enviAssessmentEngineer}}
+          </ion-col>
+          <ion-col size="12">
+            <span>项目属性：</span>{{projectAttribute}}
+          </ion-col>
+          <ion-col size="12">
+            <span>建设项目类别:</span>{{constrctProjectClass}}
+          </ion-col>
+          <ion-col size="12">
+            <span>组织机构代码：</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+</ion-content>

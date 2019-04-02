@@ -1,0 +1,25 @@
+<ion-content>
+    <div class="header-bg">
+      <img src="../../../assets/imgs/personal-bg.png">
+      <ion-grid class="header-con">
+        <ion-row>
+          <ion-col size="3"><img src="../../../assets/imgs/people.png"></ion-col>
+          <ion-col size="8" class="user-name">用户名</ion-col>
+        </ion-row>
+      </ion-grid>
+        
+    </div>
+    
+    <ion-list>
+        <ion-item (click)='goFavorite()'>
+            <i class="icon iconfont margin-right-10 icon-xingxing"></i>
+            <ion-label>收藏夹</ion-label>
+            <ion-icon name="arrow-forward" slot="end" mode="ios"></ion-icon>
+          </ion-item>
+      <ion-item>
+          <i class="icon iconfont margin-right-10 icon-version"></i>版本信息
+          <span item-end style="color: #999;margin-left: 10px;">版本号</span>
+      </ion-item>
+    </ion-list>
+    <p text-cener class="quit-btn" (click)="quit()">退出登录</p>
+  </ion-content>

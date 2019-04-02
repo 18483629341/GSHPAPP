@@ -1,0 +1,222 @@
+<ion-header>
+  <!-- Default Segment -->
+  <div class="top_head">
+    <ion-segment id="top_tab">
+      <ion-segment-button checked=true class="top_tab_item" [ngClass]="{'active': str==1?true:false}" (click)='OnitemClick(1)'>
+        项目数量
+      </ion-segment-button>
+      <ion-segment-button class="top_tab_item" [ngClass]="{'active': str==2?true:false}" (click)='OnitemClick(2)'>
+        项目投资额
+      </ion-segment-button>
+      <ion-segment-button class="top_tab_item" [ngClass]="{'active': str==3?true:false}" (click)='OnitemClick(3)'>
+        污染物增减量
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <!-- <div [style.display]="str==1?'block':'none'" class="no-line">
+    <div id="search_condition_div">
+      <ul id="search_condition">
+        <li (click)="showOption(1)">区域<ion-icon name="arrow-dropdown" mode='md' [ngClass]="{'color-black': isShowOptions && currentOptionTabIndex === 1}"></ion-icon>
+        </li>
+        <li (click)="showOption(2)">年份<ion-icon name="arrow-dropdown" mode='md' [ngClass]="{'color-black': isShowOptions && currentOptionTabIndex === 2}"></ion-icon>
+        </li>
+        <li (click)="showOption(3)">环评文件<ion-icon name="arrow-dropdown" mode='md' [ngClass]="{'color-black': isShowOptions && currentOptionTabIndex === 3}"></ion-icon>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+  <!-- <div [style.display]="str==2?'block':'none'" class="no-line">
+    <div id="search_condition_div">
+      <ul id="search_condition">
+        <li (click)="showOption(1)">区域<ion-icon name="arrow-dropdown" mode='md' [ngClass]="{'color-black': isShowOptions && currentOptionTabIndex === 1}"></ion-icon>
+        </li>
+        <li (click)="showOption(2)">2018<ion-icon name="arrow-dropdown" mode='md' [ngClass]="{'color-black': isShowOptions && currentOptionTabIndex === 2}"></ion-icon>
+        </li>
+        <li (click)="showOption(3)">报告书<ion-icon name="arrow-dropdown" mode='md' [ngClass]="{'color-black': isShowOptions && currentOptionTabIndex === 3}"></ion-icon>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+
+  <!-- <div [style.display]="str==3?'block':'none'" class="no-line">
+    <div id="search_condition_div">
+      <ul id="search_condition">
+        <li (click)="showOption(1)">区域<ion-icon name="arrow-dropdown" mode='md' [ngClass]="{'color-black': isShowOptions && currentOptionTabIndex === 1}"></ion-icon>
+        </li>
+        <li (click)="showOption(2)">年份<ion-icon name="arrow-dropdown" mode='md' [ngClass]="{'color-black': isShowOptions && currentOptionTabIndex === 2}"></ion-icon>
+        </li>
+        <li (click)="showOption(3)">报告书<ion-icon name="arrow-dropdown" mode='md' [ngClass]="{'color-black': isShowOptions && currentOptionTabIndex === 3}"></ion-icon>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+
+  <ion-grid>
+    <!--tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用module start -->
+    <ion-row class="col-shadow" [style.display]="str==1?'flex':'none'" >
+      <ion-col (click)="showOption(1)">
+        <span class="text-ellipsis">区域</span>
+        <ion-icon mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+      </ion-col>
+      <ion-col (click)="showOption(2)">
+        <span class="text-ellipsis">年份</span>
+        <ion-icon mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+      </ion-col>
+      <ion-col (click)="showOption(3)">
+        <span class="text-ellipsis">环评文件</span>
+        <ion-icon mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="col-shadow" [style.display]="str==2?'flex':'none'" >
+      <ion-col (click)="showOption(1)">
+        <span class="text-ellipsis">区域</span>
+        <ion-icon mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+      </ion-col>
+      <ion-col (click)="showOption(2)">
+        <span class="text-ellipsis">2018</span>
+        <ion-icon mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+      </ion-col>
+      <ion-col (click)="showOption(3)">
+        <span class="text-ellipsis">报告书</span>
+        <ion-icon mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="col-shadow" [style.display]="str==3?'flex':'none'">
+      <ion-col (click)="showOption(1)">
+        <span class="text-ellipsis">区域</span>
+        <ion-icon mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+      </ion-col>
+      <ion-col (click)="showOption(2)">
+        <span class="text-ellipsis">2018</span>
+        <ion-icon mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+      </ion-col>
+      <ion-col (click)="showOption(3)">
+        <span class="text-ellipsis">报告书</span>
+        <ion-icon mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <!--tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用module start -->
+
+  </ion-grid>
+
+  <div class="option-div">
+    <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 1">
+      <ion-list class="area-new four-div" lines="full">
+        <ion-item *ngFor="let item of mapOptionAreaList" (click)="selectOption(item)">{{item.name}}</ion-item>
+      </ion-list>
+    </div>
+    <!-- <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 2">
+          <ion-list class="area-new four-div" lines="none">
+              <ion-item *ngFor="let item of mapOptionIndustryList">
+                  <ion-checkbox></ion-checkbox>
+                  <ion-label>{{item.name}}</ion-label>
+              </ion-item>
+          </ion-list>
+          <ion-grid> 
+              <ion-row class="btn">
+                  <ion-col col-6 [class]="resetBasinBtnFlag? 'reset-btn':'sure-btn'">
+                      <ion-button expand="block" fill="clear" class="reset-button">重置</ion-button>
+                  </ion-col>
+                  <ion-col col-6 class="sure-btn">
+                      <ion-button expand="block" fill="clear" class="sure-button">确定</ion-button>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      </div> -->
+    <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 2">
+      <ion-list class="area-new four-div" lines="full">
+        <ion-item *ngFor="let item of mapOptionYearList" (click)="selectOption($event);">{{item.year}}</ion-item>
+      </ion-list>
+    </div>
+    <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 3">
+      <ion-list class="area-new four-div" lines="full">
+        <ion-item *ngFor="let item of mapOptionYearList" (click)="selectOption($event);">{{item.year}}</ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <!-- 遮罩层 -->
+  <div class="layer" (click)="closePotionSelectWindow();" *ngIf="isShowOptions"></div>
+  <div [style.display]="str==1?'block':'none'">
+    <div class="echarts_div">
+      <div class="echarts_texts">
+        <span>2018年省级水泥制造报告书在审建设项目数量</span>
+        <span>建设项目数量（个）</span>
+      </div>
+      <div id="chart1" class="charts" [ngStyle]="{'width': screenWidth+ 'px'}"></div>
+    </div>
+
+    <div>
+      <table border="1px" id="bottom_table">
+        <tr>
+          <th class="table_item_th_left">行政区划</th>
+          <th class="table_item_th_right">建设项目批复数量</th>
+        </tr>
+        <tr *ngFor="let item of echartsAreaList ; let i=index">
+          <td class="table_item_text_left">
+            <span>{{item.name}}</span>
+          </td>
+          <td class="table_item_text_right">
+            <span>{{item.data}}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div [style.display]="str==2?'block':'none'">
+    <div class="echarts_div">
+      <div class="echarts_texts">
+        <span>2018年省级水泥制造报告书已批复建设项目环保投资额</span>
+        <span>环保投资额（万元）</span>
+      </div>
+      <div id="chart2" class="charts" [ngStyle]="{'width': screenWidth+ 'px'}"></div>
+    </div>
+    <div>
+      <table border="1px" id="bottom_table">
+        <tr>
+          <th class="table_item_th_left">行政区划</th>
+          <th class="table_item_th_right">建设项目批复数量</th>
+        </tr>
+        <tr *ngFor="let item of echartsAreaList ; let i=index">
+          <td class="table_item_text_left">
+            <span>{{item.name}}</span>
+          </td>
+          <td class="table_item_text_right">
+            <span>{{item.data}}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div [style.display]="str==3?'block':'none'">
+    <div class="echarts_div">
+      <div class="echarts_texts">
+        <span>2018年省级水泥制造报告书已审批建设项目二氧化硫污染物排放增加量</span>
+        <span>污染物排放增加量</span>
+      </div>
+      <div id="chart3" class="charts" [ngStyle]="{'width': screenWidth+ 'px'}"></div>
+    </div>
+    <div>
+      <table border="1px" id="bottom_table">
+        <tr>
+          <th class="table_item_th_left">行政区划</th>
+          <th class="table_item_th_right">建设项目批复数量</th>
+        </tr>
+        <tr *ngFor="let item of echartsAreaList ; let i=index">
+          <td class="table_item_text_left">
+            <span>{{item.name}}</span>
+          </td>
+          <td class="table_item_text_right">
+            <span>{{item.data}}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</ion-content>
