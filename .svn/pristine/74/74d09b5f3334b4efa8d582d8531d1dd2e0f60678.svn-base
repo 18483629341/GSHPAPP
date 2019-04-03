@@ -53,31 +53,31 @@
     <ion-grid>
       <ion-row class="col-shadow" [style.display]="item==0?'flex':'none'">
         <ion-col (click)="showOption(1)">
-            <span  class="text-ellipsis"[ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}">区域</span>
+            <span class="text-ellipsis">区域</span>
             <ion-icon mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" class="domn-arr" name="arrow-dropdown"></ion-icon>
         </ion-col>
         <ion-col (click)="showOption(2)">
-            <span class="text-ellipsis"  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}">行业</span>
+            <span class="text-ellipsis">行业</span>
             <ion-icon mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" class="domn-arr" name="arrow-dropdown"></ion-icon>
         </ion-col>
       </ion-row>
       <ion-row class="col-shadow" [style.display]="item==1?'flex':'none'">
         <ion-col (click)="showOption(1)">
-            <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}">所在地</span>
+            <span class="text-ellipsis">所在地</span>
             <ion-icon mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" class="domn-arr" name="arrow-dropdown"></ion-icon>
         </ion-col>
         <ion-col (click)="showOption(2)" >
-            <span class="text-ellipsis long-text" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}">甲级环评报告书评价范围</span>
+            <span class="text-ellipsis long-text">甲级环评报告书评价范围</span>
             <ion-icon mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" class="domn-arr special-down" name="arrow-dropdown"></ion-icon>
         </ion-col>
       </ion-row>
       <ion-row class="col-shadow" [style.display]="item==2?'flex':'none'">
         <ion-col (click)="showOption(1)">
-            <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}">领域</span>
+            <span class="text-ellipsis">领域</span>
             <ion-icon mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" class="domn-arr" name="arrow-dropdown"></ion-icon>
         </ion-col>
         <ion-col (click)="showOption(2)">
-            <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}">学历</span>
+            <span class="text-ellipsis">学历</span>
             <ion-icon mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" class="domn-arr" name="arrow-dropdown"></ion-icon>
         </ion-col>
       </ion-row>
@@ -88,7 +88,7 @@
   </div>
   <div class="option-div">
     <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 1">
-      <ion-list class="area-new four-div" lines="inset">
+      <ion-list class="area-new four-div" lines="full">
         <ion-item *ngFor="let item of religionList" (click)="selectOption(item)">{{item.regionName}}
         </ion-item>
       </ion-list>
@@ -112,7 +112,7 @@
       </ion-grid>
   </div> -->
     <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 2">
-      <ion-list class="area-new four-div" lines="inset">
+      <ion-list class="area-new four-div" lines="full">
         <ion-item *ngFor="let item of industryList" (click)="selectOption($event);">{{item.industryName}}
         </ion-item>
       </ion-list>
@@ -120,13 +120,13 @@
   </div>
   <div class="option-div">
     <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 3">
-      <ion-list class="area-new four-div" lines="inset">
+      <ion-list class="area-new four-div" lines="full">
         <ion-item *ngFor="let item of placeList" (click)="selectOption(item)">{{item.placeName}}
         </ion-item>
       </ion-list>
     </div>
     <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 4">
-      <ion-list class="area-new four-div" lines="inset">
+      <ion-list class="area-new four-div" lines="full">
         <ion-item *ngFor="let item of reportList" (click)="selectOption($event);">{{item.rangeName}}
         </ion-item>
       </ion-list>
@@ -134,13 +134,13 @@
   </div>
   <div class="option-div">
     <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 5">
-      <ion-list class="area-new four-div" lines="inset">
+      <ion-list class="area-new four-div" lines="full">
         <ion-item *ngFor="let item of fieldList" (click)="selectOption(item)">{{item.fieldName }}
         </ion-item>
       </ion-list>
     </div>
     <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 6">
-      <ion-list class="area-new four-div" lines="full"lines="inset">
+      <ion-list class="area-new four-div" lines="full">
         <ion-item *ngFor="let item of educationList" (click)="selectOption($event);">{{item.educationName}}
         </ion-item>
       </ion-list>

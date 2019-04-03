@@ -75,7 +75,10 @@ ion-segment-button:last-child{
     width: 33%;
     text-align: center
 }
-
+ion-item[_ngcontent-c2] {
+    height: 50px;
+    line-height: 50px;
+}
 /*tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用样式 start */
 ion-grid{
   padding: 0px;  }
@@ -103,13 +106,20 @@ ion-grid{
     font-size: 20px;
     color: #a4a4a4;
     position: relative;
-    top: 6px;
+    top: 4px;
 }
   
 .color-blue {
   color: #5871de;
 }
-  
+.optionList-div{
+    ion-item[_ngcontent-c3],ion-item[_ngcontent-c2]{
+      height: 50px;
+      line-height: 49px;
+      --border-color:#ebebeb; 
+     
+    }
+} 
   
 /*tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用样式 end */
 
@@ -208,6 +218,7 @@ ion-list{
 .option-div{
     position: absolute;
     width: 100%;
+    
     ion-row{
       background: #fff;
     }

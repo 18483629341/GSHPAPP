@@ -143,7 +143,7 @@ ion-grid{
     font-size: 20px;
     color: #a4a4a4;
     position: relative;
-    top: 4px;
+    top: 6px;
 }
   
 .color-blue {
@@ -160,15 +160,8 @@ ion-grid{
 .special-down{
     top:-7px;
 }
-.optionList-div{
-    ion-item[_ngcontent-c3],ion-item[_ngcontent-c2] {
-      height: 50px;
-      line-height: 49px;
-      --border-color:#ebebeb; 
-    }
-}
 /*tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用样式 end */
-ion-label[_ngcontent-c3],ion-label[_ngcontent-c2]{
+ion-label[_ngcontent-c2]{
    margin-right: 0;
 }
 .iconfont{
@@ -233,7 +226,6 @@ ion-list{
 .option-div{
     position: absolute;
     width: 100%;
-   
     ion-row{
       background: #fff;
     }

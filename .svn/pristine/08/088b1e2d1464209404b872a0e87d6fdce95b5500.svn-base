@@ -19,20 +19,20 @@
     <ion-grid>
         <ion-row class="col-shadow">
             <ion-col (click)="showOption(1)" >
-                <span  class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" >区域</span>
+                <span  class="text-ellipsis" >区域</span>
                 <ion-icon  mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" class="domn-arr" name="arrow-dropdown"></ion-icon>
             </ion-col>
             <ion-col (click)="showOption(2)">
-                <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}">行业</span>
+                <span class="text-ellipsis">行业</span>
                 <ion-icon  mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" class="domn-arr" name="arrow-dropdown"></ion-icon>
             </ion-col>
             <ion-col (click)="showOption(3)">
-                <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}">年份</span>
+                <span class="text-ellipsis">年份</span>
                 <ion-icon  mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}" class="domn-arr" name="arrow-dropdown"></ion-icon>
             </ion-col>
             <ion-col (click)="showOption(4)">
-                <span class="text-ellipsis long-text" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 4}">环评文件</span>
-                <ion-icon mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 4}" class="domn-arr special-down" name="arrow-dropdown"></ion-icon>
+                <span class="text-ellipsis">环评文件</span>
+                <ion-icon mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 4}" class="domn-arr" name="arrow-dropdown"></ion-icon>
             </ion-col>
         </ion-row>
         <!-- tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用module end -->
@@ -70,26 +70,44 @@
         </div> -->
         <div class="option-div">
             <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 1">
-                <ion-list class="area-new four-div" lines="inset">
-                    <ion-item *ngFor="let item of mapOptionAreaList" (click)="selectOption(item);">{{item.name}}
+                <ion-list class="area-new four-div" lines="full">
+                    <ion-item *ngFor="let item of mapOptionAreaList" (click)="selectOption(item)">{{item.name}}
                     </ion-item>
                 </ion-list>
             </div>
+            <!-- <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 2">
+                <ion-list class="area-new four-div" lines="none">
+                    <ion-item *ngFor="let item of mapOptionIndustryList">
+                        <ion-checkbox></ion-checkbox>
+                        <ion-label>{{item.name}}</ion-label>
+                    </ion-item>
+                </ion-list>
+                <ion-grid> 
+                    <ion-row class="btn">
+                        <ion-col col-6 [class]="resetBasinBtnFlag? 'reset-btn':'sure-btn'">
+                            <ion-button expand="block" fill="clear" class="reset-button">重置</ion-button>
+                        </ion-col>
+                        <ion-col col-6 class="sure-btn">
+                            <ion-button expand="block" fill="clear" class="sure-button">确定</ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div> -->
             <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 2">
-                <ion-list class="area-new four-div" lines="inset">
+                <ion-list class="area-new four-div" lines="full">
                     <ion-item *ngFor="let item of mapOptionYearList" (click)="selectOption($event);">{{item.year}}
                     </ion-item>
                 </ion-list>
             </div>
             <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 3">
-                <ion-list class="area-new four-div" lines="inset">
+                <ion-list class="area-new four-div" lines="full">
                     <ion-item *ngFor="let item of mapOptionYearList" (click)="selectOption($event);">{{item.year}}
                     </ion-item>
                 </ion-list>
             </div>
             <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 4">
-                <ion-list class="area-new four-div" lines="inset">
-                    <ion-item *ngFor="let item of mapOptionAreaList" (click)="selectOption(item);">{{item.name}}
+                <ion-list class="area-new four-div" lines="full">
+                    <ion-item *ngFor="let item of mapOptionYearList" (click)="selectOption($event);">{{item.name}}
                     </ion-item>
                 </ion-list>
             </div>
