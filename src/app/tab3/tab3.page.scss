@@ -28,9 +28,7 @@
     line-height: 50px;
 }
 
-.top_tab_item{
-    min-height: 28px;
-}
+
 
 ion-segment-button{
     border: 0.55px solid #fff;
@@ -158,45 +156,62 @@ ion-grid{
     height: 270px; 
     margin-bottom: 10px
 }
-
+.splitArea{
+    height:18px;
+    background:rgb(239,239,239); 
+}
 .top_tab_item{
-    width: 33.3%
+    width: 33.3%;
+    min-height: 28px;
+    // line-height: 28px;
 }
 
-#bottom_table{
+.bottom_table{
     width: 100%;
-    border: 1px;
-    margin-top: 1px;
+    padding:0 3%;
+    // margin:0 auto;
+    border: none;
+    // margin-top: 1px;
+    tr{
+        border-bottom: 0.55px solid #f7f7f7;
+    }
+    tr:nth-child(1){
+        border-top: 0.55px solid #f7f7f7;
+    }
 }
 
 .table_item_th_left{
-    border: #4162fb solid 0.5px;
-    background-color: #4162fb;
+   // border: #4162fb solid 0.5px;
+    background-color: #f7f7f7;
     text-align: center;
-    color: #fff;
+    color: #333;
     height: 40px;
 }
 
 .table_item_th_right{
-    border-top: #4162fb solid 0.5px;
-    border-bottom: #4162fb solid 0.5px;
-    background-color: #E8EFF8;
+    //border-top: #4162fb solid 0.5px;
+    //border-bottom: #4162fb solid 0.5px;
+    background-color: #f7f7f7;
     text-align: center;
-    color: #000;
+    color: #333;
     height: 40px;
 }
 
 .table_item_text_left{
     width: 50%;
     text-align: left;
-    background-color: #F7F7F7;
-    color: #4162fb;
+    color: #9d9fa7;
+    padding-left:20px; 
+    font-size: 16px;
     height: 40px;
 }
 
 .table_item_text_right{
     width: 50%;
     text-align: right;
+    color: #333;
+    padding-right:20px; 
+    font-size: 16px;
     height: 40px;
 }
 

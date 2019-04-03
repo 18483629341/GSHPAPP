@@ -68,11 +68,20 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  
   <div class="table_title">
     <span>关联项目</span>
+    
   </div>
 
-  <div class="TranslateXYContainer">
+  <ion-item *ngFor="let item of relativeUnitArr">
+    <ion-label text-wrap (click)="changeOption(item.id)">
+      {{item.name}}
+    </ion-label>
+  </ion-item>
+
+  <!-- <div class="TranslateXYContainer">
     <table class="tb1" cellspacing="0">
       <thead>
         <th>序号</th>
@@ -198,5 +207,5 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </div> -->
 </ion-content>
