@@ -24,9 +24,14 @@ export class Tab2Page {
   public mapOptionYearList: any = []; // 地图的tab筛选条件的年份列表
   public currentOptionTabIndex; // 当前点击的tab的index的值
   public isXingXing: any = false;
-  public HpzjList: any = [] ; // 环评专家列表
+  public HpzjList: any = []; // 环评专家列表
   item: any = '0';
   Area: any = '区域';
+  industry: any = '行业';
+  location: any = '所在地';
+  rangeName: any = '甲级环评报告书评价范围';
+  fieldName: any = '领域';
+  educationName: any = '学历';
   constructor(private router: Router,
     public alertController: AlertController,
     public mapHttpService: MapHttpService,
@@ -43,6 +48,7 @@ export class Tab2Page {
     this.getUnitListData();
     this.getFieldListData();
     this.getEducationListData();
+    this.getHpzjList();
   }
   async presentToast() {
     const toast = await this.toastController.create({
@@ -55,7 +61,6 @@ export class Tab2Page {
 
   // 点击星星收藏
   isCollection(item, index) {
-    console.log(item);
     if (item.isCollection === '0') { // 没有收藏
       item.isCollection = '1';
     } else {
@@ -159,7 +164,7 @@ export class Tab2Page {
    */
   getReligionListData() {
     this.projectFilesService.getReligionList({}, true, res => {
-      console.log(res);
+
       if (res !== 'error') {
         this.religionList = res.data || [];
       }
@@ -222,9 +227,9 @@ export class Tab2Page {
       }
     });
   }
- /**
-   * 获取环评监督管理-环评专家-筛选条件-领域列表数据
-   */
+  /**
+    * 获取环评监督管理-环评专家-筛选条件-领域列表数据
+    */
   getFieldListData() {
     this.projectFilesService.getFieldList({}, true, res => {
       console.log(res);
@@ -241,6 +246,15 @@ export class Tab2Page {
       console.log(res);
       if (res !== 'error') {
         this.educationList = res.data || [];
+      }
+    });
+  }
+  // 请求环评专家数据
+  getHpzjList() {
+    this.projectFilesService.getHpzjList({}, true, res => {
+      console.log(res);
+      if (res !== 'error') {
+        this.HpzjList = res || [];
       }
     });
   }
@@ -277,17 +291,30 @@ export class Tab2Page {
   /**
    * 选择筛选选项(单选)
    */
-  selectOption(item) {
+  selectArea(item) {
+    this.Area = item.regionName;
+    this.isShowOptions = false;
     
   }
-
-  // 请求环评专家数据
-  getHpzjList() {
-    this.projectFilesService.getHpzjList({}, true, res => {
-      console.log(res);
-      if (res !== 'error') {
-        this.HpzjList = res;
-      }
-    });
+  selectIndustry(item) {
+    this.industry = item.industryName;
+    this.isShowOptions = false;
   }
+  selectLocation(item) {
+    this.location = item.placeName;
+    this.isShowOptions = false;
+  }
+  selectRangeName(item) {
+    this.rangeName = item.rangeName;
+    this.isShowOptions = false;
+  }
+  selectFieldName(item) {
+    this.fieldName = item.fieldName;
+    this.isShowOptions = false;
+  }
+  selectEducationName(item) {
+    this.educationName = item.educationName;
+    this.isShowOptions = false;
+  }
+
 }

@@ -1,0 +1,37 @@
+[
+    {
+        "nodeName": "窗口受理",
+        "transactor": "张三",
+        "processTime": "2018-08-08",
+        "settlTime": "2018-08-08",
+        "opinion": "同意"
+    },
+    {
+        "nodeName": "副处长分配",
+        "transactor": "李四",
+        "processTime": "2018-08-08",
+        "settlTime": "2018-08-08",
+        "opinion": "同意"
+    },
+    {
+        "nodeName": "技术评估",
+        "transactor": "王五",
+        "processTime": "2018-08-08",
+        "settlTime": "2018-08-08",
+        "opinion": "同意"
+    },
+    {
+        "nodeName": "会签",
+        "transactor": "张思",
+        "processTime": "2018-08-08",
+        "settlTime": "2018-08-08",
+        "opinion": "同意"
+    },
+    {
+        "nodeName": "经办人办理",
+        "transactor": "赵柳",
+        "processTime": "2018-08-08",
+        "settlTime": "2018-08-08",
+        "opinion": "8同意"
+    }
+]
