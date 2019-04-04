@@ -90,15 +90,12 @@ ion-grid{
   
   
 .text-ellipsis {
-    width:60%;
-    text-align: right;
     line-height: 28px;
     font-size: 14px;
+    text-align: center;
     display: inline-block;
     color: #0c0c0c;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;	 
+    margin-right: 3px;
 }
   
 .domn-arr {
@@ -107,7 +104,7 @@ ion-grid{
     font-size: 20px;
     color: #a4a4a4;
     position: relative;
-    top:-4px;
+    top: 4px;
 }
   
 .color-blue {

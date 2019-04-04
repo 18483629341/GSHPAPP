@@ -161,15 +161,6 @@ export class ProjectFilesService {
   getProAnalysisHpfileList(params, showloading, callback) {
     return this.httpService.get(this.configService.host + this.configService.proAnalysisHpfileList, params, showloading, callback);
   }
-  /**
-* 获取项目统计分析-列表数据
-* @param {Object} params 调用方法传过来的参数
-* @param {Boolean} showloading 是否显示数据加载,false或不传参为显示，true不显示
-* @param {Function} callback 回调函数
-*/
-  getproAnalysisCountList(params, showloading, callback) {
-    return this.httpService.get(this.configService.host + this.configService.proAnalysisCountList, params, showloading, callback);
-  }
   /** 项目统计分析  --end */
 
 }

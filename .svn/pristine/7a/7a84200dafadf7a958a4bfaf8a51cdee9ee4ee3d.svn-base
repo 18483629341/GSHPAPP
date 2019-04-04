@@ -72,6 +72,7 @@
   
   <div class="table_title">
     <span>关联项目</span>
+    
   </div>
 
   <ion-item *ngFor="let item of relativeUnitArr">

@@ -99,15 +99,12 @@ ion-grid{
 
 
 .text-ellipsis {
-  width:60%;
-  text-align: right;
   line-height: 28px;
   font-size: 14px;
+  text-align: center;
   display: inline-block;
   color: #0c0c0c;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;	 
+  margin-right: 3px;
 }
 
 .domn-arr {
@@ -116,7 +113,7 @@ ion-grid{
   font-size: 20px;
   color: #a4a4a4;
   position: relative;
-  top:-4px;
+  top: 4px;
 }
 
 .color-blue {
@@ -124,10 +121,14 @@ ion-grid{
 }
 
 .long-text{
-  
+  width:65%;
+  height:100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;	  
 }
 .special-down{
- 
+  top:-8px;
 }
 .optionList-div{
   ion-item[_ngcontent-c3],ion-item[_ngcontent-c2]{

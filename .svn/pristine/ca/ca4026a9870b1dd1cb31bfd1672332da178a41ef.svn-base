@@ -25,7 +25,6 @@ export class ConfigService {
   public proAnalysisRegionList = 'ProjectStatistics/getRegions'; // 获取筛选条件区域列表
   public proAnalysisYearList = 'ProjectStatistics/getYears'; // 获取筛选条件年份列表
   public proAnalysisHpfileList = 'ProjectStatistics/getHpxs'; // 获取筛选条件环评文件列表
-  public proAnalysisCountList = 'ProjectStatistics/getCountList'; // 获取列表数据
   /** 项目统计分析  --end */
 
 
