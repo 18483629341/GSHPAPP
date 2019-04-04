@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pro-info',
@@ -13,12 +14,12 @@ export class ProInfoPage implements OnInit {
     {projectCode:4,projectName:'兰州祁连山水泥商砼有限公司厂区扩建项目'},
     {projectCode:5,projectName:'兰州祁连山水泥商砼有限公司厂区扩建项目'},
   ];
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
-  changeOption(i){
+  goToRelated(i){
       console.log('projectCode:'+i);
-      //
+      this.router.navigateByUrl('/pro-info-related');
   }
 }

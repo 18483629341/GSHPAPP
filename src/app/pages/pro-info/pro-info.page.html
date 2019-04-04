@@ -7,75 +7,81 @@
   </ion-toolbar>
 </ion-header>
 
-<!-- <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button text=""></ion-back-button>
-      </ion-buttons>
-  
-      <ion-title>会议</ion-title>
-
-    </ion-toolbar>
-  </ion-header> -->
-
 <ion-content>
-  <ion-grid class="padding info-color list-grid">
-    <ion-row>
-      <ion-col size="12">
-        <span>企业名称：</span>兰州祁连山水泥商砼有限公司
-      </ion-col>
-      <ion-col size="12">
-        <span>统一社会信息代码（组织机构代码）：</span>123456789012345678
-      </ion-col>
-      <ion-col size="12">
-        <span>企业地址：</span>兰州市西固区环形路78号
-      </ion-col>
-      <ion-col size="12">
-        <span>企业成立时间：</span>2019-09-20
-      </ion-col>
-      <ion-col size="12">
-        <span>企业经度：</span>40度38分29秒
-      </ion-col>
-      <ion-col size="12">
-        <span>企业纬度：</span>100度23分23秒
-      </ion-col>
-      <ion-col size="12">
-        <span>电话：</span>12345678901
-      </ion-col>
-      <ion-col size="12">
-        <span>传真：</span>123456
-      </ion-col>
-      <ion-col size="12">
-        <span>邮编：</span>123456
-      </ion-col>
-      <ion-col size="12">
-        <span>单位电子邮箱：</span>123456@QQ.com
-      </ion-col>
-      <ion-col size="12">
-        <span> 法人代表姓名：</span>张一
-      </ion-col>
-      <ion-col size="12">
-        <span>环境保护联系人：</span>法尔
-      </ion-col>
-      <ion-col size="12">
-        <span>项经济类型：</span>国有经济
-      </ion-col>
-      <ion-col size="12">
-        <span>行政区:</span>兰州市西固区
-      </ion-col>
-      <ion-col size="12">
-        <span>行业类别：</span>水泥加工
-      </ion-col>
+  <!-- 详情列表 -->
+  <ion-grid class="dec-list">
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">企业名称：</ion-col>
+      <ion-col class="right-text" size="7">兰州祁连山水泥商砼有限公司</ion-col>
     </ion-row>
+    <ion-row align-items-center>
+
+      <ion-col class="left-text" size="5">统一社会信息代码（组织机构代码）：</ion-col>
+      <ion-col class="right-text" size="7">123456789012345678</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">企业地址：</ion-col>
+      <ion-col class="right-text" size="7">兰州市西固区环形路78号</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">企业成立时间：</ion-col>
+      <ion-col class="right-text" size="7">2019-09-20</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="left-text" size="5">企业经度：</ion-col>
+      <ion-col class="right-text" size="7">40度38分29秒</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">企业纬度：</ion-col>
+      <ion-col class="right-text" size="7">100度23分23秒</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">电话：</ion-col>
+      <ion-col class="right-text" size="7">12345678901</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+
+      <ion-col class="left-text" size="5">传真：</ion-col>
+      <ion-col class="right-text" size="7">123456</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">邮编：</ion-col>
+      <ion-col class="right-text" size="7">123456</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">单位电子邮箱：</ion-col>
+      <ion-col class="right-text" size="7">123456@QQ.com</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">法人代表姓名：</ion-col>
+      <ion-col class="right-text" size="7">张一</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">环境保护联系人：</ion-col>
+      <ion-col class="right-text" size="7">法尔</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">项经济类型：</ion-col>
+      <ion-col class="right-text" size="7">国有经济</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">行政区:</ion-col>
+      <ion-col class="right-text" size="7">兰州市西固区</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">行业类别：</ion-col>
+      <ion-col class="right-text" size="7">水泥加工</ion-col>
+    </ion-row>
+   
   </ion-grid>
 
-  
+
   <div class="table_title">
     <span>关联项目</span>
   </div>
 
   <ion-item *ngFor="let item of relativeUnitArr">
-    <ion-label text-wrap (click)="changeOption(item.projectCode)">
+    <ion-label text-wrap (click)="goToRelated(item.projectCode)">
       {{item.projectName}}
     </ion-label>
   </ion-item>

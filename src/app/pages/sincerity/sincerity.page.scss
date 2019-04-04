@@ -1,2 +1,27 @@
-.padding{ padding-left: 16px; padding-right: 16px;padding-top: 10px;padding-bottom: 16px;}
-.info-color span{color: #777}
+
+ion-title{
+    width: 120%;
+    margin-left: -10%;
+}
+/* 详情列表通用样式 start*/
+.dec-list{
+    background: #fff;
+    padding:10px 13px;
+    margin-bottom:20px;
+    ion-row{
+        line-height: 25px;
+        border-bottom: .55px solid #eee;
+        min-height: 40px;
+    }
+    .left-text{
+        color: #9d9fa7;   
+        font-size: 14px;
+    }
+    .right-text{  
+        font-size: 14px;
+        text-align: right;
+        color:#333;
+    }
+}
+
+/* 详情列表通用样式 end*/

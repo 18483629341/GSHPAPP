@@ -8,8 +8,7 @@
 
   <div class="top_head">
     <ion-segment id="top_tab">
-      <ion-segment-button checked=true class="top_tab_item" [ngClass]="{'active': str==1?true:false}"
-        (click)='OnitemClick(1)'>
+      <ion-segment-button checked=true class="top_tab_item" [ngClass]="{'active': str==1?true:false}" (click)='OnitemClick(1)'>
         机构
       </ion-segment-button>
       <ion-segment-button class="top_tab_item" [ngClass]="{'active': str==2?true:false}" (click)='OnitemClick(2)'>
@@ -29,7 +28,7 @@
 <ion-content>
 
   <div [style.display]="str==1?'block':'none'">
-    <ion-grid class="padding info-color">
+    <!-- <ion-grid class="padding info-color">
       <ion-row>
         <ion-col size="12">
           <span>机构名称：</span>鼎盛环评有限公司
@@ -38,7 +37,7 @@
           <span>机构性质：</span>民营
         </ion-col>
         <ion-col size="12">
-          <span>组织机构代码整好：</span>12312313554654654
+          <span>组织机构代码证号：</span>12312313554654654
         </ion-col>
         <ion-col size="12">
           <span>行政区规划：</span>兰州市城关区
@@ -71,7 +70,7 @@
           <span>乙级报告书评价范围：</span>冶金机电
         </ion-col>
         <ion-col size="12">
-          <span>报告表评价范围:</span>一般
+          <span>报告表评价范围：</span>一般
         </ion-col>
         <ion-col size="12">
           <span>机构资质等级：</span>甲级
@@ -82,6 +81,78 @@
         <ion-col size="12">
           <span>联系人：</span>徐飞
         </ion-col>
+      </ion-row>
+    </ion-grid> -->
+    <ion-grid class="dec-list">
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">机构名称：</ion-col>
+        <ion-col class="right-text" size="7">鼎盛环评有限公司</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+
+        <ion-col class="left-text" size="5">机构性质：</ion-col>
+        <ion-col class="right-text" size="7">民营</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">组织机构代码证号：</ion-col>
+        <ion-col class="right-text" size="7">12312313554654654</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">行政区规划：</ion-col>
+        <ion-col class="right-text" size="7">兰州市城关区</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="left-text" size="5">机构地址：</ion-col>
+        <ion-col class="right-text" size="7">兰州市城关区老胡同巷子32号</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">经度：</ion-col>
+        <ion-col class="right-text" size="7">100度23分23秒</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">纬度：</ion-col>
+        <ion-col class="right-text" size="7">11度30分21秒</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+
+        <ion-col class="left-text" size="5">成立时间：</ion-col>
+        <ion-col class="right-text" size="7">2013-02-02</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">法定代表人：</ion-col>
+        <ion-col class="right-text" size="7">李明</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">有效期：</ion-col>
+        <ion-col class="right-text" size="7">2016-02-02</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">发证时间：</ion-col>
+        <ion-col class="right-text" size="7">2014-02-02</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="6">甲级报告书评价范围：</ion-col>
+        <ion-col class="right-text" size="6">交通运输</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="6">乙级报告书评价范围：</ion-col>
+        <ion-col class="right-text" size="6">冶金机电</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">报告表评价范围：</ion-col>
+        <ion-col class="right-text" size="7">一般</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">机构资质等级：</ion-col>
+        <ion-col class="right-text" size="7">甲级</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">资格证号：</ion-col>
+        <ion-col class="right-text" size="7">B1203</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">联系人：</ion-col>
+        <ion-col class="right-text" size="7">徐飞</ion-col>
       </ion-row>
     </ion-grid>
   </div>

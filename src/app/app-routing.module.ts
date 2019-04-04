@@ -35,7 +35,9 @@ const routes: Routes = [
   { path: 'check-save', loadChildren: './pages/check-save/check-save.module#CheckSavePageModule' },
   { path: 'test-info', loadChildren: './pages/test-info/test-info.module#TestInfoPageModule' },
   { path: 'personal-center', loadChildren: './pages/personal-center/personal-center.module#PersonalCenterPageModule' },
-  { path: 'favorite', loadChildren: './pages/favorite/favorite.module#FavoritePageModule' }
+  { path: 'favorite', loadChildren: './pages/favorite/favorite.module#FavoritePageModule' },
+  { path: 'pro-info-related', loadChildren: './pages/pro-info-related/pro-info-related.module#ProInfoRelatedPageModule' }
+  
 ];
 @NgModule({
   imports: [

@@ -86,21 +86,41 @@ ion-label{
     border-bottom: 0.55px solid rgb(247, 247, 247);
     margin-top: 0px;
     margin-bottom: 0px;
+    p:first-child{
+        margin-top: 12px;
+        height: 16px;
+        line-height: 16px;
+        color: #131313;
+        font-size: 14px;
+    }
+    p:last-child{
+        height: 16px;
+        line-height: 16px;
+        color: #767676;
+        font-size: 11px;
+    }
 }
 
-ion-label p:first-child{
-    margin-top: 12px;
-    height: 16px;
-    line-height: 16px;
-    color: #131313;
-    font-size: 13px;
+
+/* 详情列表通用样式 start*/
+.dec-list{
+    background: #fff;
+    padding:10px 13px;
+    margin-bottom:20px;
+    ion-row{
+        line-height: 25px;
+        border-bottom: .55px solid #eee;
+        min-height: 40px;
+    }
+    .left-text{
+        color: #9d9fa7;   
+        font-size: 14px;
+    }
+    .right-text{  
+        font-size: 14px;
+        text-align: right;
+        color:#333;
+    }
 }
 
-
-
-ion-label p:last-child{
-    height: 16px;
-    line-height: 16px;
-    color: #767676;
-    font-size: 11px;
-}
+/* 详情列表通用样式 end*/
