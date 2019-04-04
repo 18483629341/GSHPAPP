@@ -1,0 +1,46 @@
+<ion-header mode='ios'>
+  <ion-toolbar mode='ios'>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back" mode='ios'></ion-back-button>
+    </ion-buttons>
+    <ion-title>项目信息</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 详情列表 -->
+  <ion-grid class="dec-list">
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">信息来源：</ion-col>
+        <ion-col class="right-text" size="7">审批系统推送</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">项目名称：</ion-col>
+        <ion-col class="right-text" size="7">东南热电中心华能北京热电三期热电项目</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">所在地：</ion-col>
+        <ion-col class="right-text" size="7">兰州市城关区</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">受理时间：</ion-col>
+        <ion-col class="right-text" size="7">2015-11-15</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="left-text" size="5">审批时间：</ion-col>
+        <ion-col class="right-text" size="7">2015-11-25</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">审批部门：</ion-col>
+        <ion-col class="right-text" size="7">2018-10-10</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">审批文号：</ion-col>
+        <ion-col class="right-text" size="7">甘环审20151010</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">环评文件类型：</ion-col>
+        <ion-col class="right-text" size="7">报告书</ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

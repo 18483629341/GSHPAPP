@@ -1,0 +1,256 @@
+<ion-header mode='ios'>
+  <ion-toolbar mode='ios'>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back" mode='ios'></ion-back-button>
+    </ion-buttons>
+    <ion-title>环评专家信息</ion-title>
+  </ion-toolbar>
+  <!-- Default Segment -->
+  <div class="top_head">
+    <ion-segment id="top_tab">
+      <ion-segment-button checked=true class="top_tab_item" [ngClass]="{'active': str==1?true:false}" (click)='OnitemClick(1)'>
+        基本信息
+      </ion-segment-button>
+      <ion-segment-button class="top_tab_item" [ngClass]="{'active': str==2?true:false}" (click)='OnitemClick(2)'>
+        诚信档案
+      </ion-segment-button>
+      <ion-segment-button class="top_tab_item" [ngClass]="{'active': str==3?true:false}" (click)='OnitemClick(3)'>
+        参与项目
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+</ion-header>
+
+<ion-content>
+  <div [style.display]="str==1?'block':'none'">
+    <!-- <ion-grid class="padding info-color">
+      <ion-row>
+        <ion-col size="12">
+          <span>姓名：</span>张三
+        </ion-col>
+        <ion-col size="12">
+          <span>性别：</span>男
+        </ion-col>
+        <ion-col size="12">
+          <span>专家类型：</span>省内专家
+        </ion-col>
+        <ion-col size="12">
+          <span>专家状态：</span>正是专家
+        </ion-col>
+        <ion-col size="12">
+          <span>是否可担任组长：</span>是
+        </ion-col>
+        <ion-col size="12">
+          <span>专业领域：</span>环境工程
+        </ion-col>
+        <ion-col size="12">
+          <span>行业领域：</span>污水处理
+        </ion-col>
+        <ion-col size="12">
+          <span>身份证：</span>123132135138516153
+        </ion-col>
+        <ion-col size="12">
+          <span> 职务：</span>高级工程师
+        </ion-col>
+        <ion-col size="12">
+          <span>目前从事事业：</span>污水处理
+        </ion-col>
+        <ion-col size="12">
+          <span>民族：</span>汉
+        </ion-col>
+        <ion-col size="12">
+          <span>工作单位：</span>兰州大学
+        </ion-col>
+        <ion-col size="12">
+          <span>身体状况：</span>良好
+        </ion-col>
+        <ion-col size="12">
+          <span>通讯地址:</span>兰州市城管区敖兰璐33号
+        </ion-col>
+        <ion-col size="12">
+          <span>参与次数：</span>3
+        </ion-col>
+        <ion-col size="12">
+          <span>举报电话：</span>151651615
+        </ion-col>
+        <ion-col size="12">
+          <span>单位电话：</span>4654665156
+        </ion-col>
+        <ion-col size="12">
+          <span>传真：</span>4654665156
+        </ion-col>
+        <ion-col size="12">
+          <span>是否担任过组长：</span>是
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+    <ion-grid class="dec-list">
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">姓名：</ion-col>
+        <ion-col class="right-text" size="7">张三</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+
+        <ion-col class="left-text" size="5">性别：</ion-col>
+        <ion-col class="right-text" size="7">男</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">专家类型：</ion-col>
+        <ion-col class="right-text" size="7">省内专家</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">专家状态：</ion-col>
+        <ion-col class="right-text" size="7">正式专家</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="left-text" size="5">是否可担任组长：</ion-col>
+        <ion-col class="right-text" size="7">是</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">专业领域：</ion-col>
+        <ion-col class="right-text" size="7">环境工程</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">行业领域：</ion-col>
+        <ion-col class="right-text" size="7">污水处理</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+
+        <ion-col class="left-text" size="5">身份证：</ion-col>
+        <ion-col class="right-text" size="7">123132135138516153</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">职务：</ion-col>
+        <ion-col class="right-text" size="7">高级工程师</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">目前从事事业：</ion-col>
+        <ion-col class="right-text" size="7">污水处理</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">民族：</ion-col>
+        <ion-col class="right-text" size="7">汉</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="6">工作单位：</ion-col>
+        <ion-col class="right-text" size="6">兰州大学</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="6">身体状况：</ion-col>
+        <ion-col class="right-text" size="6">良好</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">通讯地址:</ion-col>
+        <ion-col class="right-text" size="7">兰州市城管区敖兰璐33号</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">参与次数：</ion-col>
+        <ion-col class="right-text" size="7">3</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">举报电话：</ion-col>
+        <ion-col class="right-text" size="7">151651615</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">单位电话：</ion-col>
+        <ion-col class="right-text" size="7">4654665156</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">传真：</ion-col>
+        <ion-col class="right-text" size="7">4654665156</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div [style.display]="str==2?'block':'none'">
+    <!-- <table border="1px #777" id="bottom_table">
+      <tr>
+        <th>序号</th>
+        <th>类别</th>
+        <th>次数</th>
+      </tr>
+      <tr>
+        <td><span>1</span></td>
+        <td><span>不负责任，弄虚作假，未能客观、公正履行审查职责的 </span></td>
+        <td><span>0</span></td>
+      </tr>
+      <tr>
+        <td><span>1</span></td>
+        <td><span>不负责任，弄虚作假，未能客观、公正履行审查职责的 </span></td>
+        <td><span>0</span></td>
+      </tr>
+      <tr>
+        <td><span>1</span></td>
+        <td><span>不负责任，弄虚作假，未能客观、公正履行审查职责的 </span></td>
+        <td><span>0</span></td>
+      </tr>
+      <tr>
+        <td><span>1</span></td>
+        <td><span>不负责任，弄虚作假，未能客观、公正履行审查职责的 </span></td>
+        <td><span>0</span></td>
+      </tr>
+      <tr>
+        <td><span>1</span></td>
+        <td><span>不负责任，弄虚作假，未能客观、公正履行审查职责的 </span></td>
+        <td><span>0</span></td>
+      </tr>
+    </table> -->
+    <ion-item lines='none'>
+      <img src="assets/imgs/all.png">
+      <ion-label>
+        <p>类别：不负责任，弄虚作假，未能客观、公正履行审查职责的</p>
+        <p>次数：3</p>
+      </ion-label>
+      <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+    </ion-item>
+  </div>
+
+  <div [style.display]="str==3?'block':'none'">
+    <!-- <table border="1px #777" id="bottom_table">
+      <tr>
+        <th>序号</th>
+        <th>项目编号</th>
+        <th>项目名称</th>
+        <th>评估日期</th>
+        <th>项目经办人评价</th>
+      </tr>
+      <tr>
+        <td><span>1</span></td>
+        <td><span>1234567</span></td>
+        <td><span>大兴世界有限公司厂区扩建项目环评报告书评估</span></td>
+        <td><span>2019-09-08</span></td>
+        <td><span>评级客观</span></td>
+      </tr>
+      <tr>
+        <td><span>1</span></td>
+        <td><span>1234567</span></td>
+        <td><span>大兴世界有限公司厂区扩建项目环评报告书评估</span></td>
+        <td><span>2019-09-08</span></td>
+        <td><span>评级客观</span></td>
+      </tr>
+      <tr>
+        <td><span>1</span></td>
+        <td><span>1234567</span></td>
+        <td><span>大兴世界有限公司厂区扩建项目环评报告书评估</span></td>
+        <td><span>2019-09-08</span></td>
+        <td><span>评级客观</span></td>
+      </tr>
+      <tr>
+        <td><span>1</span></td>
+        <td><span>1234567</span></td>
+        <td><span>大兴世界有限公司厂区扩建项目环评报告书评估</span></td>
+        <td><span>2019-09-08</span></td>
+        <td><span>评级客观</span></td>
+      </tr>
+    </table> -->
+    <ion-item lines='none'>
+      <img src="assets/imgs/all.png">
+      <ion-label (click)="goPartakePro()">
+        <p>大兴世界有限公司厂区扩建项目环评报告书评估</p>
+        <p>3242343423213123</p>
+      </ion-label>
+      <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+    </ion-item>
+  </div>
+</ion-content>

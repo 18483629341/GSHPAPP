@@ -1,0 +1,30 @@
+
+<ion-content no-padding>
+    <div class="fixed-content">
+      <div class="banner-img"><img src="../../../assets/imgs/logo.png" />
+        <p class="title">甘肃省建设项目移动监管系统</p>
+      </div>
+      <form class="padding-all-20">
+        <div class="LoginBox">
+          <img src="../../../assets/imgs/01_05.png">
+          <div class="inputBox"><input type='text' placeholder="请输入用户名" [(ngModel)]="loginInfo.userName" name='username'></div>
+          <div (click)="clearInput()" class='icon-color icon iconfont icon-guanbi' *ngIf="loginInfo.userName.length>0">
+            </div>
+        </div>
+        <div class="LoginBox">
+          <img src="../../../assets/imgs/01_11.png">
+          <div class="inputBox"><input [type]="visibility?'text':'password'" placeholder="请输入密码" [(ngModel)]="loginInfo.password" name="password"></div>
+          <div (click)="changeEyes()" [class]="visibility?' icon-color icon iconfont icon-yanjing':'icon iconfont icon-eye-off  icon-color '">
+          </div>
+        </div>
+        <div class="margin-top-60 margin-lr-16">
+            <button class="login-btn" (click)="login()">登录</button>
+        </div>
+        <div class="remeberBox">
+            <div><ion-checkbox color="light" class="btn" size="20" (ionChange)="isRememberName()" [(ngModel)]="loginInfo.isRemName" [ngModelOptions]="{standalone: true}"></ion-checkbox><span>记住用户名</span></div>
+            <div><ion-checkbox color="light" class="btn" size="20" (ionChange)="isRememberPwd()" [(ngModel)]="loginInfo.isRemPwd" [ngModelOptions]="{standalone: true}"></ion-checkbox><span>记住密码</span></div>
+        </div>
+      </form>
+    </div>
+  
+  </ion-content>

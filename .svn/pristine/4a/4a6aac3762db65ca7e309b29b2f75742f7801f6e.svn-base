@@ -1,0 +1,216 @@
+<ion-header mode='ios'>
+  <ion-toolbar mode='ios'>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back" mode='ios'></ion-back-button>
+    </ion-buttons>
+    <ion-title>建设单位信息</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 详情列表 -->
+  <ion-grid class="dec-list">
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">企业名称：</ion-col>
+      <ion-col class="right-text" size="7">兰州祁连山水泥商砼有限公司</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+
+      <ion-col class="left-text" size="5">统一社会信息代码（组织机构代码）：</ion-col>
+      <ion-col class="right-text" size="7">123456789012345678</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">企业地址：</ion-col>
+      <ion-col class="right-text" size="7">兰州市西固区环形路78号</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">企业成立时间：</ion-col>
+      <ion-col class="right-text" size="7">2019-09-20</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="left-text" size="5">企业经度：</ion-col>
+      <ion-col class="right-text" size="7">40度38分29秒</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">企业纬度：</ion-col>
+      <ion-col class="right-text" size="7">100度23分23秒</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">电话：</ion-col>
+      <ion-col class="right-text" size="7">12345678901</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+
+      <ion-col class="left-text" size="5">传真：</ion-col>
+      <ion-col class="right-text" size="7">123456</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">邮编：</ion-col>
+      <ion-col class="right-text" size="7">123456</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">单位电子邮箱：</ion-col>
+      <ion-col class="right-text" size="7">123456@QQ.com</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">法人代表姓名：</ion-col>
+      <ion-col class="right-text" size="7">张一</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">环境保护联系人：</ion-col>
+      <ion-col class="right-text" size="7">法尔</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">项经济类型：</ion-col>
+      <ion-col class="right-text" size="7">国有经济</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">行政区:</ion-col>
+      <ion-col class="right-text" size="7">兰州市西固区</ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col class="left-text" size="5">行业类别：</ion-col>
+      <ion-col class="right-text" size="7">水泥加工</ion-col>
+    </ion-row>
+   
+  </ion-grid>
+
+
+  <div class="table_title">
+    <span>关联项目</span>
+  </div>
+
+  <ion-item *ngFor="let item of relativeUnitArr">
+    <ion-label text-wrap (click)="goToRelated(item.projectCode)">
+      {{item.projectName}}
+    </ion-label>
+  </ion-item>
+
+  <!-- <div class="TranslateXYContainer">
+    <table class="tb1" cellspacing="0">
+      <thead>
+        <th>序号</th>
+      </thead>
+    </table>
+    <div class="contain">
+
+      <table class="tb2" cellspacing="0">
+        <thead>
+          <th style="border: 1px solid #4162fb;">项目编号</th>
+          <th style="border: 1px solid #4162fb;">项目名称</th>
+          <th style="border: 1px solid #4162fb;">建设地点</th>
+          <th style="border: 1px solid #4162fb;">所属行业</th>
+          <th style="border: 1px solid #4162fb;">环保投资额（万元）</th>
+          <th style="border: 1px solid #4162fb;">审批时间</th>
+        </thead>
+      </table>
+      <table class="tb3" cellspacing="0">
+        <tbody>
+          <tr>
+            <th>1</th>
+          </tr>
+          <tr>
+            <th>2</th>
+          </tr>
+          <tr>
+            <th>3</th>
+          </tr>
+          <tr>
+            <th>4</th>
+          </tr>
+          <tr>
+            <th>5</th>
+          </tr>
+          <tr>
+            <th>6</th>
+          </tr>
+          <tr>
+            <th>7</th>
+          </tr>
+          <tr>
+            <th>8</th>
+          </tr>
+          <tr>
+            <th>9</th>
+          </tr>
+        </tbody>
+      </table>
+      <table class="tb4" cellspacing="0">
+        <tbody>
+          <tr>
+            <td>GHS12341</td>
+            <td>兰州祁连山水泥商砼有限公司厂区扩建项目</td>
+            <td>兰州市西固区环形路78号</td>
+            <td>水泥制造</td>
+            <td>1200</td>
+            <td>2019-09-09</td>
+          </tr>
+          <tr>
+            <td>GHS12341</td>
+            <td>兰州祁连山水泥商砼有限公司厂区扩建项目</td>
+            <td>兰州市西固区环形路78号</td>
+            <td>水泥制造</td>
+            <td>1200</td>
+            <td>2019-09-09</td>
+          </tr>
+          <tr>
+            <td>GHS12341</td>
+            <td>兰州祁连山水泥商砼有限公司厂区扩建项目</td>
+            <td>兰州市西固区环形路78号</td>
+            <td>水泥制造</td>
+            <td>1200</td>
+            <td>2019-09-09</td>
+          </tr>
+          <tr>
+            <td>GHS12341</td>
+            <td>兰州祁连山水泥商砼有限公司厂区扩建项目</td>
+            <td>兰州市西固区环形路78号</td>
+            <td>水泥制造</td>
+            <td>1200</td>
+            <td>2019-09-09</td>
+          </tr>
+          <tr>
+            <td>GHS12341</td>
+            <td>兰州祁连山水泥商砼有限公司厂区扩建项目</td>
+            <td>兰州市西固区环形路78号</td>
+            <td>水泥制造</td>
+            <td>1200</td>
+            <td>2019-09-09</td>
+          </tr>
+          <tr>
+            <td>GHS12341</td>
+            <td>兰州祁连山水泥商砼有限公司厂区扩建项目</td>
+            <td>兰州市西固区环形路78号</td>
+            <td>水泥制造</td>
+            <td>1200</td>
+            <td>2019-09-09</td>
+          </tr>
+          <tr>
+            <td>GHS12341</td>
+            <td>兰州祁连山水泥商砼有限公司厂区扩建项目</td>
+            <td>兰州市西固区环形路78号</td>
+            <td>水泥制造</td>
+            <td>1200</td>
+            <td>2019-09-09</td>
+          </tr>
+          <tr>
+            <td>GHS12341</td>
+            <td>兰州祁连山水泥商砼有限公司厂区扩建项目</td>
+            <td>兰州市西固区环形路78号</td>
+            <td>水泥制造</td>
+            <td>1200</td>
+            <td>2019-09-09</td>
+          </tr>
+          <tr>
+            <td>GHS12341</td>
+            <td>兰州祁连山水泥商砼有限公司厂区扩建项目</td>
+            <td>兰州市西固区环形路78号</td>
+            <td>水泥制造</td>
+            <td>1200</td>
+            <td>2019-09-09</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> -->
+</ion-content>

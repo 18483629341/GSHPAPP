@@ -1,12 +1,12 @@
+ion-content{
+    --background: #f7f7f7;
+}
 ion-header {
     ion-toolbar {
         --background: #4162fb;
         color: #fff;
     }
 }
-.padding{ padding-left: 16px; padding-right: 16px;padding-top: 10px;padding-bottom: 16px;}
-.info-color span{color: #777}
-
 /* 详情列表通用样式 start*/
 .dec-list{
     background: #fff;
@@ -29,3 +29,27 @@ ion-header {
 }
 
 /* 详情列表通用样式 end*/
+ion-item{
+    font-size: 14px;
+    color: #262834;
+    --border-color: #ebebeb;
+    position: relative;
+    padding-right: 13px;
+    background: #fff;
+}
+
+
+
+.table_title,.project_title{
+    background: #fff;
+    padding: 10px 0;
+    border-bottom: #ededed solid 1px;
+    span{
+        color: #3a3a3a;
+        font-weight: bold;
+        padding-left: 10px;
+    }
+}
+
+
+
