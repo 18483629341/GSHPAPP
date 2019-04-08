@@ -10,14 +10,10 @@ import { loadModules } from 'esri-loader';
 })
 export class Tab1Page implements OnInit {
   public isShowOptions: boolean; // 筛选div是否显示
-  public area:string='区域';      //区域列表的头部
-  public industry:string='行业';  //行业列表的头部
-  public year:string='年份';      //年份列表的头部
-  public envAssessment:string='环评文件';      //环评文件列表的头部
   public mapOptionAreaList: any = []; // 地图的tab筛选条件的区域列表
   public mapOptionIndustryList: any = []; // 地图的tab筛选条件的行业列表
   public mapOptionYearList: any = []; // 地图的tab筛选条件的年份列表
-  public mapOptionHpfileList: any = []; // 地图的tab筛选条件的环评文件列表
+  public mapOptionHpfileList: any = []; // 地图的tab筛选条件的年份列表
   public currentOptionTabIndex; // 当前点击的tab的index的值
   public map: any; // 地图
   public isMapShow: boolean; // 是否显示地图
@@ -30,10 +26,9 @@ export class Tab1Page implements OnInit {
   public projectInfoDate; // 项目详情信息
   public isShowProjectInfoData; // 地图是否显示详情信息弹框
   public areaTabIndex:any=0;//默认选中区域的下标
-  public selectedIndustryArr:any = []; //用于存放 暂时选中的行业名称
-  public selectedIndustryIDs:any = []; //用于存放 暂时选中的行业ID
+  public industryIndexArr:any=[];//默认选中行业的下标数组
   public yearTabIndex:any=0;//默认选中年份的下标
-  public fileTabIndex:any=0;//默认选中环评文件的下标
+  public flieTabIndex:any=0;//默认选中环评文件的下标
   constructor(public mapHttpService: MapHttpService, public router: Router, public mapService: MapHttpService, public projectFilesService: ProjectFilesService) {
     this.isShowOptions = false; // 默认不显示筛选列表数据
     this.isMapShow = true; // 默认显示地图
@@ -110,21 +105,9 @@ export class Tab1Page implements OnInit {
    */
   getMapAreaData() {
     this.mapHttpService.getMapAreaData({}, true, res => {
-      //console.log('区域筛选列表',res);
+      console.log(res);
       if (res !== 'error') {
-        this.mapOptionAreaList = res|| [];
-      }
-    });
-  }
-
-  /**
-   * 获取地图的行业筛选条件列表
-   */
-  getOptionIndustryListData() {
-    this.mapHttpService.getMapIndustryData({}, true, res => {
-        console.log('行业筛选列表',res);
-      if (res !== 'error') {
-        this.mapOptionIndustryList = res || [];
+        this.mapOptionAreaList = res.data || [];
       }
     });
   }
@@ -134,9 +117,9 @@ export class Tab1Page implements OnInit {
    */
   getOptionYearListData() {
     this.mapHttpService.getMapYearData({}, true, res => {
-      // console.log('年份筛选列表',res);
+      // console.log(res);
       if (res !== 'error') {
-        this.mapOptionYearList = res || [];
+        this.mapOptionYearList = res.data || [];
       }
     });
   }
@@ -144,16 +127,13 @@ export class Tab1Page implements OnInit {
   /**
    * 获取地图的环评文件筛选条件列表
    */
-  getOptionEnviAssessmentListData() {
-    this.mapHttpService.getEnviAssessmentData({}, true, res => {
-      console.log('环评文件筛选列表',res);
+  getOptionIndustryListData() {
+    this.mapHttpService.getMapIndustryData({}, true, res => {
       if (res !== 'error') {
-        this.mapOptionHpfileList = res|| [];
+        this.mapOptionIndustryList = res.data || [];
       }
     });
   }
-
-
   /**
    * 获取地图的点位数据
    */
@@ -179,12 +159,12 @@ export class Tab1Page implements OnInit {
    * 获取地图列表数据
    */
   // getMapListData() {
-    //   this.mapHttpService.getMapListData({}, true, res => {
-    //     // console.log(res);
-    //     if (res !== 'error') {
-    //       this.mapListPoint = res || [];
-    //     }
-    //   });  
+  //   this.mapHttpService.getMapListData({}, true, res => {
+  //     // console.log(res);
+  //     if (res !== 'error') {
+  //       this.mapListPoint = res || [];
+  //     }
+  //   });
   // }
   /**
    * 点击是否显示tab筛选条例列表数据
@@ -205,69 +185,37 @@ export class Tab1Page implements OnInit {
   closePotionSelectWindow() {
     this.isShowOptions = !this.isShowOptions;
   }
-  
   /**
    * 选择 主题为区域 筛选选项(单选)
    */
-  selectAreaOption(item,i) {
+  selectAreaOption(item) {
     this.isShowOptions = !this.isShowOptions;
-    this.areaTabIndex=i;
-    this.area=item.regionName;
+    this.areaTabIndex=item;
   }
 
   /**
-   * 确认行业的筛选-多选
+   * 选择 主题为行业 筛选选项(单选)
   */
- confirmIndustryOptions() {
-  
-    this.mapOptionIndustryList.map((item)=>{
-      if(item.isChecked===true){//当isChecked属性为true时
-        if( this.selectedIndustryArr.indexOf(item.industryName)===-1){//当数组(存放行业名称的)中不存在此行业名称时，才push
-          this.selectedIndustryArr.push(item.industryName);//加入行业名称到数组中
-          this.selectedIndustryIDs.push(item.industryCode);
-        }
-      }else{//当isChecked属性为false时
-        if( this.selectedIndustryArr.indexOf(item.industryName)>-1){//当数组(存放行业名称的)中存在此行业名称时，删除此名称
-          var index=this.selectedIndustryArr.indexOf(item.industryName);
-          this.selectedIndustryArr.splice(index, 1); //删除此行业名称
-          this.selectedIndustryIDs.splice(index, 1);
-        }
-      }
-    })
-    var n=this.selectedIndustryArr.length;
-    //当选择好后的行业数量n>1时，industry为“多选”,n===1时，industry为数组的第一项；,n=0时，industry为"行业
-    this.industry=n>1?'多选':n===1?this.selectedIndustryArr[0]:"行业";
+  selectIndusryOption(event,item) {
     this.isShowOptions = !this.isShowOptions;
+    // if(this.industryIndexArr has(item))
+    // this.industryIndexArr=item;
   }
 
-  /**
-   * 重置行业的筛选-多选
-  */
- resetIndustryOptions(){
-    this.mapOptionIndustryList.map(function (item) {
-      if(item.isChecked===true){
-        item.isChecked=false;
-      } 
-    })
-    this.selectedIndustryArr=[];
-  }
   /**
    * 选择 主题为年份的 筛选选项(单选)
   */
-  selectYearOption(item,i) {
+  selectYearOption(item) {
     this.isShowOptions = !this.isShowOptions;
-    this.yearTabIndex=i;
-    this.year=item.year;
-    
+    this.yearTabIndex=item;
   }
 
   /**
    * 选择 主题为环评文件的 筛选选项(单选)
   */
-  selectFileOption(item,i){
+  selectFileOption(item){
     this.isShowOptions = !this.isShowOptions;
-    this.fileTabIndex=i;
-    this.envAssessment=item.name;
+    this.flieTabIndex=item;
   }
 
   /**

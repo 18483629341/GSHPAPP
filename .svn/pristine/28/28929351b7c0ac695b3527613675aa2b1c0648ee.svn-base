@@ -1,0 +1,188 @@
+import { Injectable } from '@angular/core';
+import { HttpService } from './http.service';
+import { ConfigService } from './config.service';
+@Injectable({
+  providedIn: 'root'
+})
+export class ProjectFilesService {
+  public favoriteList: any = [] ;
+  constructor(public httpService: HttpService, public configService: ConfigService) { }
+  /**
+ * 登录验证
+ * @param {Object} params 调用方法传过来的参数，根据城市代码查询进行获取
+ * @param {Boolean} flag 是否显示数据加载,false或不传参为显示，true不显示
+ * @param {Function} callback 回调函数
+ */
+  login(params, showloading, callback) {
+    return this.httpService.get(this.configService.host + this.configService.login, params, showloading, callback);
+  }
+  /* 项目档案开始 */
+  // 基本信息
+  getBaseInfoData(params, showloading, callback) {
+    return this.httpService.get(this.configService.host + this.configService.baseInfo, params, showloading, callback);
+  }
+  // 登录表
+  getLoginTable(params, showloading, callback) {
+    return this.httpService.get(this.configService.host + this.configService.loginTable, params, showloading, callback);
+  }
+  // 项目档案
+  getProjectInfo(params, showloading, callback) {
+    return this.httpService.get(this.configService.host + this.configService.projectFiles, params, showloading, callback);
+  }
+  // 基础表1
+  getApprovalForm(params, showloading, callback) {
+    return this.httpService.get(this.configService.host + this.configService.approvalForm, params, showloading, callback);
+  }
+  // 基础表3
+  getApprovalForm3(params, showloading, callback) {
+    return this.httpService.get('../../assets/data/ApprovalForm3.json', params, showloading, callback);
+  }
+  // 办理过程
+  getHandling(params, showloading, callback) {
+    return this.httpService.get('../../assets/data/Handling.json', params, showloading, callback);
+  }
+  // 延时记录
+  getDelayRecord(params, showloading, callback) {
+    return this.httpService.get('../../assets/data/DelayRecord.json', params, showloading, callback);
+  }
+  // 评价备案信息
+  getRecordInfo(params, showloading, callback) {
+    return this.httpService.get('../../assets/data/recordInfo.json', params, showloading, callback);
+  }
+  // 评价备案信息
+  getInspectionRecord(params, showloading, callback) {
+    return this.httpService.get('../../assets/data/inspectionRecord.json', params, showloading, callback);
+  }
+  // 三同时检查录入
+  getCheckSave(params, showloading, callback) {
+    return this.httpService.get(this.configService.host + this.configService.loginTable, params, showloading, callback);
+  }
+
+  /* 项目档案结束 */
+
+  /* 环评监督管理开始 */
+
+  // 环评专家的列表数据
+  getHpzjList(params, showloading, callback) {
+    return this.httpService.get('../../assets/data/HpzjList.json', params, showloading, callback);
+  }
+  /**
+  * 获取环评监督管理–建设单位-获取筛选条件-区域列表
+  * @param {Object} params 调用方法传过来的参数
+  * @param {Boolean} showloading 是否显示数据加载,false或不传参为显示，true不显示
+  * @param {Function} callback 回调函数
+  */
+  getReligionList(params, showloading, callback) {
+    return this.httpService.get(this.configService.host + this.configService.regionList, params, showloading, callback);
+  }
+
+  /**
+  * 获取环评监督管理–建设单位-获取筛选条件-行业列表
+  * @param {Object} params 调用方法传过来的参数
+  * @param {Boolean} showloading 是否显示数据加载,false或不传参为显示，true不显示
+  * @param {Function} callback 回调函数
+  */
+  getIndustryList(params, showloading, callback) {
+    return this.httpService.get(this.configService.host + this.configService.industryList, params, showloading, callback);
+  }
+
+  /**
+  * 获取环评监督管理–建设单位-获取列表数据
+  * @param {Object} params 调用方法传过来的参数
+  * @param {Boolean} showloading 是否显示数据加载,false或不传参为显示，true不显示
+  * @param {Function} callback 回调函数
+  */
+  getProInfoList(params, showloading, callback) {
+    return this.httpService.get(this.configService.host + this.configService.devcompanyInfoList, params, showloading, callback);
+  }
+
+  /**
+  * 获取环评监督管理-编制单位-筛选条件-地区列表
+  * @param {Object} params 调用方法传过来的参数
+  * @param {Boolean} showloading 是否显示数据加载,false或不传参为显示，true不显示
+  * @param {Function} callback 回调函数
+  */
+  getPlaceList(params, showloading, callback) {
+    return this.httpService.get(this.configService.host + this.configService.placeList, params, showloading, callback);
+  }
+  /**
+    * 获取环评监督管理-编制单位-筛选条件-甲级环评报告书评价范围列表
+    * @param {Object} params 调用方法传过来的参数
+    * @param {Boolean} showloading 是否显示数据加载,false或不传参为显示，true不显示
+    * @param {Function} callback 回调函数
+    */
+  getReportList(params, showloading, callback) {
+    return this.httpService.get('../../assets/data/EIA-consUnit-establishunit-reportList.json', params, showloading, callback);
+  }
+  /**
+    * 获取环评监督管理-编制单位-获取列表数据
+    * @param {Object} params 调用方法传过来的参数
+    * @param {Boolean} showloading 是否显示数据加载,false或不传参为显示，true不显示
+    * @param {Function} callback 回调函数
+    */
+  getUnitList(params, showloading, callback) {
+    return this.httpService.get('../../assets/data/EIA-consUnit-establishunit-unitListData.json', params, showloading, callback);
+  }
+  /**
+    * 获取环评监督管理-环评专家-获取领域列表数据
+    * @param {Object} params 调用方法传过来的参数
+    * @param {Boolean} showloading 是否显示数据加载,false或不传参为显示，true不显示
+    * @param {Function} callback 回调函数
+    */
+  getFieldList(params, showloading, callback) {
+    return this.httpService.get('../../assets/data/EIA-consUnit-hpzj-fieldList.json', params, showloading, callback);
+  }
+
+  /**
+  * 获取环评监督管理-环评专家-获取学历列表数据
+  * @param {Object} params 调用方法传过来的参数
+  * @param {Boolean} showloading 是否显示数据加载,false或不传参为显示，true不显示
+  * @param {Function} callback 回调函数
+  */
+  getEducationList(params, showloading, callback) {
+    return this.httpService.get('../../assets/data/EIA-consUnit-hpzj-educationList.json', params, showloading, callback);
+  }
+
+  /* 环评监督管理结束 */
+
+  /** 项目统计分析  --start */
+  /**
+  * 获取项目统计分析-筛选条件-区域列表数据
+  * @param {Object} params 调用方法传过来的参数
+  * @param {Boolean} showloading 是否显示数据加载,false或不传参为显示，true不显示
+  * @param {Function} callback 回调函数
+  */
+  getProAnalysisRegionList(params, showloading, callback) {
+    return this.httpService.get(this.configService.host + this.configService.proAnalysisRegionList, params, showloading, callback);
+  }
+  /**
+  * 获取项目统计分析-筛选条件-区域列表数据
+  * @param {Object} params 调用方法传过来的参数
+  * @param {Boolean} showloading 是否显示数据加载,false或不传参为显示，true不显示
+  * @param {Function} callback 回调函数
+  */
+  getProAnalysisYearList(params, showloading, callback) {
+    return this.httpService.get(this.configService.host + this.configService.proAnalysisYearList, params, showloading, callback);
+  }
+  /**
+  * 获取项目统计分析-筛选条件-环评文件列表数据
+  * @param {Object} params 调用方法传过来的参数
+  * @param {Boolean} showloading 是否显示数据加载,false或不传参为显示，true不显示
+  * @param {Function} callback 回调函数
+  */
+  getProAnalysisHpfileList(params, showloading, callback) {
+    return this.httpService.get(this.configService.host + this.configService.proAnalysisHpfileList, params, showloading, callback);
+  }
+  /**
+* 获取项目统计分析-列表数据
+* @param {Object} params 调用方法传过来的参数
+* @param {Boolean} showloading 是否显示数据加载,false或不传参为显示，true不显示
+* @param {Function} callback 回调函数
+*/
+  getproAnalysisCountList(params, showloading, callback) {
+    console.log(params);
+    return this.httpService.get(this.configService.host + this.configService.proAnalysisCountList, params, showloading, callback);
+  }
+  /** 项目统计分析  --end */
+
+}

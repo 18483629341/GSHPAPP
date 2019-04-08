@@ -19,19 +19,19 @@
     <ion-grid>
         <ion-row class="col-shadow">
             <ion-col (click)="showOption(1)" >
-                <span  class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" >{{area}}</span>
+                <span  class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" >区域</span>
                 <ion-icon  mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" class="domn-arr" name="arrow-dropdown"></ion-icon>
             </ion-col>
             <ion-col (click)="showOption(2)">
-                <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}">{{industry}}</span>
+                <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}">行业</span>
                 <ion-icon  mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" class="domn-arr" name="arrow-dropdown"></ion-icon>
             </ion-col>
             <ion-col (click)="showOption(3)">
-                <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}">{{year}}</span>
+                <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}">年份</span>
                 <ion-icon  mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}" class="domn-arr" name="arrow-dropdown"></ion-icon>
             </ion-col>
             <ion-col (click)="showOption(4)">
-                <span class="text-ellipsis long-text" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 4}">{{envAssessment}}</span>
+                <span class="text-ellipsis long-text" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 4}">环评文件</span>
                 <ion-icon mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 4}" class="domn-arr special-down" name="arrow-dropdown"></ion-icon>
             </ion-col>
         </ion-row>
@@ -58,40 +58,40 @@
         <div class="option-div">
             <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 1">
                 <ion-list class="area-new four-div" lines="inset">
-                    <ion-item *ngFor="let item of mapOptionAreaList,let i of index" (click)="selectAreaOption(item,i);" 
-                    [ngClass]="{'color-blue': areaTabIndex === i}">{{item.regionName}}
+                    <ion-item *ngFor="let item of mapOptionAreaList,let i of index" (click)="selectAreaOption(item);" 
+                    [ngClass]="{'color-blue': areaTabIndex === i}">{{item.name}}
                     </ion-item>
                 </ion-list>
             </div>
 
             <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 2">
                 <ion-list class="area-new four-div" lines="inset">
-                    <ion-item *ngFor="let item of mapOptionIndustryList" >
-                        <ion-checkbox mode='md' [(ngModel)]="item.isChecked"></ion-checkbox>
-                        <ion-label [ngClass]="{'color-blue': item.isChecked}">{{item.industryName}}</ion-label>
+                    <ion-item *ngFor="let item of mapOptionIndustryList" (click)="selectIndusryOption($event,item);">
+                        <ion-checkbox mode='md' ></ion-checkbox>
+                        <ion-label >{{item.name}}</ion-label>
                     </ion-item>
                 </ion-list>
                 <ion-grid> 
                     <ion-row class="btn">
                         <ion-col col-6 [class]="resetBasinBtnFlag? 'reset-btn':'sure-btn'">
-                            <ion-button expand="block" fill="clear" class="reset-button"  (click)="resetIndustryOptions()">重置</ion-button>
+                            <ion-button expand="block" fill="clear" class="reset-button">重置</ion-button>
                         </ion-col>
                         <ion-col col-6 class="sure-btn">
-                            <ion-button expand="block" fill="clear" class="sure-button" (click)="confirmIndustryOptions()">确定</ion-button>
+                            <ion-button expand="block" fill="clear" class="sure-button">确定</ion-button>
                         </ion-col>
                     </ion-row>
                 </ion-grid>
             </div>
             <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 3">
                 <ion-list class="area-new four-div" lines="inset">
-                    <ion-item *ngFor="let item of mapOptionYearList,let i of index" (click)="selectYearOption(item,i);"
+                    <ion-item *ngFor="let item of mapOptionYearList" (click)="selectYearOption(item);"
                     [ngClass]="{'color-blue': yearTabIndex === i}">{{item.year}}
                     </ion-item>
                 </ion-list>
             </div>
             <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 4">
                 <ion-list class="area-new four-div" lines="inset">
-                    <ion-item *ngFor="let item of mapOptionHpfileList,let i of index" (click)="selectFileOption(item,i);"
+                    <ion-item *ngFor="let item of mapOptionHpfileList" (click)="selectFileOption(item);"
                     [ngClass]="{'color-blue': fileTabIndex === i}">{{item.name}}
                     </ion-item>
                 </ion-list>
@@ -141,8 +141,8 @@
     </div>
     <!-- 列表数据 -->
     <div *ngIf="!isMapShow">
-        <ion-item lines='none' *ngFor="let item of mapProjectList,let i of index">
-            <img src="assets/imgs/all.png" class="ListImg">
+        <ion-item lines='none' *ngFor="let item of mapListPoint,let i of index">
+            <img src="assets/imgs/all.png">
             <ion-label (click)="goProInfo()">
                 <p>张一泽(污水处理)</p>
                 <p>3242343423213123</p>

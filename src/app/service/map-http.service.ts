@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MapHttpService {
 
-  constructor(public httpService: HttpService) {
+  constructor(public httpService: HttpService,public configService:ConfigService) {
 
   }
   /**
@@ -16,7 +17,8 @@ export class MapHttpService {
   * @param {Function} callback 回调函数
   */
   getMapAreaData(params, showloading, callback) {
-    return this.httpService.get('assets/data/mapAre.json', params, showloading, callback);
+    // return this.httpService.get('assets/data/mapAre.json', params, showloading, callback);
+    return this.httpService.get(this.configService.host+this.configService.mapAreaList, params, showloading, callback);
   }
   /**
   * 获取地图的行业的筛选条件的数据列表
@@ -25,7 +27,8 @@ export class MapHttpService {
   * @param {Function} callback 回调函数
   */
   getMapIndustryData(params, showloading, callback) {
-    return this.httpService.get('assets/data/mapIndustry.json', params, showloading, callback);
+    //return this.httpService.get('assets/data/mapIndustry.json', params, showloading, callback);
+    return this.httpService.get(this.configService.host+this.configService.mapIndustryList, params, showloading, callback);
   }
   /**
   * 获取地图的年份的筛选条件的数据列表
@@ -34,7 +37,8 @@ export class MapHttpService {
   * @param {Function} callback 回调函数
   */
   getMapYearData(params, showloading, callback) {
-    return this.httpService.get('assets/data/year.json', params, showloading, callback);
+   // return this.httpService.get('assets/data/year.json', params, showloading, callback);
+   return this.httpService.get(this.configService.host+this.configService.mapYearList, params, showloading, callback);
   }
    /**
   * 获取地图的环评文件的筛选条件的数据列表
@@ -43,7 +47,8 @@ export class MapHttpService {
   * @param {Function} callback 回调函数
   */
  getEnviAssessmentData(params, showloading, callback) {
-  return this.httpService.get('assets/data/evin.json', params, showloading, callback);
+  //return this.httpService.get('assets/data/evin.json', params, showloading, callback);
+  return this.httpService.get(this.configService.host+this.configService.mapHpFileList, params, showloading, callback);
  }
    /**
   * 获取项目统计分析数据列表
