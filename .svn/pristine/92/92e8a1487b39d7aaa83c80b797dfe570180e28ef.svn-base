@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ConfigService {
   /** 基本配置  --start */
-  public host = 'http://192.168.0.156:8020/RestService/rest/'; // 接口服务地址
+  public host = 'http://192.168.1.173:8080/RestService/rest/'; // 接口服务地址
   /** 基本配置  --end */
 
   /**登录 --start */
@@ -50,12 +50,6 @@ export class ConfigService {
   public proAnalysisCountList = 'ProjectStatistics/getCountList'; // 获取列表数据
   /** 项目统计分析  --end */
 
- /***地图查询  筛选列表  start*/
- public mapAreaList='ProjectStatistics/getRegions';// 地图查询页面     获取筛选条件区域列表
- public mapIndustryList='HpjdManagerment/getIndustryList';//地图查询页面   获取筛选条件行业列表
- public mapYearList='ProjectStatistics/getYears';// 地图查询页面       获取筛选条件年份列表
- public mapHpFileList='ProjectStatistics/getHpxs';// 地图查询页面      获取筛选条件环评文件列表
-  /***地图查询  筛选列表  end*/
-  
+
   constructor() { }
 }

@@ -1,0 +1,153 @@
+<ion-header>
+    <ion-toolbar mode="md">
+        <ion-title name="menu">
+            <div class="search-div">
+                <span *ngIf="!searchShowFlag" class="color-gray">请输入关键字</span>
+            </div>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button icon-only (click)="change()" mode="md">
+                <ion-icon name="menu" *ngIf="isMapShow"></ion-icon>
+                <i class="icon-map" *ngIf="!isMapShow"></i>
+            </ion-button>
+            <ion-button icon-only (click)="goPersonal()" mode="md">
+                <ion-icon name="settings"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <!--tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用module start -->
+    <ion-grid>
+        <ion-row class="col-shadow">
+            <ion-col (click)="showOption(1)" >
+                <span  class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" >{{area}}</span>
+                <ion-icon  mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+            </ion-col>
+            <ion-col (click)="showOption(2)">
+                <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}">{{industry}}</span>
+                <ion-icon  mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+            </ion-col>
+            <ion-col (click)="showOption(3)">
+                <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}">{{year}}</span>
+                <ion-icon  mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}" class="domn-arr" name="arrow-dropdown"></ion-icon>
+            </ion-col>
+            <ion-col (click)="showOption(4)">
+                <span class="text-ellipsis long-text" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 4}">{{envAssessment}}</span>
+                <ion-icon mode='md'  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 4}" class="domn-arr special-down" name="arrow-dropdown"></ion-icon>
+            </ion-col>
+        </ion-row>
+        <!-- tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用module end -->
+
+        <!-- <ion-row class="text-center select_condition">
+            <ion-col (click)="showOption(1)">
+                <span>区域</span>
+                <ion-icon  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" name="arrow-dropdown" mode='md'></ion-icon>
+            </ion-col>
+            <ion-col (click)="showOption(1)">
+                <span>行业</span>
+                <ion-icon  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" name="arrow-dropdown" mode='md'></ion-icon>
+            </ion-col>
+            <ion-col (click)="showOption(2)">
+                <span>年份</span>
+                <ion-icon  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" name="arrow-dropdown" mode='md'></ion-icon>
+            </ion-col>
+            <ion-col (click)="showOption(3)">
+                <span>环评文件</span>
+                <ion-icon  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}" name="arrow-dropdown" mode='md'></ion-icon>
+            </ion-col>
+        </ion-row> -->
+        <div class="option-div">
+            <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 1">
+                <ion-list class="area-new four-div" lines="inset">
+                    <ion-item *ngFor="let item of mapOptionAreaList,let i of index" (click)="selectAreaOption(item,i);" 
+                    [ngClass]="{'color-blue': areaTabIndex === i}">{{item.regionName}}
+                    </ion-item>
+                </ion-list>
+            </div>
+
+            <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 2">
+                <ion-list class="area-new four-div" lines="inset">
+                    <ion-item *ngFor="let item of mapOptionIndustryList" >
+                        <ion-checkbox mode='md' [(ngModel)]="item.isChecked"></ion-checkbox>
+                        <ion-label [ngClass]="{'color-blue': item.isChecked}">{{item.industryName}}</ion-label>
+                    </ion-item>
+                </ion-list>
+                <ion-grid> 
+                    <ion-row class="btn">
+                        <ion-col col-6 [class]="resetBasinBtnFlag? 'reset-btn':'sure-btn'">
+                            <ion-button expand="block" fill="clear" class="reset-button"  (click)="resetIndustryOptions()">重置</ion-button>
+                        </ion-col>
+                        <ion-col col-6 class="sure-btn">
+                            <ion-button expand="block" fill="clear" class="sure-button" (click)="confirmIndustryOptions()">确定</ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+            <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 3">
+                <ion-list class="area-new four-div" lines="inset">
+                    <ion-item *ngFor="let item of mapOptionYearList,let i of index" (click)="selectYearOption(item,i);"
+                    [ngClass]="{'color-blue': yearTabIndex === i}">{{item.year}}
+                    </ion-item>
+                </ion-list>
+            </div>
+            <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 4">
+                <ion-list class="area-new four-div" lines="inset">
+                    <ion-item *ngFor="let item of mapOptionHpfileList,let i of index" (click)="selectFileOption(item,i);"
+                    [ngClass]="{'color-blue': fileTabIndex === i}">{{item.name}}
+                    </ion-item>
+                </ion-list>
+            </div>
+        </div>
+    </ion-grid>
+</ion-header>
+<ion-content>
+    <!-- 遮罩层 -->
+    <div class="layer" (click)="closePotionSelectWindow();" *ngIf="isShowOptions"></div>
+    <!-- 地图 -->
+    <ths-map *ngIf="isMapShow" (onMapLoaded)="loadMap($event)" (favoriteChange)="favoriteChange($event)" (requestLoc)="requestLoc()"
+        id="map"></ths-map>
+    <!-- 地图中的筛选批复数量筛选框 -->
+    <div class="count" *ngIf="!mapFlag">
+        <p class="count-title">
+            <span class="fr margin-top-2" (click)="showHiden()">
+                <ion-icon mode='ios' [name]="showHidenFlag?'arrow-up':'arrow-down'" class="margin-left-10 color-black margin-top-0"></ion-icon>
+            </span>
+            <span *ngIf="dataType === 2" (click)="legendCount()">建设项目总数：12家</span>
+            <span *ngIf="dataType === 0" (click)="legendCount()">在审项目数量：12家</span>
+            <span *ngIf="dataType === 1" (click)="legendCount()">已批复项目数量：12家</span>
+        </p>
+        <div *ngIf="showHidenFlag" class="count-con-an count-con">
+            <p (click)="typeMap(2)" [ngClass]="{'selected': dataType === 2}">
+                <span class="fr">12家</span>
+                <img src="assets/imgs/fq.png">建设项目总数</p>
+            <p (click)="typeMap(0)" [ngClass]="{'selected': dataType === 0}">
+                <span class="fr">15家</span>
+                <img src="assets/imgs/fs.png">在审项目数量</p>
+            <p (click)="typeMap(1)"[ngClass]="{'selected': dataType === 1}">
+                <span class="fr">241家</span>
+                <img src="assets/imgs/all.png">已批复项目数量</p>
+        </div>
+    </div>
+    <!-- 地图下面的项目的详情信息弹框 -->
+    <div class="info" id="info" *ngIf="isShowProjectInfoData">
+        <p class="info-title">
+            <span class="fr" (click)="collection(infoAllData?.all)">
+                <i [class]="infoAllData?.status?' icon iconfont  icon-xingxu font-size-18':'icon iconfont  icon-xingxing start font-size-18'"></i>
+            </span>
+            <img src="assets/imgs/{{infoAllData?.imgUrl}}.png" (click)="infoPage(infoAllData?.id)">
+            <span (click)="infoPage(infoAllData?.id)">大家飞机开绿灯解放了</span>
+        </p>
+        <p class="font-size-12 gray" (click)="infoPage(infoAllData?.id)">09398383838838</p>
+        <p class="font-size-12 qing" (click)="infoPage(infoAllData?.id)">--km</p>
+    </div>
+    <!-- 列表数据 -->
+    <div *ngIf="!isMapShow">
+        <ion-item lines='none' *ngFor="let item of mapProjectList,let i of index">
+            <img src="assets/imgs/all.png" class="ListImg">
+            <ion-label (click)="goProInfo()">
+                <p>张一泽(污水处理)</p>
+                <p>3242343423213123</p>
+            </ion-label>
+            <i (click)='isCollection(item, i)' class="icon iconfont font-size-18" [ngClass]="{'icon-xingxing':item.isCollection == '1','start':item.isCollection == '1','icon-xingxu':item.isCollection == '0'}"></i>
+        </ion-item>
+    </div>
+</ion-content>
