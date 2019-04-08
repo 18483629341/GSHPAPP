@@ -180,6 +180,7 @@ export class ProjectFilesService {
 * @param {Function} callback 回调函数
 */
   getproAnalysisCountList(params, showloading, callback) {
+    console.log(params);
     return this.httpService.get(this.configService.host + this.configService.proAnalysisCountList, params, showloading, callback);
   }
   /** 项目统计分析  --end */

@@ -104,7 +104,6 @@ export class HttpService {
   */
   httpParams(param: Map<any, any>): HttpParams {
     let ret = new HttpParams();
-    console.log(param);
     if (param) {
       for (const key in param) {
         if (param[key]) {
