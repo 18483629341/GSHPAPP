@@ -9,11 +9,12 @@ import { loadModules } from 'esri-loader';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
+
   public isShowOptions: boolean; // 筛选div是否显示
-  public area: string = '区域'; // 区域列表的头部
-  public industry: string = '行业';  // 行业列表的头部
-  public year: string = '年份';      // 年份列表的头部
-  public envAssessment: string = '环评文件';      // 环评文件列表的头部
+  public area = '区域'; // 区域列表的头部
+  public industry = '行业';  // 行业列表的头部
+  public year = '年份';      // 年份列表的头部
+  public envAssessment = '环评文件';      // 环评文件列表的头部
   public mapOptionAreaList: any = []; // 地图的tab筛选条件的区域列表
   public mapOptionIndustryList: any = []; // 地图的tab筛选条件的行业列表
   public mapOptionYearList: any = []; // 地图的tab筛选条件的年份列表
@@ -34,6 +35,8 @@ export class Tab1Page implements OnInit {
   public selectedIndustryIDs: any = []; // 用于存放 暂时选中的行业ID
   public yearTabIndex: any = 0; // 默认选中年份的下标
   public fileTabIndex: any = 0; // 默认选中环评文件的下标
+  public hasMapData = false; //  是否拿到map相关数据
+  public hasProjectListData = false; //  是否拿到列表数据
   constructor(public mapHttpService: MapHttpService, public router: Router, public mapService: MapHttpService,
     public projectFilesService: ProjectFilesService) {
     this.isShowOptions = false; // 默认不显示筛选列表数据
@@ -147,13 +150,11 @@ export class Tab1Page implements OnInit {
    * 获取地图的环评文件筛选条件列表
    */
   getOptionEnviAssessmentListData() {
-    this.mapOptionHpfileList=[{name:'全部'}];
+    this.mapOptionHpfileList = [{enviAssessmentTypeName: '全部'}];
     this.mapHttpService.getEnviAssessmentData({}, true, res => {
       console.log('环评文件筛选列表', res);
       if (res !== 'error') {
-        res.map((item)=>{
-          this.mapOptionHpfileList.push(item);
-        })
+        this.mapOptionHpfileList = [...this.mapOptionHpfileList, ...res];
       }
     });
   }
@@ -176,6 +177,10 @@ export class Tab1Page implements OnInit {
         });
         this.addProvincePoint(this.mapPoint, this.povincPointLayer); // 执行大点方法
         this.addProjectPoint(this.mapProjectList, this.projectPointLayer); // 执行小点方法
+        this.hasProjectListData = false;
+      } else {
+        // 如果单位列表请求数据 失败，则显示暂无数据
+       this.hasProjectListData = true;
       }
     });
   }
@@ -189,7 +194,7 @@ export class Tab1Page implements OnInit {
   //     if (res !== 'error') {
   //       this.mapListPoint = res || [];
   //     }
-  //   });  
+  //   });
   // }
   /**
    * 点击是否显示tab筛选条例列表数据
@@ -227,21 +232,21 @@ export class Tab1Page implements OnInit {
 
     this.mapOptionIndustryList.map((item) => {
       if (item.isChecked === true) { // 当isChecked属性为true时
-        if (this.selectedIndustryArr.indexOf(item.industryName) === -1) {//当数组(存放行业名称的)中不存在此行业名称时，才push
-          this.selectedIndustryArr.push(item.industryName);//加入行业名称到数组中
+        if (this.selectedIndustryArr.indexOf(item.industryName) === -1) {// 当数组(存放行业名称的)中不存在此行业名称时，才push
+          this.selectedIndustryArr.push(item.industryName); // 加入行业名称到数组中
           this.selectedIndustryIDs.push(item.industryCode);
         }
-      } else {//当isChecked属性为false时
-        if (this.selectedIndustryArr.indexOf(item.industryName) > -1) {//当数组(存放行业名称的)中存在此行业名称时，删除此名称
-          var index = this.selectedIndustryArr.indexOf(item.industryName);
-          this.selectedIndustryArr.splice(index, 1); //删除此行业名称
-          this.selectedIndustryIDs.splice(index, 1);
+      } else {// 当isChecked属性为false时
+        if (this.selectedIndustryArr.indexOf(item.industryName) > -1) {// 当数组(存放行业名称的)中存在此行业名称时，删除此名称
+          const j = this.selectedIndustryArr.indexOf(item.industryName);
+          this.selectedIndustryArr.splice(j, 1); // 删除此行业名称
+          this.selectedIndustryIDs.splice(j, 1);
         }
       }
-    })
-    var n = this.selectedIndustryArr.length;
-    //当选择好后的行业数量n>1时，industry为“多选”,n===1时，industry为数组的第一项；,n=0时，industry为"行业
-    this.industry = n > 1 ? '多选' : n === 1 ? this.selectedIndustryArr[0] : "行业";
+    });
+    let n = this.selectedIndustryArr.length;
+    // 当选择好后的行业数量n>1时，industry为“多选”,n===1时，industry为数组的第一项；,n=0时，industry为"行业
+    this.industry = n > 1 ? '多选' : n === 1 ? this.selectedIndustryArr[0] : '行业';
     this.isShowOptions = !this.isShowOptions;
   }
 
@@ -263,7 +268,6 @@ export class Tab1Page implements OnInit {
     this.isShowOptions = !this.isShowOptions;
     this.yearTabIndex = i;
     this.year = item.year;
-
   }
 
   /**
@@ -272,7 +276,7 @@ export class Tab1Page implements OnInit {
   selectFileOption(item, i) {
     this.isShowOptions = !this.isShowOptions;
     this.fileTabIndex = i;
-    this.envAssessment = item.name;
+    this.envAssessment = item.enviAssessmentTypeName;
   }
 
   /**
@@ -280,6 +284,7 @@ export class Tab1Page implements OnInit {
    */
   change() {
     this.isMapShow = !this.isMapShow;
+    // 获取列表
   }
 
   goProInfo() {
@@ -403,8 +408,6 @@ export class Tab1Page implements OnInit {
           // 图层增加图片点
           graphicsLayer.add(graphicPic);
         });
-        // });
-
       });
 
   }

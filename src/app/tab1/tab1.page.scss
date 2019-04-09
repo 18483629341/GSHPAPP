@@ -112,23 +112,18 @@ ion-grid{
 
 .domn-arr {
   width: 20px;
+  height: 26px;
   display: inline-block;
   font-size: 20px;
   color: #a4a4a4;
-  position: relative;
-  top:-4px;
+  // position: relative;
+  // top:-4px;
 }
 
 .color-blue {
   color: #5871de;
 }
 
-.long-text{
-  
-}
-.special-down{
- 
-}
 .optionList-div{
   ion-item[_ngcontent-c3],ion-item[_ngcontent-c2]{
     height: 50px;
@@ -138,7 +133,15 @@ ion-grid{
 }
 
 /*tab1中筛选列表/tab2中筛选列表/ tab3中筛选列表 通用样式 end */
-
+.MapContainer{
+  width: 100%;
+  height:100%;
+}
+.errorDiv{
+  width: 100%;
+  height:100%;
+  padding:20px;
+}
 ion-checkbox{
   --border-color: #c8c7cc;
   margin: 10px 8px 8px 8px;
