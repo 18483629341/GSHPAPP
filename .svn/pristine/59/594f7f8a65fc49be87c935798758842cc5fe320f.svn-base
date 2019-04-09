@@ -1,0 +1,356 @@
+<ion-header mode='ios'>
+  <ion-toolbar mode='ios'>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="ios-arrow-back" mode='ios'></ion-back-button>
+    </ion-buttons>
+    <ion-title>编制单位信息</ion-title>
+  </ion-toolbar>
+
+  <div class="top_head">
+    <ion-segment id="top_tab">
+      <ion-segment-button checked=true class="top_tab_item" [ngClass]="{'active': str==1?true:false}" (click)='OnitemClick(1)'>
+        机构
+      </ion-segment-button>
+      <ion-segment-button class="top_tab_item" [ngClass]="{'active': str==2?true:false}" (click)='OnitemClick(2)'>
+        工程师
+      </ion-segment-button>
+      <ion-segment-button class="top_tab_item" [ngClass]="{'active': str==3?true:false}" (click)='OnitemClick(3)'>
+        项目
+      </ion-segment-button>
+      <ion-segment-button class="top_tab_item" [ngClass]="{'active': str==4?true:false}" (click)='OnitemClick(4)'>
+        诚信信息
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+</ion-header>
+
+<ion-content>
+
+  <div [style.display]="str==1?'block':'none'">
+    <ion-grid class="dec-list">
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">机构名称：</ion-col>
+        <ion-col class="right-text" size="7">{{organizationName}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+
+        <ion-col class="left-text" size="5">机构性质：</ion-col>
+        <ion-col class="right-text" size="7">{{organizationNature}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">组织机构代码证号：</ion-col>
+        <ion-col class="right-text" size="7">{{organCertificateNumber}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">统一社会信用代码：</ion-col>
+        <ion-col class="right-text" size="7">{{socialCreditCode}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">行政区规划：</ion-col>
+        <ion-col class="right-text" size="7">{{regionName}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="left-text" size="5">机构地址：</ion-col>
+        <ion-col class="right-text" size="7">{{address}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">经度：</ion-col>
+        <ion-col class="right-text" size="7">{{longitude}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">纬度：</ion-col>
+        <ion-col class="right-text" size="7">{{latitude}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+
+        <ion-col class="left-text" size="5">成立时间：</ion-col>
+        <ion-col class="right-text" size="7">{{creatTime}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">法定代表人：</ion-col>
+        <ion-col class="right-text" size="7">{{legalPerson}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">有效期：</ion-col>
+        <ion-col class="right-text" size="7">{{validityTime}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">发证时间：</ion-col>
+        <ion-col class="right-text" size="7">{{issuingTime}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="6">甲级报告书评价范围：</ion-col>
+        <ion-col class="right-text" size="6">{{aReportRange}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="6">乙级报告书评价范围：</ion-col>
+        <ion-col class="right-text" size="6">{{bReportRange}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">报告表评价范围：</ion-col>
+        <ion-col class="right-text" size="7">{{reportFormRange}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">机构资质等级：</ion-col>
+        <ion-col class="right-text" size="7">{{organizationLevel}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">资格证号：</ion-col>
+        <ion-col class="right-text" size="7">{{certificateNumber}}</ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col class="left-text" size="5">联系人：</ion-col>
+        <ion-col class="right-text" size="7">{{contactPeople}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div [style.display]="str==2?'block':'none'">
+    <!-- 表格样式 -->
+    <!-- <table border="1px #777" id="bottom_table">
+      <tr>
+        <th>序号</th>
+        <th>项目编号</th>
+        <th>项目名称</th>
+        <th>建设地点</th>
+        <th>所属行业</th>
+        <th>环保投资额（万元）</th>
+        <th>审批时间</th>
+      </tr>
+      <tr>
+        <td><span>1</span></td>
+        <td><span>GHS12341</span></td>
+        <td><span>兰州祁连山水泥商砼有限公司厂区扩建项目</span></td>
+        <td><span>兰州市西固区环形路78号</span></td>
+        <td><span>水泥制造</span></td>
+        <td><span>1200</span></td>
+        <td><span>2019-09-09</span></td>
+      </tr>
+      <tr>
+        <td><span>2</span></td>
+        <td><span></span></td>
+        <td><span></span></td>
+        <td><span></span></td>
+        <td><span></span></td>
+        <td><span></span></td>
+        <td><span></span></td>
+      </tr>
+    </table> -->
+
+    <ion-item lines='none'>
+      <img src="assets/imgs/all.png">
+      <ion-label (click)="goEngineer()">
+        <p>张三</p>
+        <p>3242343423213123</p>
+      </ion-label>
+      <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+    </ion-item>
+  </div>
+
+  <div [style.display]="str==3?'block':'none'">
+    <!-- 表格样式 -->
+    <!-- <div class="table_title">
+      <span>省内项目</span>
+    </div>
+    <div class="table_speace">
+      <table border="1px #777" id="bottom_table">
+        <tr>
+          <th>序号</th>
+          <th>信息来源</th>
+          <th>项目名称</th>
+          <th>所在地</th>
+          <th>受理时间</th>
+          <th>审批时间</th>
+          <th>审批部门</th>
+          <th>审批文号</th>
+          <th>环评文件类型</th>
+        </tr>
+        <tr>
+          <td><span>1</span></td>
+          <td><span>审批系统推送</span></td>
+          <td><span><a href="#">东南热电中心华能北京热电三期热电项目</a></span></td>
+          <td><span>兰州市城关区</span></td>
+          <td><span>2015-11-15</span></td>
+          <td><span>2015-11-25</span></td>
+          <td><span>兰州市环保局</span></td>
+          <td><span>甘环审20151223</span></td>
+          <td><span>报告书</span></td>
+        </tr>
+        <tr>
+          <td><span>1</span></td>
+          <td><span>审批系统推送</span></td>
+          <td><span><a href="#">东南热电中心华能北京热电三期热电项目</a></span></td>
+          <td><span>兰州市城关区</span></td>
+          <td><span>2015-11-15</span></td>
+          <td><span>2015-11-25</span></td>
+          <td><span>兰州市环保局</span></td>
+          <td><span>甘环审20151223</span></td>
+          <td><span>报告书</span></td>
+        </tr>
+        <tr>
+          <td><span>1</span></td>
+          <td><span>审批系统推送</span></td>
+          <td><span><a href="#">东南热电中心华能北京热电三期热电项目</a></span></td>
+          <td><span>兰州市城关区</span></td>
+          <td><span>2015-11-15</span></td>
+          <td><span>2015-11-25</span></td>
+          <td><span>兰州市环保局</span></td>
+          <td><span>甘环审20151223</span></td>
+          <td><span>报告书</span></td>
+        </tr>
+      </table>
+    </div>
+    <div class="table_title">
+      <span>外省项目</span>
+    </div>
+    <div class="table_speace">
+      <table border="1px #777" id="bottom_table">
+        <tr>
+          <th>序号</th>
+          <th>项目名称</th>
+          <th>所在地</th>
+          <th>受理时间</th>
+          <th>审批时间</th>
+          <th>审批部门</th>
+          <th>审批文号</th>
+          <th>环评文件类型</th>
+        </tr>
+        <tr>
+          <td><span>1</span></td>
+          <td><span><a href="#">东南热电中心华能北京热电三期热电项目</a></span></td>
+          <td><span>兰州市城关区</span></td>
+          <td><span>2015-11-15</span></td>
+          <td><span>2015-11-25</span></td>
+          <td><span>兰州市环保局</span></td>
+          <td><span>甘环审20151223</span></td>
+          <td><span>报告书</span></td>
+        </tr>
+        <tr>
+          <td><span>1</span></td>
+          <td><span><a href="#">东南热电中心华能北京热电三期热电项目</a></span></td>
+          <td><span>兰州市城关区</span></td>
+          <td><span>2015-11-15</span></td>
+          <td><span>2015-11-25</span></td>
+          <td><span>兰州市环保局</span></td>
+          <td><span>甘环审20151223</span></td>
+          <td><span>报告书</span></td>
+        </tr>
+      </table>
+    </div>
+    <div class="table_title">
+      <span>参与完成的建设项目环境影响评价项目</span>
+    </div>
+    <div class="table_speace">
+      <table border="1px #777" id="bottom_table">
+        <tr>
+          <th>序号</th>
+          <th>项目名称</th>
+          <th>所在地</th>
+          <th>受理时间</th>
+          <th>审批时间</th>
+          <th>审批部门</th>
+          <th>审批文号</th>
+          <th>环评文件类型</th>
+        </tr>
+        <tr>
+          <td><span>1</span></td>
+          <td><span><a href="#">东南热电中心华能北京热电三期热电项目</a></span></td>
+          <td><span>兰州市城关区</span></td>
+          <td><span>2015-11-15</span></td>
+          <td><span>2015-11-25</span></td>
+          <td><span>兰州市环保局</span></td>
+          <td><span>甘环审20151223</span></td>
+          <td><span>报告书</span></td>
+        </tr>
+        <tr>
+          <td><span>1</span></td>
+          <td><span><a href="#">东南热电中心华能北京热电三期热电项目</a></span></td>
+          <td><span>兰州市城关区</span></td>
+          <td><span>2015-11-15</span></td>
+          <td><span>2015-11-25</span></td>
+          <td><span>兰州市环保局</span></td>
+          <td><span>甘环审20151223</span></td>
+          <td><span>报告书</span></td>
+        </tr>
+      </table>
+    </div> -->
+    <div class="pro_type">
+      <div [ngClass]="{'changePro': proChangeStr==1?true:false}" (click)='OnChangeProClick(1)'>省内项目</div>
+      <div [ngClass]="{'changePro': proChangeStr==2?true:false}" (click)='OnChangeProClick(2)'>外省项目</div>
+      <div [ngClass]="{'changePro': proChangeStr==3?true:false}" (click)='OnChangeProClick(3)'>参与完成的建设项目环境影响评价项目</div>
+    </div>
+    <div class="pro_type_list" [style.display]="proChangeStr==1?'block':'none'">
+      <ion-item lines='none'>
+        <img src="assets/imgs/all.png">
+        <ion-label (click)="goProInfo()">
+          <p>张三</p>
+          <p>3242343423213123</p>
+        </ion-label>
+        <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+      </ion-item>
+    </div>
+    <div class="pro_type_list" [style.display]="proChangeStr==2?'block':'none'">
+      <ion-item lines='none'>
+        <img src="assets/imgs/all.png">
+        <ion-label (click)="goProInfo()">
+          <p>李四</p>
+          <p>3242343423213123</p>
+        </ion-label>
+        <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+      </ion-item>
+    </div>
+    <div class="pro_type_list" [style.display]="proChangeStr==3?'block':'none'">
+      <ion-item lines='none'>
+        <img src="assets/imgs/all.png">
+        <ion-label (click)="goProInfo()">
+          <p>王五</p>
+          <p>3242343423213123</p>
+        </ion-label>
+        <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+      </ion-item>
+    </div>
+  </div>
+
+  <div [style.display]="str==4?'block':'none'">
+    <!-- 表格样式 -->
+    <!-- <div class="table_speace">
+          <table border="1px #777" id="bottom_table">
+            <tr>
+              <th>序号</th>
+              <th>时间</th>
+              <th>监管部门</th>
+              <th>行政处理方式</th>
+              <th>受到行政处罚的主要原因</th>
+              <th>附件</th>
+            </tr>
+            <tr>
+              <td><span>1</span></td>
+              <td><span>2015</span></td>
+              <td><span>通报批评</span></td>
+              <td><span>弄虚作假</span></td>
+              <td><span>123</span></td>
+              <td><span>诚信情况说明</span></td>
+            </tr>
+            <tr>
+                <td><span>1</span></td>
+                <td><span>2015</span></td>
+                <td><span>通报批评</span></td>
+                <td><span>弄虚作假</span></td>
+                <td><span>123</span></td>
+                <td><span>诚信情况说明</span></td>
+              </tr>
+          </table>
+        </div> -->
+
+    <ion-item lines='none'>
+      <img src="assets/imgs/all.png">
+      <ion-label (click)="goSincerityInfo()">
+        <p>张三</p>
+        <p>3242343423213123</p>
+      </ion-label>
+      <i class=" icon iconfont  icon-xingxu font-size-18"></i>
+    </ion-item>
+  </div>
+
+</ion-content>
