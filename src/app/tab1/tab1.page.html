@@ -102,7 +102,6 @@
     <div class="layer" (click)="closePotionSelectWindow();" *ngIf="isShowOptions"></div>
     <!-- 地图页面所有module的容器 -->
     <div *ngIf="isMapShow&&!hasProjectListData" class="MapContainer">
-         <!-- 地图 -->
         <ths-map (onMapLoaded)="loadMap($event)" (favoriteChange)="favoriteChange($event)" (requestLoc)="requestLoc()" id="map"></ths-map>
         <!-- 地图中的筛选批复数量筛选框 -->
         <div class="count" *ngIf="!mapFlag">
