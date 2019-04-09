@@ -51,47 +51,47 @@ export class ApprovalFormPage implements OnInit {
   ngOnInit() {
   }
   getApprovalForm() {
-    this.projectFilesService.getApprovalForm({}, true, res => {
+    this.projectFilesService.getApprovalForm({projectCode: 1}, true, res => {
       console.log(res);
       if (res !== 'error') {
-        this.projectName = res.PROJECTNAME || '/';
-        this.projectNumber = res.PROJECTNUMBER || '/';
-        this.countIndustryType = res.COUNTINDUSTRYTYPE || '/';
-        this.eviIndustryType = res.EVIINDUSTRYTYPE || '/';
-        this.constructionSiteLon = res.CONSTRUCTIONSITELON || '/';
-        this.constructionSiteLat = res.CONSTRUCTIONSITELAT || '/';
-        this.constructionNature = res.CONSTRUCTIONNATURE || '/';
-        this.eviFileType = res.EVIFILETYPE || '/';
-        this.totalInvest = res.TOTALINVEST || '/';
-        this.enviInvest = res.ENVIINVEST || '/';
-        this.proportion = res.PROPORTION || '/';
-        this.planStartTime = res.PLANSTARTTIME || '/';
-        this.estimatedTime = res.ESTIMATEDTIME || '/';
-        this.constructionSite = res.CONSTRUCTIONSITE || '/';
-        this.constructionCycle = res.CONSTRUCTIONCYCLE || '/';
-        this.licenseNumber = res.LICENSENUMBER || '/';
-        this.peojectApplyType = res.PEOJECTAPPLYTYPE || '/';
-        this.isDevople = res.ISDEVOPLE || '/';
-        this.planDocumentName = res.PLANDOCUMENTNAME || '/';
-        this.planExamAuthority = res.PLANEXAMAUTHORITY || '/';
-        this.planExamNumber = res.PLANEXAMNUMBER || '/';
-        this.constructContent = res.CONSTRUCTCONTENT || '/';
-        this.constructScale = res.CONSTRUCTSCALE || '/';
-        this.startLon = res.STARTLON || '/';
-        this.startLat = res.STARTLAT || '/';
-        this.endLon = res.ENDLON || '/';
-        this.endLat = res.ENDLAT || '/';
-        this.engineerLength = res.ENGINEERLENGTH || '/';
-        this.constructionUnit = res.CONSTRUCTIONUNIT || '/';
-        this.address = res.ADDRESS || '/';
-        this.legalPerson = res.LEGALPERSON || '/';
-        this.technology = res.TECHNOLOGY || '/';
-        this.socialCreditCode = res.SOCIALCREDITCODE || '/';
-        this.constructionUnitPhone = res.CONSTRUCTIONUNITPHONE || '/';
-        this.evaluatUnitName = res.EVALUATUNITNAME || '/';
-        this.evaluatUnitAddress = res.EVALUATUNITADDRESS || '/';
-        this.evaluatUnitPhone = res.EVALUATUNITPHONE || '/';
-        this.evaluatUnitNumber = res.EVALUATUNITNUMBER || '/';
+        this.projectName = res.projectName || '/';
+        this.projectNumber = res.projectNumber || '/';
+        this.countIndustryType = res.countIndustryType || '/';
+        this.eviIndustryType = res.eviIndustryType || '/';
+        this.constructionSiteLon = res.constructionSiteLon || '/';
+        this.constructionSiteLat = res.constructionSiteLat || '/';
+        this.constructionNature = res.constructionNature || '/';
+        this.eviFileType = res.eviFileType || '/';
+        this.totalInvest = res.totalInvest || '/';
+        this.enviInvest = res.enviInvest || '/';
+        this.proportion = res.proportion || '/';
+        this.planStartTime = res.planStartTime || '/';
+        this.estimatedTime = res.estimatedTime || '/';
+        this.constructionSite = res.constructionSite || '/';
+        this.constructionCycle = res.constructionCycle || '/';
+        this.licenseNumber = res.licenseNumber || '/';
+        this.peojectApplyType = res.peojectApplyType || '/';
+        this.isDevople = res.isDevople || '/';
+        this.planDocumentName = res.planDocumentName || '/';
+        this.planExamAuthority = res.planExamAuthority || '/';
+        this.planExamNumber = res.planExamNumber || '/';
+        this.constructContent = res.constructContent || '/';
+        this.constructScale = res.constructScale || '/';
+        this.startLon = res.startLon || '/';
+        this.startLat = res.startLat || '/';
+        this.endLon = res.endLon || '/';
+        this.endLat = res.endLat || '/';
+        this.engineerLength = res.engineerLength || '/';
+        this.constructionUnit = res.constructionUnit || '/';
+        this.address = res.address || '/';
+        this.legalPerson = res.legalPerson || '/';
+        this.technology = res.technology || '/';
+        this.socialCreditCode = res.socialCreditCode || '/';
+        this.constructionUnitPhone = res.constructionUnitPhone || '/';
+        this.evaluatUnitName = res.evaluatUnitName || '/';
+        this.evaluatUnitAddress = res.evaluatUnitAddress || '/';
+        this.evaluatUnitPhone = res.evaluatUnitPhone || '/';
+        this.evaluatUnitNumber = res.evaluatUnitNumber || '/';
       }
     });
   }

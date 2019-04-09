@@ -33,25 +33,24 @@ export class BaseInfoPage implements OnInit {
   });
   }
   getBaseInfoData(): void {
-    this.projectFilesService.getBaseInfoData({}, true, res => {
-      console.log(res)
+    this.projectFilesService.getBaseInfoData({projectCode: 1}, true, res => {
       if (res !== 'error') {
         // this.baseInfoList = res.data || [];
-        this.enviAssessmentTypeName = res.ENVIASSESSMENTTYPENAME || '/';
-        this.applicantPeopleType = res.APPLICANTPEOPLETYPE || '/';
-        this.permissionType = res.PERMISSIONTYPE || '/';
-        this.projectName = res.PROJECTNAME || '/';
-        this.constructionUnit = res.CONSTRUCTIONUNIT || '/';
-        this.isCreditNumber = res.ISCREDITNUMBER || '/';
-        this.organCertificateNumber = res.ORGANCERTIFICATENUMBER || '/';
-        this.constructionSite = res.CONSTRUCTIONSITE || '/';
-        this.establishmentDepartment = res.ESTABLISHMENTDEPARTMENT || '/';
-        this.industryType = res.INDUSTRYTYPE || '/';
-        this.enviAssessmentUnit = res.ENVIASSESSMENTUNIT || '/';
-        this.enviAssessmentClass = res.ENVIASSESSMENTCLASS || '/';
-        this.enviAssessmentEngineer = res.ENVIASSESSMENTENGINEER || '/';
-        this.projectAttribute = res.PROJECTATTRIBUTE || '/';
-        this.constrctProjectClass = res.CONSTRCTPROJECTCLASS || '/';
+        this.enviAssessmentTypeName = res.enviAssessmentTypeName || '/';
+        this.applicantPeopleType = res.applicantPeopleType || '/';
+        this.permissionType = res.permissionType || '/';
+        this.projectName = res.projectName || '/';
+        this.constructionUnit = res.constructionUnit || '/';
+        this.isCreditNumber = res.isCreditNumber || '/';
+        this.organCertificateNumber = res.organCertificateNumber || '/';
+        this.constructionSite = res.constructionSite || '/';
+        this.establishmentDepartment = res.establishmentDepartment || '/';
+        this.industryType = res.industryType || '/';
+        this.enviAssessmentUnit = res.enviAssessmentUnit || '/';
+        this.enviAssessmentClass = res.enviAssessmentClass || '/';
+        this.enviAssessmentEngineer = res.enviAssessmentEngineer || '/';
+        this.projectAttribute = res.projectAttribute || '/';
+        this.constrctProjectClass = res.constrctProjectClass || '/';
       }
     });
   }
