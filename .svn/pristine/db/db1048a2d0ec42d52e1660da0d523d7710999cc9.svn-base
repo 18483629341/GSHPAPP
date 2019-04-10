@@ -22,7 +22,6 @@ export class Tab1Page implements OnInit {
   public currentOptionTabIndex; // 当前点击的tab的index的值
   public map: any; // 地图
   public isMapShow: boolean; // 是否显示地图
-  public isCollected = false; // 是否收藏地图上的信息
   public mapPoint: any = []; // 地图q全部的点位数据
   public povincPointLayer: any; // 省份大点图层
   public projectPointLayer: any; // 项目大点图层
@@ -31,13 +30,14 @@ export class Tab1Page implements OnInit {
   public dataType; // 请求数据类型（批复项目类型）
   public projectInfoDate; // 项目详情信息
   public isShowProjectInfoData; // 地图是否显示详情信息弹框
-  public areaTabIndex: any = 0; // 默认选中区域的下标
+  public areaTabIndex: any; // 默认选中区域的下标
   public selectedIndustryArr: any = []; // 用于存放 暂时选中的行业名称
   public selectedIndustryIDs: any = []; // 用于存放 暂时选中的行业ID
-  public yearTabIndex: any = 0; // 默认选中年份的下标
-  public fileTabIndex: any = 0; // 默认选中环评文件的下标
-  public searchObj: Object = {regionCode : '', industryCode : '' , year : '' , documentCode : '' , dataType : 0, }; // 用于暂存用户搜索的条件对象
-  public projectsCount: Object = {buildProjectsNum: '-' , reviewProjectsNum: '-' , approvedProjectsNum: '-'}; // 地图项目的各种类型对应数量
+  public yearTabIndex: any; // 默认选中年份的下标
+  public fileTabIndex: any; // 默认选中环评文件的下标
+  public searchObj: Object = {regionCode : '', industryCode : '' , year : '' , documentCode : '' , dataType : 2, }; // 用于攒出用户搜索的条件对象
+  
+
   constructor(public mapHttpService: MapHttpService, public router: Router, public mapService: MapHttpService,
     public projectFilesService: ProjectFilesService) {
     this.isShowOptions = false; // 默认不显示筛选列表数据
@@ -48,7 +48,6 @@ export class Tab1Page implements OnInit {
 
   }
   ngOnInit(): void {
-
   }
   /**
    * 地图加载完成
@@ -117,14 +116,14 @@ export class Tab1Page implements OnInit {
    */
   getMapAreaData() {
     this.mapHttpService.getMapAreaData({}, true, res => {
-      // console.log('区域筛选列表', res);
+      console.log('区域筛选列表', res);
       if (res !== 'error') {
         this.mapOptionAreaList = res || [];
-        // 默认以第一条为头部
+        // 默认显示第一条
         if ( this.mapOptionAreaList.length > 0 ) {
           this.area = this.mapOptionAreaList[0].regionName;
+          this.areaTabIndex = 1;
           this.searchObj['regionCode'] = this.mapOptionAreaList[0].regionCode;
-          this.areaTabIndex = 0;
         }
       }
     });
@@ -135,7 +134,7 @@ export class Tab1Page implements OnInit {
    */
   getOptionIndustryListData() {
     this.mapHttpService.getMapIndustryData({}, true, res => {
-      // console.log('行业筛选列表', res);
+      console.log('行业筛选列表', res);
       if (res !== 'error') {
         this.mapOptionIndustryList = res || [];
       }
@@ -147,10 +146,10 @@ export class Tab1Page implements OnInit {
    */
   getOptionYearListData() {
     this.mapHttpService.getMapYearData({}, true, res => {
-       // console.log('年份筛选列表', res);
+       console.log('年份筛选列表', res);
       if (res !== 'error') {
         this.mapOptionYearList = res || [];
-        // 默认以第一条为头部
+        // 默认显示第一条
         if ( this.mapOptionYearList.length > 0 ) {
           this.year = this.mapOptionYearList[0].year;
           this.yearTabIndex = 0;
@@ -167,10 +166,10 @@ export class Tab1Page implements OnInit {
     // this.mapOptionHpfileList = [{enviAssessmentTypeName: '全部'}];
     this.mapOptionHpfileList = [];
     this.mapHttpService.getEnviAssessmentData({}, true, res => {
-      // console.log('环评文件筛选列表', res);
+      console.log('环评文件筛选列表', res);
       if (res !== 'error') {
         this.mapOptionHpfileList = [...this.mapOptionHpfileList, ...res];
-        // 默认以第一条为头部
+        // 默认显示第一条
         if ( this.mapOptionHpfileList.length > 0 ) {
           this.envAssessment = this.mapOptionHpfileList[0].enviAssessmentTypeName;
           this.fileTabIndex = 0;
@@ -313,12 +312,6 @@ export class Tab1Page implements OnInit {
     this.getMapPointData(this.searchObj);
   }
 
-   /**
-   * 点击收藏按钮，切换收藏与否
-  */
-  collect() {
-    this.isCollected = !this.isCollected;
-  }
   /**
    * 点击切换地图和图表的显示方式
    */
@@ -350,15 +343,14 @@ export class Tab1Page implements OnInit {
     this.showHidenFlag = !this.showHidenFlag;
   }
   /**
-  * 点击地图上的筛选条件（项目类型）
+  * 点击地图上的筛选条件（批复文件数量）
   */
   typeMap(dataType) {
     this.dataType = dataType;
-    this.searchObj['dataType'] = dataType;
-    this.getMapPointData(this.searchObj);
   }
-
-  legendCount() {
+  legendCount(type) {
+    this.searchObj['dataType'] = type;
+    this.getMapPointData(this.searchObj);
   }
 
   /**
@@ -452,18 +444,6 @@ export class Tab1Page implements OnInit {
         });
       });
 
-  }
-
-  /**
-  *下拉刷新执行的方法
-  */
-  doRefresh(event) {
-    console.log('Begin async operation');
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      event.target.complete();
-    }, 2000);
   }
 
 }

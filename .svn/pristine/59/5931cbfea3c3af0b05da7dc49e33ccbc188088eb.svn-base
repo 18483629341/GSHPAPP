@@ -136,38 +136,6 @@ ion-grid{
 .MapContainer{
   width: 100%;
   height:100%;
-  position: relative;
-  .collectDiv,.posDiv{
-    width: 42px;
-    height: 42px;
-    position: absolute;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    right: 10px;
-  }
-  .collectDiv{
-    top:80px;
-  }
-  .posDiv{
-    top:140px;
-  }
-  .collectBtn,.posBtn{
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-  }
-  .collectBtn{
-    background:url('../../assets/imgs/map_layer_04.png') no-repeat;
-    background-size: 100% 100%; 
-  }
-  .collectBtn.active{
-    background:url('../../assets/imgs/map_layer_03.png') no-repeat;
-    background-size: 100% 100%; 
-  }
-  .posBtn{
-    background:url('../../assets/imgs/pos.png') no-repeat;
-    background-size: 100% 100%; 
-  }
 }
 .errorDiv{
   width: 100%;
@@ -292,7 +260,6 @@ ion-label p:last-child{
   width: 26px;
   height:26px;
 }
-
   // .icon-color{color: #1d2b36}
   // .toolbar-ios{ padding-top: 12px; padding-bottom: 12px}
   // .font-size-20{font-size: 22px}

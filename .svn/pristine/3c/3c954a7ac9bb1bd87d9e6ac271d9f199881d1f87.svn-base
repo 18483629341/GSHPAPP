@@ -22,7 +22,6 @@ export class Tab1Page implements OnInit {
   public currentOptionTabIndex; // 当前点击的tab的index的值
   public map: any; // 地图
   public isMapShow: boolean; // 是否显示地图
-  public isCollected = false; // 是否收藏地图上的信息
   public mapPoint: any = []; // 地图q全部的点位数据
   public povincPointLayer: any; // 省份大点图层
   public projectPointLayer: any; // 项目大点图层
@@ -36,8 +35,8 @@ export class Tab1Page implements OnInit {
   public selectedIndustryIDs: any = []; // 用于存放 暂时选中的行业ID
   public yearTabIndex: any = 0; // 默认选中年份的下标
   public fileTabIndex: any = 0; // 默认选中环评文件的下标
-  public searchObj: Object = {regionCode : '', industryCode : '' , year : '' , documentCode : '' , dataType : 0, }; // 用于暂存用户搜索的条件对象
-  public projectsCount: Object = {buildProjectsNum: '-' , reviewProjectsNum: '-' , approvedProjectsNum: '-'}; // 地图项目的各种类型对应数量
+  public hasMapData = false; //  是否拿到map相关数据
+  public hasProjectListData = false; //  是否拿到列表数据
   constructor(public mapHttpService: MapHttpService, public router: Router, public mapService: MapHttpService,
     public projectFilesService: ProjectFilesService) {
     this.isShowOptions = false; // 默认不显示筛选列表数据
@@ -48,7 +47,6 @@ export class Tab1Page implements OnInit {
 
   }
   ngOnInit(): void {
-
   }
   /**
    * 地图加载完成
@@ -107,8 +105,8 @@ export class Tab1Page implements OnInit {
     this.getMapAreaData();
     this.getOptionIndustryListData();
     this.getOptionYearListData();
+    this.getMapPointData();
     this.getOptionEnviAssessmentListData();
-    this.getMapPointData(this.searchObj);
     // this.getMapListData();
   }
 
@@ -117,15 +115,9 @@ export class Tab1Page implements OnInit {
    */
   getMapAreaData() {
     this.mapHttpService.getMapAreaData({}, true, res => {
-      // console.log('区域筛选列表', res);
+      // console.log('区域筛选列表',res);
       if (res !== 'error') {
         this.mapOptionAreaList = res || [];
-        // 默认以第一条为头部
-        if ( this.mapOptionAreaList.length > 0 ) {
-          this.area = this.mapOptionAreaList[0].regionName;
-          this.searchObj['regionCode'] = this.mapOptionAreaList[0].regionCode;
-          this.areaTabIndex = 0;
-        }
       }
     });
   }
@@ -135,7 +127,7 @@ export class Tab1Page implements OnInit {
    */
   getOptionIndustryListData() {
     this.mapHttpService.getMapIndustryData({}, true, res => {
-      // console.log('行业筛选列表', res);
+      console.log('行业筛选列表', res);
       if (res !== 'error') {
         this.mapOptionIndustryList = res || [];
       }
@@ -147,15 +139,9 @@ export class Tab1Page implements OnInit {
    */
   getOptionYearListData() {
     this.mapHttpService.getMapYearData({}, true, res => {
-       // console.log('年份筛选列表', res);
+      // console.log('年份筛选列表',res);
       if (res !== 'error') {
         this.mapOptionYearList = res || [];
-        // 默认以第一条为头部
-        if ( this.mapOptionYearList.length > 0 ) {
-          this.year = this.mapOptionYearList[0].year;
-          this.yearTabIndex = 0;
-          this.searchObj['year'] =  this.mapOptionYearList[0].year;
-        }
       }
     });
   }
@@ -164,18 +150,11 @@ export class Tab1Page implements OnInit {
    * 获取地图的环评文件筛选条件列表
    */
   getOptionEnviAssessmentListData() {
-    // this.mapOptionHpfileList = [{enviAssessmentTypeName: '全部'}];
-    this.mapOptionHpfileList = [];
+    this.mapOptionHpfileList = [{enviAssessmentTypeName: '全部'}];
     this.mapHttpService.getEnviAssessmentData({}, true, res => {
-      // console.log('环评文件筛选列表', res);
+      console.log('环评文件筛选列表', res);
       if (res !== 'error') {
         this.mapOptionHpfileList = [...this.mapOptionHpfileList, ...res];
-        // 默认以第一条为头部
-        if ( this.mapOptionHpfileList.length > 0 ) {
-          this.envAssessment = this.mapOptionHpfileList[0].enviAssessmentTypeName;
-          this.fileTabIndex = 0;
-          this.searchObj['documentCode'] = this.mapOptionHpfileList[0].enviAssessmentTypeCode;
-        }
       }
     });
   }
@@ -184,8 +163,8 @@ export class Tab1Page implements OnInit {
   /**
    * 获取地图的点位数据
    */
-  getMapPointData(obj) {
-    this.mapHttpService.getMapPointData(obj, true, res => {
+  getMapPointData() {
+    this.mapHttpService.getMapPointData({}, true, res => {
       // console.log(res);
       if (res !== 'error') {
         this.mapPoint = res || [];
@@ -198,6 +177,10 @@ export class Tab1Page implements OnInit {
         });
         this.addProvincePoint(this.mapPoint, this.povincPointLayer); // 执行大点方法
         this.addProjectPoint(this.mapProjectList, this.projectPointLayer); // 执行小点方法
+        this.hasProjectListData = false;
+      } else {
+        // 如果单位列表请求数据 失败，则显示暂无数据
+       this.hasProjectListData = true;
       }
     });
   }
@@ -240,30 +223,33 @@ export class Tab1Page implements OnInit {
     this.isShowOptions = !this.isShowOptions;
     this.areaTabIndex = i;
     this.area = item.regionName;
-    this.searchObj['regionCode'] = item.regionCode;
-    this.getMapPointData(this.searchObj);
   }
 
   /**
    * 确认行业的筛选-多选
   */
   confirmIndustryOptions() {
-    this.selectedIndustryArr = [];
-    this.selectedIndustryIDs = [];
-    this.isShowOptions = !this.isShowOptions;
+
     this.mapOptionIndustryList.map((item) => {
       if (item.isChecked === true) { // 当isChecked属性为true时
-        this.selectedIndustryArr.push(item.industryName); // 加入行业名称到数组中
-        this.selectedIndustryIDs.push(item.industryCode);
+        if (this.selectedIndustryArr.indexOf(item.industryName) === -1) {// 当数组(存放行业名称的)中不存在此行业名称时，才push
+          this.selectedIndustryArr.push(item.industryName); // 加入行业名称到数组中
+          this.selectedIndustryIDs.push(item.industryCode);
+        }
+      } else {// 当isChecked属性为false时
+        if (this.selectedIndustryArr.indexOf(item.industryName) > -1) {// 当数组(存放行业名称的)中存在此行业名称时，删除此名称
+          const j = this.selectedIndustryArr.indexOf(item.industryName);
+          this.selectedIndustryArr.splice(j, 1); // 删除此行业名称
+          this.selectedIndustryIDs.splice(j, 1);
+        }
       }
     });
-    const n = this.selectedIndustryArr.length;
+    let n = this.selectedIndustryArr.length;
     // 当选择好后的行业数量n>1时，industry为“多选”,n===1时，industry为数组的第一项；,n=0时，industry为"行业
     this.industry = n > 1 ? '多选' : n === 1 ? this.selectedIndustryArr[0] : '行业';
-    this.searchObj['industryCode'] = this.translateArrToStr(this.selectedIndustryIDs); // 此方法将数组转化为用，隔开的字符串
-    console.log(this.searchObj);
-    this.getMapPointData(this.searchObj);
+    this.isShowOptions = !this.isShowOptions;
   }
+
   /**
    * 重置行业的筛选-多选
   */
@@ -272,25 +258,9 @@ export class Tab1Page implements OnInit {
       if (item.isChecked === true) {
         item.isChecked = false;
       }
-    });
+    })
     this.selectedIndustryArr = [];
-    this.searchObj['industryCode'] = '';
   }
-
-   /**
-   * 将数组转化为用，隔开的字符串
-  */
- translateArrToStr(arr) {
-  let str = '';
-  arr.map((item, i) => {
-    if ( i  === 0) {
-      str += item;
-    } else {
-      str += ',' + item;
-    }
-  });
-  return str;
-}
   /**
    * 选择 主题为年份的 筛选选项(单选)
   */
@@ -298,8 +268,6 @@ export class Tab1Page implements OnInit {
     this.isShowOptions = !this.isShowOptions;
     this.yearTabIndex = i;
     this.year = item.year;
-    this.searchObj['year'] = item;
-    this.getMapPointData(this.searchObj);
   }
 
   /**
@@ -309,16 +277,8 @@ export class Tab1Page implements OnInit {
     this.isShowOptions = !this.isShowOptions;
     this.fileTabIndex = i;
     this.envAssessment = item.enviAssessmentTypeName;
-    this.searchObj['documentCode'] = item.enviAssessmentTypeCode;
-    this.getMapPointData(this.searchObj);
   }
 
-   /**
-   * 点击收藏按钮，切换收藏与否
-  */
-  collect() {
-    this.isCollected = !this.isCollected;
-  }
   /**
    * 点击切换地图和图表的显示方式
    */
@@ -350,15 +310,13 @@ export class Tab1Page implements OnInit {
     this.showHidenFlag = !this.showHidenFlag;
   }
   /**
-  * 点击地图上的筛选条件（项目类型）
+  * 点击地图上的筛选条件（批复文件数量）
   */
   typeMap(dataType) {
     this.dataType = dataType;
-    this.searchObj['dataType'] = dataType;
-    this.getMapPointData(this.searchObj);
   }
-
   legendCount() {
+
   }
 
   /**
@@ -452,18 +410,6 @@ export class Tab1Page implements OnInit {
         });
       });
 
-  }
-
-  /**
-  *下拉刷新执行的方法
-  */
-  doRefresh(event) {
-    console.log('Begin async operation');
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      event.target.complete();
-    }, 2000);
   }
 
 }

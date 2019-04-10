@@ -204,7 +204,7 @@
     </ion-item>
     -->
     <p (click)=jumpEnvironmentList()>跳转</p>
-    <ion-item lines='none' *ngFor="let item of unitList,let i = index">
+    <ion-item lines='none' *ngFor="let item of unitList,let i of index">
       <img src="assets/imgs/all.png">
       <ion-label (click)="goEstbUintInfo(item)">
         <p>{{item.enterpriseName}}</p>
@@ -216,7 +216,7 @@
     
   </div>
   <div [style.display]="item==2?'block':'none'">
-    <ion-item lines='none' *ngFor="let item of HpzjList,let i = index">
+    <ion-item lines='none' *ngFor="let item of HpzjList,let i of index">
       <img src="assets/imgs/all.png">
       <ion-label (click)="goHPZJInfo()">
         <p>{{item.enterpriseName}}</p>
