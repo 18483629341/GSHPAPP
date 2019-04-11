@@ -184,11 +184,10 @@ export class Tab1Page implements OnInit {
 
   /**
    * 获取地图的点位数据
-   * {obj} post请求的参数对象
    */
   getMapPointData(obj) {
     this.mapHttpService.getMapPointData(obj, true, res => {
-      console.log( " 地图的点位数据 : " + res[0]);
+      // console.log(res);
       if (res !== 'error') {
         this.mapPoint = res || [];
         this.mapPoint.forEach(item => {
@@ -266,7 +265,6 @@ export class Tab1Page implements OnInit {
     });
     this.selectedIndustryArr = [];
     this.searchObj['industryCode'] = '';
-    this.getMapPointData(this.searchObj);
   }
 
   /**

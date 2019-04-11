@@ -121,11 +121,11 @@ export class ConfigService {
   /** 项目统计分析  --end */
 
  /***地图查询  筛选列表  start*/
- public mapAreaList = 'ProjectStatistics/getRegions'; // 地图查询页面     获取筛选条件区域列表
- public mapIndustryList = 'HpjdManagerment/getIndustryList'; // 地图查询页面   获取筛选条件行业列表
- public mapYearList = 'ProjectStatistics/getYears'; // 地图查询页面       获取筛选条件年份列表
- public mapHpFileList = 'ProjectStatistics/getHpxs'; // 地图查询页面      获取筛选条件环评文件列表
- public mapProjectPosList = 'HpjdManagerment/getMapPointData'; // 项目信息查询 -根据参数获取地图点位数据 
+ public mapAreaList='ProjectStatistics/getRegions';// 地图查询页面     获取筛选条件区域列表
+ public mapIndustryList='HpjdManagerment/getIndustryList';//地图查询页面   获取筛选条件行业列表
+ public mapYearList='ProjectStatistics/getYears';// 地图查询页面       获取筛选条件年份列表
+ public mapHpFileList='ProjectStatistics/getHpxs';// 地图查询页面      获取筛选条件环评文件列表
   /***地图查询  筛选列表  end*/
+  
   constructor() { }
 }

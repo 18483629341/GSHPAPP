@@ -55,24 +55,24 @@ export class ApprovalForm3Page implements OnInit {
     this.projectFilesService.getApprovalForm3({ projectCode: 1, dataType: dataType }, falg, res => {
       console.log(res);
       if (dataType === 0) {
-        if (res !== 'error' && !this.isEmptyObject(res)) {
+        if (res !== 'error' && this.isEmptyObject(res)) {
           console.log('aaaaaaaaaa');
           this.nature = res;
           console.log(this.nature);
         }
       } else if (dataType === 1) {
         console.log(1);
-        if (res !== 'error' && !this.isEmptyObject(res)) {
+        if (res !== 'error' && res !== {}) {
           this.nature1 = res;
         }
       } else if (dataType === 2) {
         console.log(2);
-        if (res !== 'error' && !this.isEmptyObject(res)) {
+        if (res !== 'error' && res !== {}) {
           this.nature2 = res;
         }
       } else if (dataType === 3) {
         console.log(3);
-        if (res !== 'error' && !this.isEmptyObject(res)) {
+        if (res !== 'error' && res !== {}) {
           this.nature3 = res;
         }
       }
@@ -80,7 +80,6 @@ export class ApprovalForm3Page implements OnInit {
   }
 
   isEmptyObject(object) {
-    console.log('对象长度为' + Object.keys(object).length);
     if (Object.keys(object).length === 0) {
       return true;
     } else {

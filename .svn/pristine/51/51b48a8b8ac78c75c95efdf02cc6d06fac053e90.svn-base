@@ -234,7 +234,8 @@
     <div *ngIf="isDataExpert" class="dataBox">暂无数据</div>
   </div>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="ios-arrow-down" refreshingSpinner="lines">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
 </ion-content>

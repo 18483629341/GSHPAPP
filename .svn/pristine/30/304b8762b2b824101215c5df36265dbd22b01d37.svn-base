@@ -19,12 +19,12 @@
     <ion-grid>
         <ion-row class="col-shadow">
             <ion-col (click)="showOption(1)">
-                <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" width="60%">{{area}}</span>
+                <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}">{{area}}</span>
                 <ion-icon mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 1}" class="domn-arr"
                     name="arrow-dropdown"></ion-icon>
             </ion-col>
             <ion-col (click)="showOption(2)">
-                <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" width="60%">{{industry}}</span>
+                <span class="text-ellipsis" [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}">{{industry}}</span>
                 <ion-icon mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 2}" class="domn-arr"
                     name="arrow-dropdown"></ion-icon>
             </ion-col>
@@ -34,7 +34,7 @@
                     name="arrow-dropdown"></ion-icon>
             </ion-col>
             <ion-col (click)="showOption(4)">
-                <span class="text-ellipsis " [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 4}" width="60%">{{envAssessment}}</span>
+                <span class="text-ellipsis " [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 4}">{{envAssessment}}</span>
                 <ion-icon mode='md' [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 4}" class="domn-arr "
                     name="arrow-dropdown"></ion-icon>
             </ion-col>
@@ -59,7 +59,7 @@
                 <ion-icon  [ngClass]="{'color-blue': isShowOptions && currentOptionTabIndex === 3}" name="arrow-dropdown" mode='md'></ion-icon>
             </ion-col>
         </ion-row> -->
-        <div class="option-div">
+        <div class="option-div" >
             <div class="optionList-div" *ngIf="isShowOptions && currentOptionTabIndex === 1">
                 <ion-list class="area-new four-div" lines="inset">
                     <ion-item *ngFor="let item of mapOptionAreaList,let i = index" (click)="selectAreaOption(item,i);" [ngClass]="{'color-blue': areaTabIndex === i}">{{item.regionName}}
@@ -107,17 +107,21 @@
     <div *ngIf="isMapShow" class="MapContainer">
         <ths-map (onMapLoaded)="loadMap($event)" (favoriteChange)="favoriteChange($event)" (requestLoc)="requestLoc()"
             id="map"></ths-map>
-        <!-- <div class="collectDiv"[ngClass]="{'active':isCollected}" (click)="collect()"> </div> -->
-        <div class="posDiv"></div>
+        <div class="collectDiv">
+            <span class="collectBtn" [ngClass]="{'active':isCollected}" (click)="collect()"></span>
+        </div>
+        <div class="posDiv">
+            <span class="posBtn"></span>
+        </div>
         <!-- 地图中的筛选批复数量筛选框 -->
         <div class="count" *ngIf="!mapFlag">
             <p class="count-title">
                 <span class="fr margin-top-2" (click)="showHiden()">
                     <ion-icon mode='ios' [name]="showHidenFlag?'arrow-up':'arrow-down'" class="margin-left-10 color-black margin-top-0"></ion-icon>
                 </span>
-                <span *ngIf="dataType === 2" (click)="legendCount()"><img src="assets/imgs/fq.png">建设项目总数：{{projectsCount.buildProjectsNum}}家</span>
-                <span *ngIf="dataType === 0" (click)="legendCount()"><img src="assets/imgs/fs.png">在审项目数量：{{projectsCount.reviewProjectsNum}}家</span>
-                <span *ngIf="dataType === 1" (click)="legendCount()"><img src="assets/imgs/all.png">已批复项目数量：{{projectsCount.approvedProjectsNum}}家</span>
+                <span *ngIf="dataType === 2" (click)="legendCount()">建设项目总数：{{projectsCount.buildProjectsNum}}家</span>
+                <span *ngIf="dataType === 0" (click)="legendCount()">在审项目数量：{{projectsCount.reviewProjectsNum}}家</span>
+                <span *ngIf="dataType === 1" (click)="legendCount()">已批复项目数量：{{projectsCount.approvedProjectsNum}}家</span>
             </p>
             <div *ngIf="showHidenFlag" class="count-con-an count-con">
                 <p (click)="typeMap(2)" [ngClass]="{'selected': dataType === 2}" *ngIf="dataType !== 2">
@@ -137,7 +141,7 @@
                 <span class="fr"  (click)="collection(infoAllData?.all)">
                     <i [class]="infoAllData?.status?' icon iconfont  icon-xingxu font-size-18':'icon iconfont  icon-xingxing start font-size-18'"></i>
                 </span>
-                <img src="assets/imgs/{{infoAllData?.imgUrl}}.png" (click)="infoPage(infoAllData?.id)">
+                <img src="../../assets/imgs/{{infoAllData?.imgUrl}}.png" (click)="infoPage(infoAllData?.id)">
                 <span (click)="goProjectFiles()">大家飞机开绿灯解放了</span>
             </p>
             <p class="font-size-12 gray" (click)="infoPage(infoAllData?.id)">09398383838838</p>
@@ -151,16 +155,7 @@
     </div>
     <!-- 地图 -->
 
-<<<<<<< .mine
-||||||| .r6501
-<<<<<<< .mine
 
-=======
->>>>>>> .r6486
-
-=======
-
->>>>>>> .r6550
     <!-- 列表数据 -->
     <div *ngIf="!isMapShow">
         <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">

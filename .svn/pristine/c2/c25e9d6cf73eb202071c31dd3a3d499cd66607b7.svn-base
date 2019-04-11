@@ -99,7 +99,7 @@ ion-grid{
 
 
 .text-ellipsis {
- 
+  // max-width:60%;
   text-align: right;
   line-height: 28px;
   font-size: 14px;
@@ -138,49 +138,50 @@ ion-grid{
   height:100%;
   position: relative;
   .collectDiv,.posDiv{
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     position: absolute;
     border: 1px solid #ddd;
     border-radius: 6px;
     right: 10px;
-    background-color: #fff;
   }
   .collectDiv{
     top:80px;
-    background-image:url('../../assets/imgs/map_layer_04.png') ;
-    background-repeat:no-repeat;
-    background-size: 100% 100%; 
-  }
-  .collectDiv.active{
-    background-image:url('../../assets/imgs/map_layer_03.png');
-    background-repeat:no-repeat;
-    background-size: 100% 100%; 
   }
   .posDiv{
-    //top:140px;
-    top:80px;
-    background-image:url('../../assets/imgs/pos.png');
-    background-repeat:no-repeat;
+    top:140px;
+  }
+  .collectBtn,.posBtn{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+  }
+  .collectBtn{
+    background:url('../../assets/imgs/map_layer_04.png') no-repeat;
     background-size: 100% 100%; 
   }
-  
- 
-  
- 
+  .collectBtn.active{
+    background:url('../../assets/imgs/map_layer_03.png') no-repeat;
+    background-size: 100% 100%; 
+  }
+  .posBtn{
+    background:url('../../assets/imgs/pos.png') no-repeat;
+    background-size: 100% 100%; 
+  }
 }
 
 .info{
   .qing{
-    line-height: 30px;
+    line-height: 26px;
     margin-top:6px;
   }
   .NavBtn,.JumpBtn{
-    height: 30px;
-    line-height: 30px;
+    height: 26px;
+    line-height: 26px;
     margin-left: 30px;
+    font-size: 12px;
     display: inline-block;
-    background: #4162fb;
+    background: #5871de;
     border-radius: 4px;
     padding: 0 13px;
     color: #fff;
@@ -289,7 +290,7 @@ ion-label p:last-child{
   width: 16px; height: 16px;
 }
 .count-con{ height: auto; border-top: solid .5px #ddd; }
-.count p span.margin-top-2{  margin-left: 16px}
+.count p span.margin-top-2{  margin-left: 26px}
 .margin-left-10{ margin-left: 10px}
 .count-con-an{transition: height  ease-in .2s}
 .count-con p{ margin: 5px 0;font-size: 12px;border-bottom: solid 0.55px rgba(255,255,255,.1);padding: 5px}
